@@ -11,10 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610000226) do
+ActiveRecord::Schema.define(version: 20160617014030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "mentors", force: :cascade do |t|
+    t.string   "company"
+    t.string   "industry"
+    t.string   "website"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "school"
+    t.string   "grade"
+    t.string   "gender"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +62,13 @@ ActiveRecord::Schema.define(version: 20160610000226) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "admin"
+    t.boolean  "mentor"
+    t.boolean  "student"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
