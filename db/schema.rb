@@ -62,12 +62,6 @@ ActiveRecord::Schema.define(version: 20160617014030) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.boolean  "admin"
-    t.boolean  "mentor"
-    t.boolean  "student"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone_number"
     t.string   "role"
   end
 
