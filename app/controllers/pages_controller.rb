@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def home 
     if !current_user 
       redirect_to "/users/sign_in"
@@ -11,7 +10,7 @@ class PagesController < ApplicationController
       render "student.html.erb"
     else
       @user = current_user
-      render "mentor.html.erb"
+      render "admin.html.erb"
     end
   end
 end
