@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  
   get '/admins' => 'admins#index'
   post '/admins' => 'admins#create'
   get '/admins/:id' => 'admins#show'
