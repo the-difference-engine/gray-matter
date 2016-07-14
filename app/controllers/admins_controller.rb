@@ -1,4 +1,6 @@
 class AdminsController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
    @admins = Admin.all
     render "index.html.erb"
