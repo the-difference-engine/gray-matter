@@ -6,11 +6,14 @@ Rails.application.routes.draw do
       root 'admins#index', as: :authenticated_root
     end
     
-    
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
+  get '/users/sign_in' => 'devise/sessions#new'
+  post '/users/sign_in' => 'devise/sessions#create'
+  delete '/users/_sign_out' => 'devise/sessions#destroy'
 
   
 #   get '/admins' => 'admins#index'
