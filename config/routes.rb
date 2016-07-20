@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 #   delete '/admins/:id' => 'admins#destroy'
 
    get '/mentors' => 'mentors#index'
-#   post '/mentors' => 'mentors#create'
-#   get '/mentors/:id' => 'mentors#show'
-#   delete '/mentors/:id' => 'mentors#destroy'
+   post '/mentors' => 'mentors#create'
+   get '/mentors/:id' => 'mentors#show'
+   delete '/mentors/:id' => 'mentors#destroy'
 
   get '/students' => 'students#index'
   post '/students' => 'students#create'
