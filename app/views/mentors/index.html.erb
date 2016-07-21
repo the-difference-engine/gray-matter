@@ -1,50 +1,326 @@
+<div>
 <div class="container">
-<h1>Mentor Name</h1>
+<!-- <nav class="nav">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#about">About</a></li>
+    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
+    <li class="nav-item"><a href="#links">Links</a></li>
+  </ul>
+</nav>
+ -->
+<main>
+  <section id="about">
+    <figure class="about-fig">
+        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
+        <h4 class="wordmark">mentor (<a href="#">Finance</a>)</h4>
+        <h5 class="info" ><a href="mailto:jamiedoe@gmail.com" target="_top">jamiedoe@gmail.com</a></h5>
+        <h5 class="info" >(123) 456-7890 </h5>
+    </figure>
+  </section>
+
+  <h1 class="head"><a href="/mentors/1">Jamie Doe</a></h1>
+
+  <figcaption class="about-caption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
+        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
+        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
+        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
+        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
+        Proin eget lobortis libero, sed finibus mauris. 
+        Etiam a felis elementum nunc lobortis volutpat at a ex. 
+        Sed et dictum tellus.
+      </figcaption>
+
+  <section id="links">
+    <h3>Resources</h3>
+    <ul>
+      <li><a href="#">Resource 1</a></li>
+      <li><a href="#">Resource 2</a></li>
+      <li><a href="#">Resource 3</a></li>
+    </ul>
+  </section>
+  <section id="links">
+    <h3>Workshops</h3>
+    <ul>
+      <li><a href="#">Workshop 1</a></li>
+      <li><a href="#">Workshop 2</a></li>
+      <li><a href="#">Workshop 3</a></li>
+    </ul>
+  </section>
+    <section id="links">
+    <h3>Availability</h3>
+    <ul>
+      <li><a href="#">Monday 5pm–7pm</a></li>
+      <li><a href="#">Wednesday 3pm–5pm</a></li>
+      <li><a href="#">Saturday 12pm–4pm</a></li>
+    </ul>
+  </section>
 
 
+  <!-- <footer class="footer">
+    <p>&copy; 2016 Gray Matter</p>
+  </footer>*/ -->
+</main>
+<br/>
+<br/>
 </div>
+</div>
+<br/>
+<br/>
+<div>
 <div class="container">
-<h2>Admin:</h2>
-<% if @mentors %>
- <% @mentors.each do |mentor| %>
-   <ol>
-      first_name: <i><%= mentor.first_name %></i> | 
-       last_name: <i><%= mentor.last_name %></i> | 
-       phone number: <i><%= mentor.phone_number %></i>
-       <%= link_to "Remove this mentor", "/mentors/#{mentor.id}", method: :delete %>
-     </h4>
-   </ol>
- <% end %>
-<% else %>
- <h3>There are no current mentors</h3>
-<% end %>
+<!-- <nav class="nav">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#about">About</a></li>
+    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
+    <li class="nav-item"><a href="#links">Links</a></li>
+  </ul>
+</nav>
+ -->
+<main>
+  <section id="about">
+    <figure class="about-fig">
+        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
+        <h4 class="wordmark">mentor (<a href="#">Finance</a>)</h4>
+        <h5 class="info" ><a href="mailto:jamiedoe@gmail.com" target="_top">jamiedoe@gmail.com</a></h5>
+        <h5 class="info" >(123) 456-7890 </h5>
+    </figure>
+  </section>
 
-<h4>Add a Mentor:</h4>
+  <h1 class="head"><a href="/mentors/1">Jamie Doe</a></h1>
 
-<%= form_tag "/mentors", method: :post do %>
- <div>
-   <%= label_tag :first_name %> 
-   <%= text_field_tag :first_name %>
- </div>
- 
- <div>
-   <%= label_tag :last_name %> 
-   <%= text_field_tag :last_name %>
- </div>
+  <figcaption class="about-caption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
+        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
+        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
+        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
+        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
+        Proin eget lobortis libero, sed finibus mauris. 
+        Etiam a felis elementum nunc lobortis volutpat at a ex. 
+        Sed et dictum tellus.
+      </figcaption>
 
- <div>
-   <%= label_tag :phone_number %> 
-   <%= text_field_tag :phone_number %>
- </div>
+  <section id="links">
+    <h3>Resources</h3>
+    <ul>
+      <li><a href="#">Resource 1</a></li>
+      <li><a href="#">Resource 2</a></li>
+      <li><a href="#">Resource 3</a></li>
+    </ul>
+  </section>
+  <section id="links">
+    <h3>Workshops</h3>
+    <ul>
+      <li><a href="#">Workshop 1</a></li>
+      <li><a href="#">Workshop 2</a></li>
+      <li><a href="#">Workshop 3</a></li>
+    </ul>
+  </section>
+    <section id="links">
+    <h3>Availability</h3>
+    <ul>
+      <li><a href="#">Monday 5pm–7pm</a></li>
+      <li><a href="#">Wednesday 3pm–5pm</a></li>
+      <li><a href="#">Saturday 12pm–4pm</a></li>
+    </ul>
+  </section>
+
+
+  <!-- <footer class="footer">
+    <p>&copy; 2016 Gray Matter</p>
+  </footer>*/ -->
+</main>
+<br/>
+<br/>
+</div>
+</div>
+<br/>
+<br/>
+<div>
+<div class="container">
+<!-- <nav class="nav">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#about">About</a></li>
+    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
+    <li class="nav-item"><a href="#links">Links</a></li>
+  </ul>
+</nav>
+ -->
+<main>
+  <section id="about">
+    <figure class="about-fig">
+        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
+        <h4 class="wordmark">mentor (<a href="#">Finance</a>)</h4>
+        <h5 class="info" ><a href="mailto:jamiedoe@gmail.com" target="_top">jamiedoe@gmail.com</a></h5>
+        <h5 class="info" >(123) 456-7890 </h5>
+    </figure>
+  </section>
+
+  <h1 class="head"><a href="/mentors/1">Jamie Doe</a></h1>
+
+  <figcaption class="about-caption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
+        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
+        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
+        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
+        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
+        Proin eget lobortis libero, sed finibus mauris. 
+        Etiam a felis elementum nunc lobortis volutpat at a ex. 
+        Sed et dictum tellus.
+      </figcaption>
+
+  <section id="links">
+    <h3>Resources</h3>
+    <ul>
+      <li><a href="#">Resource 1</a></li>
+      <li><a href="#">Resource 2</a></li>
+      <li><a href="#">Resource 3</a></li>
+    </ul>
+  </section>
+  <section id="links">
+    <h3>Workshops</h3>
+    <ul>
+      <li><a href="#">Workshop 1</a></li>
+      <li><a href="#">Workshop 2</a></li>
+      <li><a href="#">Workshop 3</a></li>
+    </ul>
+  </section>
+    <section id="links">
+    <h3>Availability</h3>
+    <ul>
+      <li><a href="#">Monday 5pm–7pm</a></li>
+      <li><a href="#">Wednesday 3pm–5pm</a></li>
+      <li><a href="#">Saturday 12pm–4pm</a></li>
+    </ul>
+  </section>
+
+
+  <!-- <footer class="footer">
+    <p>&copy; 2016 Gray Matter</p>
+  </footer>*/ -->
+</main>
+<br/>
+<br/>
+</div>
+</div>
+<br/>
+<br/>
+<div>
+<div class="container">
+<!-- <nav class="nav">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#about">About</a></li>
+    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
+    <li class="nav-item"><a href="#links">Links</a></li>
+  </ul>
+</nav>
+ -->
+<main>
+  <section id="about">
+    <figure class="about-fig">
+        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
+        <h4 class="wordmark">mentor (<a href="#">Finance</a>)</h4>
+        <h5 class="info" ><a href="mailto:jamiedoe@gmail.com" target="_top">jamiedoe@gmail.com</a></h5>
+        <h5 class="info" >(123) 456-7890 </h5>
+    </figure>
+  </section>
+
+  <h1 class="head"><a href="/mentors/1">Jamie Doe</a></h1>
+
+  <figcaption class="about-caption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
+        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
+        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
+        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
+        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
+        Proin eget lobortis libero, sed finibus mauris. 
+        Etiam a felis elementum nunc lobortis volutpat at a ex. 
+        Sed et dictum tellus.
+      </figcaption>
+
+  <section id="links">
+    <h3>Resources</h3>
+    <ul>
+      <li><a href="#">Resource 1</a></li>
+      <li><a href="#">Resource 2</a></li>
+      <li><a href="#">Resource 3</a></li>
+    </ul>
+  </section>
+  <section id="links">
+    <h3>Workshops</h3>
+    <ul>
+      <li><a href="#">Workshop 1</a></li>
+      <li><a href="#">Workshop 2</a></li>
+      <li><a href="#">Workshop 3</a></li>
+    </ul>
+  </section>
+    <section id="links">
+    <h3>Availability</h3>
+    <ul>
+      <li><a href="#">Monday 5pm–7pm</a></li>
+      <li><a href="#">Wednesday 3pm–5pm</a></li>
+      <li><a href="#">Saturday 12pm–4pm</a></li>
+    </ul>
+  </section>
+
+
+  <!-- <footer class="footer">
+    <p>&copy; 2016 Gray Matter</p>
+  </footer>*/ -->
+</main>
+<br/>
+<br/>
+</div>
+</div>
+
+
+
+
+
+
 
 <div>
-   <%= label_tag :contact_email %> 
-   <%= text_field_tag :contact_email %>
- </div>
- <div>
-   <%= submit_tag "Add Mentor" %>
- </div>
-<% end %>
+  <h2>Admin:</h2>
+  <% if @mentors %>
+    <% @mentors.each do |mentor| %>
+      <ol>
+        first_name: <i><%= mentor.first_name %></i> | 
+        last_name: <i><%= mentor.last_name %></i> | 
+        phone number: <i><%= mentor.phone_number %></i>
+        <%= link_to "Remove this mentor", "/mentors/#{mentor.id}", method: :delete %>
+     </ol>
+    <% end %>
+  <% else %>
+    <h3>There are no current mentors</h3>
+  <% end %>
 
+  <h4>Add a Mentor:</h4>
+
+  <%= form_tag "/mentors", method: :post do %>
+    <div>
+      <%= label_tag :first_name %> 
+      <%= text_field_tag :first_name %>
+    </div>
+    <div>
+      <%= label_tag :last_name %> 
+      <%= text_field_tag :last_name %>
+    </div>
+    <div>
+      <%= label_tag :phone_number %> 
+      <%= text_field_tag :phone_number %>
+    </div>
+    <div>
+      <%= label_tag :contact_email %> 
+      <%= text_field_tag :contact_email %>
+    </div>
+    <div>
+      <%= submit_tag "Add Mentor" %>
+    </div>
+  <% end %>
+</div>
 
  
