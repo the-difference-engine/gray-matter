@@ -3,9 +3,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
-gem 'devise'
+gem 'devise' 
+gem 'rspec'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'bootstrap-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -25,6 +27,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 
+gem 'pry'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -37,8 +41,22 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'factory_girl_rails', '~> 4.4.1'
   gem 'byebug'
+  gem 'shoulda-matchers', '~> 3.1'
 end
+
+ group :test do
+   gem "faker", "~> 1.4.3"
+   gem "capybara", "~> 2.4.3"
+   gem "database_cleaner", "~> 1.3.0"
+   gem "launchy", "~> 2.4.2"
+   gem "selenium-webdriver", "~> 2.43.0"
+end
+
+
+
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

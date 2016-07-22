@@ -1,0 +1,47 @@
+<div class="wordmark">Home page</div>
+
+<!-- <div class="container">
+
+
+<h2>Admins:</h2>
+<% if @admins %>
+ <% @admins.each do |admin| %>
+   <ol>
+       first_name: <i><%= admin.first_name %></i> | 
+       last_name: <i><%= admin.last_name %></i> | 
+       phone number: <i><%= admin.phone_number %></i>
+       <%= link_to "Remove this admin", "/admins/#{admin.id}", method: :delete %>
+     </h4>
+   </ol>
+ <% end %>
+<% else %>
+ <h3>There are no current admins</h3>
+<% end %>
+
+<h4>Add an admin:</h4>
+
+<%= form_tag "/admins", method: :post do %>
+ <div>
+   <%= label_tag :first_name %> 
+   <%= text_field_tag :first_name %>
+ </div>
+ 
+ <div>
+   <%= label_tag :last_name %> 
+   <%= text_field_tag :last_name %>
+ </div>
+
+ <div>
+   <%= label_tag :phone_number %> 
+   <%= text_field_tag :phone_number %>
+ </div>
+
+<div>
+   <%= label_tag :contact_email %> 
+   <%= text_field_tag :contact_email %>
+ </div>
+ <div>
+   <%= submit_tag "Add User" %>
+ </div>
+<% end %>
+ -->

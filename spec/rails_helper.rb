@@ -54,4 +54,32 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, :type => :controller
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+  end
+  
+  # config.raise_errors_for_deprecations!
+  config.infer_spec_type_from_file_location!
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      # Choose a test framework:
+      with.test_framework :rspec
+      # Or, choose the following (which implies all of the above):
+      with.library :rails
+    end
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+
+    # Or, choose all of the above:
+    with.library :rails
+  end
 end
