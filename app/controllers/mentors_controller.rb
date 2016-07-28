@@ -1,11 +1,13 @@
 class MentorsController < ApplicationController
-    def index
+  before_action :restrict_access
+
+ def index
    @mentors = Mentor.all
-    render "index.html.erb"
+   render "index.html.erb"
  end
 
  def show
-   @mentor = Mentor.find_by(id: params[:id])
+   # @mentor = Mentor.find_by(id: params[:id])
    render "show.html.erb"
  end
 
@@ -19,8 +21,18 @@ class MentorsController < ApplicationController
  end
 
  def destroy
-   @mentor = Mentor.find_by(id: params[:id])
+   # @mentor = Mentor.find_by(id: params[:id])
    @admin.destroy
    redirect_to "/mentors"
  end
+
+ private
+
+ def restrict_access
+   if current_user.role != 'mentor'
+     flash[:success] = "You do not have access to this page"
+     redirect_to '/'
+   end
+ end
+
 end
