@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
     if current_user.role.present?
       if current_user.role == 'student'
         students_path
-      elsif current_user.role == 'admin'
-        admins_path
-      else
+      elsif current_user.role == 'mentors'
         mentors_path
+      else
+        admins_path
       end
     else
       # route back to sign up with an flash alert
