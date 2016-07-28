@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :mentors
   has_many :students
-  has_many :admin
+  has_many :admins
 
 end
