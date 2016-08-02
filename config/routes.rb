@@ -25,8 +25,13 @@ Rails.application.routes.draw do
 
   get '/students' => 'students#index'
   post '/students' => 'students#create'
+  get '/avatar_form' => 'student#avatar_form'
+  post '/student_avatar' => 'students#students_avatar'
   get '/students/:id' => 'students#show'
   delete '/students/:id' => 'students#destroy'
+  
+
+
 end
 
 

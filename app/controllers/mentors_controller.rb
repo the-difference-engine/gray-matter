@@ -23,4 +23,11 @@ class MentorsController < ApplicationController
    @admin.destroy
    redirect_to "/mentors"
  end
+ 
+ private 
+
+ def mentor_params
+    params.require(:mentor).permit(:avatar)
+ end 
+
 end

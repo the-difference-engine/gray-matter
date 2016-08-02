@@ -10,6 +10,8 @@ class StudentsController < ApplicationController
  end
 
  def create
+  
+  # @student = Student.create(student_params)
    @student = Student.create(
       first_name: params[:first_name],
       last_name: params[:last_name],
@@ -23,4 +25,18 @@ class StudentsController < ApplicationController
    @admin.destroy
    redirect_to "/students"
  end
+ 
+  def avatar_form
+    render 'avatar_form.html.erb'
+  end 
+ 
+  def student_avatar
+    @student.update(avatar: params)
+    redirect_to 'index.html.erb'
+  end 
+
+ def student_params 
+   params.require(:student).permit(:first_name, :last_name, :contact_email, :phone_number, :avatar)
+ end 
+
 end

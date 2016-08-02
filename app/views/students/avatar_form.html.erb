@@ -1,0 +1,12 @@
+<div align="center"> 
+  <%= form_for @avatar, html: {multipart: true} do |f| %>
+    <div class="field"> 
+      <%= f.label :epub %> <br> 
+      <%= f.file_field :epub %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add Book To Library", class: 'btn btn-dark anim-scroll' %>
+    </div>
+  <% end %>
+</div>
