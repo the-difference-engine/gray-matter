@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
+
   devise_scope :user do
     authenticated :user do
-      root 'admins#index', as: :authenticated_root
+      root 'users#index', as: :authenticated_root
     end
     
     
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   end
 
 
-#   get '/admins' => 'admins#index'
+  get '/admins' => 'admins#index'
 #   post '/admins' => 'admins#create'
 #   get '/admins/:id' => 'admins#show'
 #   delete '/admins/:id' => 'admins#destroy'
