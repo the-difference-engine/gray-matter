@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  before_action :restrict_access
+
   def index
    @students = Student.all
     render "index.html.erb"
@@ -22,5 +24,14 @@ class StudentsController < ApplicationController
    @student = Student.find_by(id: params[:id])
    @admin.destroy
    redirect_to "/students"
+ end
+ 
+ private
+
+ def restrict_access
+   if current_user.role != 'student'
+     flash[:success] = "You do not have access to this page"
+     redirect_to '/'
+   end
  end
 end
