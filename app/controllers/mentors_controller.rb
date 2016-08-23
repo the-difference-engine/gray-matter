@@ -2,12 +2,18 @@ class MentorsController < ApplicationController
   before_action :restrict_access
 
  def index
+   @page_title = 'Mentors'
+   @page_url = mentors_path
+   @profile_url = mentors_path
    @mentors = Mentor.all
    render "index.html.erb"
  end
 
  def show
-   # @mentor = Mentor.find_by(id: params[:id])
+   # @mentor = Mentor.find_by(params[:id])
+   @page_title = 'Mentors'
+   @page_url = mentors_path
+   @profile_url = mentors_path
    render "show.html.erb"
  end
 

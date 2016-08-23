@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
     if current_user.role.present?
       if current_user.role == 'student'
         students_path
-      elsif current_user.role == 'mentors'
+      elsif current_user.role == 'mentor'
         mentors_path
-      else
+      elsif current_user.role == 'admin'
         admins_path
       end
     else

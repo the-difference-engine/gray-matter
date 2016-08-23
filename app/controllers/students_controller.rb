@@ -2,7 +2,9 @@ class StudentsController < ApplicationController
   before_action :restrict_access
 
   def index
-   @students = Student.all
+    @page_title = 'Students'
+    @page_url = '/students'
+    @students = Student.all
     render "index.html.erb"
  end
 
