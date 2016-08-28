@@ -2,10 +2,12 @@ class MentorsController < ApplicationController
   # before_action :restrict_access
 
  def index
+   @groups = Group.all
+   @mentors = Mentor.all
    @page_title = current_user.page_title
    @home_url = "/#{current_user.role}"
    @profile_url = "/mentors/#{current_user.id}" #this needs to change, see admin current_user.role
-   @mentors = Mentor.all
+   @group_url = "/groups/#{@groups.name}"
  end
 
  def show

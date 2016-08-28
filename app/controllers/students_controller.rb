@@ -4,8 +4,9 @@ class StudentsController < ApplicationController
   def index
     @page_title = current_user.page_title
     @home_url = "/#{current_user.role}"
-    @students = Student.all
     @profile_url = "/profiles/#{current_user.id}"
+    @students = Student.all
+    @groups = Group.all
  end
 
  def show

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'groups/show'
 
   devise_for :users
 
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/profiles/:id' => 'profiles#show', as: 'profile'
   post '/profiles' => 'profiels#create'
+  get '/groups/:name' => 'groups#show', as: 'group'
 
   get '/admin' => 'admins#index'
 #   post '/admins' => 'admins#create'

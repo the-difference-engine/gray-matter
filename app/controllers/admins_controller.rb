@@ -9,7 +9,9 @@ class AdminsController < ApplicationController
     @admins = User.where("role": 'admin')
     @students = User.where("role": 'student')
     @mentors = User.where("role": 'mentor')
+    @groups = Group.all
     @page_title = current_user.page_title
+    @group_url = "/groups/#{@groups.name}"
     @profile_url = "/profiles/#{current_user.id}"
  end
 
