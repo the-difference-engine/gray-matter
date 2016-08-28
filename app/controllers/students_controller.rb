@@ -1,9 +1,12 @@
 class StudentsController < ApplicationController
-  before_action :restrict_access
+  # before_action :restrict_access
 
   def index
-   @students = Student.all
-    render "index.html.erb"
+    @page_title = current_user.page_title
+    @home_url = "/#{current_user.role}"
+    @profile_url = "/profiles/#{current_user.id}"
+    @students = Student.all
+    @groups = Group.all
  end
 
  def show
@@ -28,10 +31,11 @@ class StudentsController < ApplicationController
  
  private
 
- def restrict_access
-   if current_user.role != 'student'
-     flash[:success] = "You do not have access to this page"
-     redirect_to '/'
-   end
- end
+ # Everyone can have access to student
+ # def restrict_access
+ #   if !current_user.student? && !current_user.admin?
+ #     flash[:success] = "You do not have access to this page"
+ #     redirect_to "/#{current_user.role}"
+ #   end
+ # end
 end

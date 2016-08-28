@@ -11,3 +11,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+#Ignore system variables
+.env
+# Ignore application configuration
+/config/application.yml

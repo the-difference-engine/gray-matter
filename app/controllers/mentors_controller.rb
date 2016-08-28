@@ -1,13 +1,27 @@
 class MentorsController < ApplicationController
-  before_action :restrict_access
+  # before_action :restrict_access
 
  def index
+   @groups = Group.all
    @mentors = Mentor.all
-   render "index.html.erb"
+   @page_title = current_user.page_title
+   @home_url = "/#{current_user.role}"
+   @profile_url = "/mentors/#{current_user.id}" #this needs to change, see admin current_user.role
+   @group_url = "/groups/#{@groups.name}"
  end
 
  def show
-   # @mentor = Mentor.find_by(id: params[:id])
+   @mentor_profile = current_user.profile
+# move all this to the profile controller
+   if @mentor_profile.nil?
+     @mentor_profile = Profile.new
+     @mentor_profile.save
+     @create_profile = true
+   end
+   
+   @page_title = current_user.page_title
+   @page_url = mentors_path
+   @profile_url = mentors_path
    render "show.html.erb"
  end
 
@@ -28,11 +42,11 @@ class MentorsController < ApplicationController
 
  private
 
- def restrict_access
-   if current_user.role != 'mentor'
-     flash[:success] = "You do not have access to this page"
-     redirect_to '/'
-   end
- end
+ # def restrict_access
+ #   if current_user.role != 'mentor'
+ #     flash[:success] = "You do not have access to this page"
+ #     redirect_to '/'
+ #   end
+ # end
 
 end
