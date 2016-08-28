@@ -3,99 +3,36 @@
 
 <head>
   <title>GrayMatter</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 </head>
 
 <body>
   <header>
     <div class="page-header">
-      <%= image_tag("gray_brain.png", :alt => "Gray Matter Logo", :style => "width: 500px; align: center;") %>
+      <%= image_tag("gray_brain.png", :alt => "Gray Matter Logo", :class => "main-logo-image") %>
     </div>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <% if current_user %>
-              <!-- <li class="dropdown"> -->
-              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams <span class="caret"></span></a> -->
-              <!-- <ul class="dropdown-menu"> -->
-              <!-- <li><a href="#">Team Name #1</a></li> -->
-              <!-- <li><a href="#">Team Name #2</a></li> -->
-              <!-- <li><a href="#">Team Name #3</a></li> -->
-              <!-- </ul> -->
-              <!-- </li> -->
-              <!-- <li class="dropdown"> -->
-              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Workshops <span class="caret"></span></a> -->
-              <!-- <ul class="dropdown-menu"> -->
-              <!-- <li><a href="#">Workshop Name #1</a></li> -->
-              <!-- <li><a href="#">Workshop Name #2</a></li> -->
-              <!-- <li><a href="#">Workshop Name #3</a></li> -->
-              <!-- </ul> -->
-              <!-- </li> -->
-
-              <li>
-                <a href="<%= @page_url %>">
-                  <%= @page_title %>
-                </a>
-              </li>
-              <li>
-                <a href="<%= @profile_url %>">
-                  My Profile
-                </a>
-              </li>
-              <!-- <li class="dropdown"> -->
-              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a> -->
-              <!-- <ul class="dropdown-menu"> -->
-              <!-- <li><a href="#">Finance</a></li> -->
-              <!-- <li><a href="#">Marketing</a></li> -->
-              <!-- <li><a href="#">Social Media</a></li> -->
-              <!-- </ul> -->
-              <!-- </li> -->
-              <!-- <li><a href="#">My Slack</a></li> -->
-              <!-- <li><a href="#">My Trello</a></li> -->
-              <% end %>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-
-            <% if !current_user %>
-              <li><a href="/users/sign_in">Log In</a></li>
-              <li><a href="/users/sign_up">Sign Up</a></li>
-              <% else %>
-                <!-- <li>Welcome <%= current_user.email %>! </li> -->
-                <li><a href="/users/sign_out">Log Out</a></li>
-                <% end %>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
-
+    <%= render 'partials/navigation_bar' %>
   </header>
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
-      <%= value %>
-    </div>
-  <% end %>
 
+  <div id="flash">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+  </div>
 
+  <%= yield %>
 
-      <%= yield %>
-
+    <script>
+      $(document).ready(function() {
+        setTimeout(function() {
+          $('#flash').remove();
+        }, 5000);
+      })
+    </script>
 </body>
 
 </html>
