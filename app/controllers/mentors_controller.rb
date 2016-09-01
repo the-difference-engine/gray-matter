@@ -18,20 +18,18 @@ class MentorsController < ApplicationController
      @mentor_profile.save
      @create_profile = true
    end
-   
    @page_title = current_user.page_title
-   @page_url = mentors_path
-   @profile_url = mentors_path
-   render "show.html.erb"
+   @page_url = mentor_path
+   @profile_url = mentor_path
  end
 
  def create
-   @mentor = Mentor.create(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      contact_email: params[:contact_email],
-      phone_number: params[:phone_number])
-   redirect_to "index.html.erb"
+   if @mentor = Mentor.create(mentor_params)
+    redirect_to admin_path
+    flash[:success] = "A New Mentor has been added"
+   else
+     flash[:error] = "Something went wrong"
+   end
  end
 
  def destroy
@@ -41,6 +39,10 @@ class MentorsController < ApplicationController
  end
 
  private
+
+ def mentor_params
+   params.require(:mentor).permit(:company, :industry, :website, :first_name, :last_name, :phone_number, :user_id)
+ end
 
  # def restrict_access
  #   if current_user.role != 'mentor'

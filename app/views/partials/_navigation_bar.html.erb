@@ -20,8 +20,7 @@
                     <li><%= link_to 'Students', student_path %></li>
                     <li><%= link_to 'Mentors', mentor_path %></li>
                     <% if current_user && current_user.admin? %>
-                        <li><a data-toggle="modal" href="#addStudent" class="">Add a Student</a></li>
-                        <li><a data-toggle="modal" href="#addMentor" class="">Add a Mentor</a></li>
+                        <li><a data-toggle="modal" href="#addUser" class="">Add a User</a></li>
                     <% end %>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -43,8 +42,8 @@
     </div>
 <% end %>
 <!-- Student Modal -->
-<div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= render 'partials/create_student' %>
+<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_user' %>
 </div><!-- /.modal -->
 
 <!-- Mentor Modal -->

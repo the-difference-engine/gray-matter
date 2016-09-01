@@ -4,6 +4,8 @@ class AdminsController < ApplicationController
 # TODO what happens if the user is NOT authenticated? ** this is good just change the flash message no sign up - and also make it fancey
 
 # TODO only admins can create anyone!
+  # TODO add redirect for restirict_access
+
   
   def index
     @admins = User.where("role": 'admin')
@@ -26,12 +28,12 @@ class AdminsController < ApplicationController
 # TODO only admins can create anyone!
 
 # TODO now that I think about this, maybe the admin only creats the user, email that's it, then when the user logs in changes password etc, they fill their on whit out?
-   @admin = Admin.create(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      contact_email: params[:contact_email],
-      phone_number: params[:phone_number])
-   redirect_to "index.html.erb"
+   # @admin = Admin.create(
+   #    first_name: params[:first_name],
+   #    last_name: params[:last_name],
+   #    contact_email: params[:contact_email],
+   #    phone_number: params[:phone_number])
+   # redirect_to "index.html.erb"
  end
 
 
