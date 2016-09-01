@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-
   devise_for :users
-
 
   devise_scope :user do
     authenticated :user do
       root 'users#index', as: :authenticated_root
     end
-    
-    
+
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
 
+  post '/members' => 'members#add_member', as: 'add_a_member'
 
   get '/profiles/:id' => 'profiles#show', as: 'profile'
   post '/profiles' => 'profiels#create'
@@ -25,7 +23,7 @@ Rails.application.routes.draw do
   delete '/admins/:id' => 'admins#destroy'
 
   get '/mentor' => 'mentors#index'
-  post '/mentors' => 'mentors#create'
+  post '/mentors' => 'mentors#create', as: 'add_mentor'
   get '/mentors/:id' => 'mentors#show'
   delete '/mentors/:id' => 'mentors#destroy'
 

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 # added cancan for access control
 gem 'cancan'
 gem 'figaro'
+gem 'annotate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
