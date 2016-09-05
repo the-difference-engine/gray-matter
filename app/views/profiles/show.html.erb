@@ -1,8 +1,32 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Profile</h3>
+<% if @create_profile  %>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create a profile <%= current_user.email %></h3>
+                </div>
+                <div class="panel-body">
+                    <%= link_to 'Create my Profile', '/mentors/new', 'data-toggle' =>  "modal", "href" => "#addProfile", class: 'btn btn-primary'  %>
+
+                <span><a data-toggle="modal" href="#addProfile" class="btn btn-primary"><%= @button_title %></a></span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="panel-body">
-        profile content
+<% else  %>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Profile</h3>
+        </div>
+        <div class="panel-body">
+            First Name: <%= @mentor_profile.first_name %>
+            Last Name: <%= @mentor_profile.last_name %>
+        </div>
     </div>
+<% end %>
+
+
+<!-- profile modal -->
+<div class="modal fade" id="addProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/create_mentor_profile' %>
 </div>

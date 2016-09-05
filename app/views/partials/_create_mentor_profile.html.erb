@@ -1,0 +1,63 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Create a Profile</h4>
+        </div>
+        <div class="modal-body">
+            <%= @testing %>
+            <%= form_for @mentor do |form| %>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <%= form.label :first_name %>
+                            <%= form.text_field :first_name %>
+                        </div>
+                        <div>
+                            <%= form.label :last_name %>
+                            <%= form.text_field :last_name %>
+                        </div>
+                        <div>
+                            <%= form.label :phone_number %>
+                            <%= form.text_field :phone_number %>
+                        </div>
+                        <!-- <div> -->
+                            <%#= label_tag :contact_email %>
+                            <%#= text_field_tag :contact_email %>
+                        <!-- </div> -->
+                        <div>
+                            <%= form.label :company %>
+                            <%= form.text_field :company %>
+                        </div>
+                        <div>
+                            <%= form.label :industry %>
+                            <%= form.text_field :industry %>
+                        </div>
+                        <div>
+                            <%= form.label :website %>
+                            <%= form.text_field :website %>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <%= image_tag 'person.png', alt: 'missing avatar', class: 'avatar-image' %>
+                    </div>
+                </div>
+                <div class="row body-content">
+                    <div class="col-sm-12">
+                        <div>
+                            <% form.fields_for :profile, Profile.new do |builder| %>
+                              <%= builder.label :body, "Content" %>
+                              <%= builder.text_area :body, rows: "3" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= submit_tag "Add Profile", class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>
+

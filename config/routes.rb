@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :mentor
+
   post '/members' => 'members#add_member', as: 'add_a_member'
 
   get '/profiles/:id' => 'profiles#show', as: 'profile'
@@ -22,15 +24,17 @@ Rails.application.routes.draw do
   get '/admins/:id' => 'admins#show'
   delete '/admins/:id' => 'admins#destroy'
 
-  get '/mentor' => 'mentors#index'
-  post '/mentors' => 'mentors#create', as: 'add_mentor'
-  get '/mentors/:id' => 'mentors#show'
-  delete '/mentors/:id' => 'mentors#destroy'
+  # get '/mentor' => 'mentors#index'
+  # post '/mentors' => 'mentors#create', as: 'add_mentor'
+  # get '/mentors/:id' => 'mentors#show'
+  # delete '/mentors/:id' => 'mentors#destroy'
+  # get '/mentors' => 'mentors#new'
 
   get '/student' => 'students#index'
   post '/students' => 'students#create'
   get '/students/:id' => 'students#show'
   delete '/students/:id' => 'students#destroy'
+
 end
 
 

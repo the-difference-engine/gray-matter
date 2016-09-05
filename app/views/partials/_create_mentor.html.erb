@@ -2,10 +2,9 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h4 class="modal-title">Add a Mentor</h4>
+      <h4 class="modal-title">Create a Profile</h4>
     </div>
     <div class="modal-body">
-
   <%= form_tag add_mentor_path, method: :post do %>
     <div>
       <%= label_tag :first_name %> 
@@ -38,7 +37,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <%= submit_tag "Add Mentor", class: "btn btn-primary" %>
+      <%= submit_tag "Create Profile", class: "btn btn-primary" %>
   <% end %>
     </div>
   </div>

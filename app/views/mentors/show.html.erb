@@ -1,36 +1,51 @@
+<h1>THIS IS THE OTHER SHIT</h1>
 <div>
   <div class="container">
       <% if @create_profile %>
         <h1>Create my profile view make this a partial</h1>
-        <%= form_tag add_mentor_path, method: :post do %>
-            <div>
-                <%= label_tag :first_name %> 
-                <%= text_field_tag :first_name %>
-            </div>
-            <div>
-                <%= label_tag :last_name %> 
-                <%= text_field_tag :last_name %>
-            </div>
-            <div>
-                <%= label_tag :phone_number %> 
-                <%= text_field_tag :phone_number %>
-            </div>
-            <div>
-                <%= label_tag :contact_email %> 
-                <%= text_field_tag :contact_email %>
-            </div>
-            <div>
-                <%= label_tag :company %> 
-                <%= text_field_tag :company %>
-            </div>
-            <div>
-                <%= label_tag :industry %> 
-                <%= text_field_tag :industry %>
-            </div>
-            <div>
-                <%= label_tag :website %> 
-                <%= text_field_tag :website %>
-            </div>
+            <%= form_for @mentor do |form| %>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <%= form.label :first_name %>
+                            <%= form.text_field :first_name %>
+                        </div>
+                        <div>
+                            <%= form.label :last_name %>
+                            <%= form.text_field :last_name %>
+                        </div>
+                        <div>
+                            <%= form.label :phone_number %>
+                            <%= form.text_field :phone_number %>
+                        </div>
+                        <!-- <div> -->
+                            <%#= label_tag :contact_email %>
+                            <%#= text_field_tag :contact_email %>
+                        <!-- </div> -->
+                        <div>
+                            <%= form.label :company %>
+                            <%= form.text_field :company %>
+                        </div>
+                        <div>
+                            <%= form.label :industry %>
+                            <%= form.text_field :industry %>
+                        </div>
+                        <div>
+                            <%= form.label :website %>
+                            <%= form.text_field :website %>
+                        </div>
+                            <% form.fields_for :profile do |builder| %>
+                              <%= builder.label :body, "Content" %>
+                              <%= builder.text_area :body, rows: "3" %>
+                            <% end %>
+                    </div>
+                    <div class="col-sm-6">
+                        <%= image_tag 'person.png', alt: 'missing avatar', class: 'avatar-image' %>
+                    </div>
+                </div>
+                <div class="row body-content">
+                    <div class="col-sm-12">
+                        <div>
   </div>
   <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

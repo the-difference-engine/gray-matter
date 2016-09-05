@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828132115) do
+ActiveRecord::Schema.define(version: 20160902034626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,9 +50,10 @@ ActiveRecord::Schema.define(version: 20160828132115) do
   create_table "profiles", force: :cascade do |t|
     t.text     "body"
     t.text     "availability_array", default: [],              array: true
-    t.integer  "user_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "student_id"
+    t.integer  "mentor_id"
   end
 
   create_table "students", force: :cascade do |t|

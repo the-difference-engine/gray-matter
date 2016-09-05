@@ -18,5 +18,7 @@
 class Mentor < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
+  has_one :profile
 
+  accepts_nested_attributes_for :profile
 end
