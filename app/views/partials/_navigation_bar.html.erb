@@ -17,8 +17,10 @@
                             My Profile
                         </a>
                     </li>
-                    <li><%= link_to 'Students', student_path %></li>
-                    <li><%= link_to 'Mentors', mentor_path %></li>
+                    <% unless current_page? action: 'new' %>
+                      <li><%= link_to 'Students', student_path %></li>
+                      <li><%= link_to 'Mentors', mentor_path %></li>
+                    <% end %>
                     <% if current_user && current_user.admin? %>
                         <li><a data-toggle="modal" href="#addUser" class="">Add a User</a></li>
                     <% end %>

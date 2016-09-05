@@ -16,8 +16,6 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string
-#  student_id             :integer
-#  mentor_id              :integer
 #
 
 require 'rails_helper'

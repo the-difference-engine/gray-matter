@@ -1,0 +1,28 @@
+<%= form_for @mentor do |f| %>
+    <% if @mentor.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@mentor.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+                <% @mentor.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= f.label :company %><br>
+        <%= f.text_field :company %>
+    </div>
+    <div class="field">
+        <%= f.label :industry %><br>
+        <%= f.text_field :industry %>
+    </div>
+    <%= f.fields_for :profile do |builder| %>
+        <%= builder.label :body %>
+        <%= builder.text_field :body %>
+    <% end %>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>  

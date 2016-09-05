@@ -16,8 +16,6 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string
-#  student_id             :integer
-#  mentor_id              :integer
 #
 
 class User < ActiveRecord::Base
@@ -29,7 +27,6 @@ class User < ActiveRecord::Base
   has_many :mentors
   has_many :students
   has_many :admins
-  has_one :profile
 
   USER_ROLES = {
     admin: 'Administration',

@@ -22,10 +22,13 @@ Rails.application.routes.draw do
   get '/admins/:id' => 'admins#show'
   delete '/admins/:id' => 'admins#destroy'
 
-  get '/mentor' => 'mentors#index'
-  post '/mentors' => 'mentors#create', as: 'add_mentor'
-  get '/mentors/:id' => 'mentors#show'
-  delete '/mentors/:id' => 'mentors#destroy'
+  # get '/mentor' => 'mentors#index'
+  # post '/mentors' => 'mentors#create', as: 'add_mentor'
+  # get '/mentors/:id' => 'mentors#show'
+  # delete '/mentors/:id' => 'mentors#destroy'
+  # get 'mentors' => 'mentors#new', as: 'mentors'
+
+  resources :mentors
 
   get '/student' => 'students#index'
   post '/students' => 'students#create'
