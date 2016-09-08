@@ -22,7 +22,7 @@ img {
 }
 
 body {
-  background: url('strange_bullseyes.png');
+  background: url(asset-path( 'strange_bullseyes.png' ));
   font-family: Avenir, 'Helvetica Neue', Arial, sans-serif;
   margin: 2rem auto;
   /*max-width: 40rem;*/
