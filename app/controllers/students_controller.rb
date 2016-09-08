@@ -2,25 +2,73 @@ class StudentsController < ApplicationController
   # before_action :restrict_access
 
   def index
-    @page_title = current_user.page_title
-    @home_url = "/#{current_user.role}"
-    @profile_url = "/profiles/#{current_user.id}"
-    @students = Student.all
     @groups = Group.all
+    @students = Student.all
+    @home_url = "#{current_user.role}"
+    @profile_url = "#{current_user.role}/#{current_user.id}" 
+    @group_url = "/groups/#{@groups.name}"
+    @page_title = current_user.role.capitalize
  end
 
  def show
-   @student = Student.find_by(id: params[:id])
-   render "show.html.erb"
+   @student = Student.find_by_user_id(params[:id])
+   # @groups = [current_user.group]
+   if @student.nil?
+     redirect_to new_student_path
+   end
+   if @student.nil?
+     @profile_url = new_student_path
+   else
+     @profile_url = "#{current_user.id}"
+   end
+   @home_url = students_path 
+   @page_url = student_path
+   @page_title = current_user.role.capitalize
+ end
+
+ def new
+   @student = Student.new
+   @student.build_profile
+   @page_title = 'Create My Profile'
+   # @page_url = '/'
+   # @profile_url = '/'
  end
 
  def create
-   @student = Student.create(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      contact_email: params[:contact_email],
-      phone_number: params[:phone_number])
-   redirect_to "index.html.erb"
+   params[:student][:user_id] = current_user.id
+   @student = Student.new(student_params)
+   if @student.save
+     redirect_to "/students/#{current_user.id}"
+     flash[:success] = "Your profile has been created"
+   else
+     flash[:error] = "Something went wrong"
+     render 'new'
+   end
+ end
+
+ def edit
+   # TODO needs to be able to edit group
+   @student = Student.find_by_user_id(params[:id])
+   @home_url = "#{current_user.role}"
+   @profile_url = "#{current_user.role}/#{current_user.id}" 
+   @page_title = 'Edit Profile'
+ end
+
+ def update
+   params[:student][:user_id] = current_user.id
+   @student = Student.find_by_user_id(params[:student][:user_id])
+
+   #paperclip below
+   # if params[:mentor][:image].blank?
+   #   @mentor.image = nil
+   # end
+
+   if @student.update(student_params)
+     flash[:success] = 'Profile Updated'
+     redirect_to "/students/#{current_user.id}"
+   else
+     render 'new'
+   end
  end
 
  def destroy
@@ -31,6 +79,9 @@ class StudentsController < ApplicationController
  
  private
 
+ def student_params
+   params.require(:student).permit(:gender, :school, :grade, :first_name, :last_name, :phone_number, :user_id, profile_attributes: [:body])
+ end
  # Everyone can have access to student
  # def restrict_access
  #   if !current_user.student? && !current_user.admin?

@@ -1,34 +1,73 @@
 class MentorsController < ApplicationController
-  # before_action :restrict_access
+  # before_action :restrict_access - everyone has access to this controller
 
  def index
    @groups = Group.all
    @mentors = Mentor.all
-   @page_title = current_user.page_title
-   @home_url = "/#{current_user.role}"
-   @profile_url = "/mentors/#{current_user.id}" #this needs to change, see admin current_user.role
+   @home_url = "#{current_user.role}"
+   @profile_url = "#{current_user.role}/#{current_user.id}" 
    @group_url = "/groups/#{@groups.name}"
+   @page_title = current_user.role.capitalize
  end
 
  def show
-   @mentor_profile = current_user.profile
-# move all this to the profile controller
-   if @mentor_profile.nil?
-     @mentor_profile = Profile.new
-     @mentor_profile.save
-     @create_profile = true
+   @mentor = Mentor.find_by_user_id(params[:id])
+   # @groups = [current_user.group]
+   if @mentor.nil?
+     redirect_to new_mentor_path
    end
-   @page_title = current_user.page_title
+   if @mentor.nil?
+     @profile_url = new_mentor_path
+   else
+     @profile_url = "#{current_user.id}"
+   end
+   @home_url = mentors_path 
    @page_url = mentor_path
-   @profile_url = mentor_path
+   @page_title = current_user.role.capitalize
+ end
+
+ def new
+   @mentor = Mentor.new
+   @mentor.build_profile
+   @page_title = 'Create My Profile'
+   @page_url = '/'
+   @profile_url = '/'
  end
 
  def create
-   if @mentor = Mentor.create(mentor_params)
-    redirect_to admin_path
-    flash[:success] = "A New Mentor has been added"
+   params[:mentor][:user_id] = current_user.id
+   @mentor = Mentor.new(mentor_params)
+   if @mentor.save
+     redirect_to "/mentors/#{current_user.id}"
+     flash[:success] = "Your profile has been created"
    else
      flash[:error] = "Something went wrong"
+     render 'new'
+   end
+ end
+
+ def edit
+# TODO needs to be able to edit group
+   @mentor = Mentor.find_by_user_id(params[:id])
+   @home_url = "#{current_user.role}"
+   @profile_url = "#{current_user.role}/#{current_user.id}" 
+   @page_title = 'Edit Profile'
+ end
+
+ def update
+   params[:mentor][:user_id] = current_user.id
+   @mentor = Mentor.find_by_user_id(params[:mentor][:user_id])
+
+   #paperclip below
+   # if params[:mentor][:image].blank?
+   #   @mentor.image = nil
+   # end
+
+   if @mentor.update(mentor_params)
+     flash[:success] = 'Profile Updated'
+     redirect_to "/mentors/#{current_user.id}"
+   else
+     render 'new'
    end
  end
 
@@ -41,7 +80,7 @@ class MentorsController < ApplicationController
  private
 
  def mentor_params
-   params.require(:mentor).permit(:company, :industry, :website, :first_name, :last_name, :phone_number, :user_id)
+   params.require(:mentor).permit(:company, :industry, :website, :first_name, :last_name, :phone_number, :user_id, profile_attributes: [:body])
  end
 
  # def restrict_access

@@ -16,8 +16,6 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string
-#  student_id             :integer
-#  mentor_id              :integer
 #
 
 class User < ActiveRecord::Base
@@ -29,24 +27,24 @@ class User < ActiveRecord::Base
   has_many :mentors
   has_many :students
   has_many :admins
-  has_one :profile
 
   USER_ROLES = {
-    admin: 'Administration',
-    mentor: 'Mentor',
-    student: 'Student'
-  }
+                admin: 'Administration',
+                mentor: 'Mentor',
+                student: 'Student'
+                }
 
+  # TODO do this do anyrthing?
   def admin?
-    self.role == 'admin'
+    self.role == 'admins'
   end
 
   def mentor?
-    self.role == 'mentor'
+    self.role == 'mentors'
   end
 
   def student?
-    self.role == 'student'
+    self.role == 'students'
   end
 
   def page_title

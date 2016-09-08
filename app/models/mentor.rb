@@ -17,6 +17,11 @@
 
 class Mentor < ActiveRecord::Base
   belongs_to :user
-  belongs_to :group
+  has_one :profile
+  has_one :group
+  accepts_nested_attributes_for :profile
 
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 end

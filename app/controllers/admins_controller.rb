@@ -8,13 +8,13 @@ class AdminsController < ApplicationController
 
   
   def index
-    @admins = User.where("role": 'admin')
-    @students = User.where("role": 'student')
-    @mentors = User.where("role": 'mentor')
+    @admins = User.where("role": 'admins')
+    @students = User.where("role": 'students')
+    @mentors = User.where("role": 'mentors')
     @groups = Group.all
-    @page_title = current_user.page_title
     @group_url = "/groups/#{@groups.name}"
     @profile_url = "/profiles/#{current_user.id}"
+    @page_title = current_user.role.capitalize
  end
 
  # def show
@@ -22,7 +22,7 @@ class AdminsController < ApplicationController
  #   render "show.html.erb"
  # end
 
- def create
+ # def create
    # TODO we can not just create a admin, they have to be tighed to a user.. so create the user first then create the admin second - perfect for sereilizer?? on create check to see if the user alrady exists see destroy below
 
 # TODO only admins can create anyone!
@@ -34,7 +34,7 @@ class AdminsController < ApplicationController
    #    contact_email: params[:contact_email],
    #    phone_number: params[:phone_number])
    # redirect_to "index.html.erb"
- end
+ # end
 
 
  def destroy
@@ -49,6 +49,7 @@ class AdminsController < ApplicationController
  end
  private
 
+ # TODO need to un-comment this above at the head this throws an error
  def restrict_access
    if !current_user.admin?
      flash[:success] = "You do not have access to this page"
