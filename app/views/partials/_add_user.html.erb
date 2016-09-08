@@ -12,7 +12,7 @@
         </div>
         <div>
         <%= label_tag :role %> 
-        <%= text_field_tag :role %>
+        <%= select_tag(:role, options_for_select([['Student', 'students'], ['Mentor', 'mentors'], ['Administration', 'admins'] ]), { :style => 'font-size: 20px; height: 40px;' }) %>
         </div>
         <div>
             <!-- TODO add group in here once I figure out how too -->
