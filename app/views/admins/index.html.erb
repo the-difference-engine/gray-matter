@@ -18,7 +18,7 @@
 <% if @admins %>
  <% @admins.each do |admin| %>
    <ol>
-       email: <i><%= admin.id %> => <%= admin.email %></i> | 
+       email: <i><%= admin.id %> => <%= admin.email %></i> |
        <%= link_to "Remove this admin", "/admins/#{admin.id}", method: :delete %>
      </h4>
    </ol>

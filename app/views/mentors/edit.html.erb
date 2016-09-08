@@ -39,7 +39,8 @@
             <%= builder.text_area :body, rows: "6", cols: "75" %>
         <% end %>
         <div class="actions">
-            <%= form.submit 'Add Profile', class: 'btn btn-primary pull-right' %>
+            <%= form.submit 'Save', class: 'btn btn-primary pull-right' %>
+            <%= link_to "Cancel", mentor_path, class: 'btn btn-default pull-right' %>
         </div>
     <% end %>  
 </div>

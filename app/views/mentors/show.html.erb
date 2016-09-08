@@ -1,46 +1,27 @@
+<div>
   <div class="container">
-        <h1>Create my profile view make this a partial</h1>
-        <%= form_for([ @mentor, @profile ])  do |form| %>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div>
-                        <%= form.label :first_name %>
-                        <%= form.text_field :first_name %>
-                    </div>
-                    <div>
-                        <%= form.label :last_name %>
-                        <%= form.text_field :last_name %>
-                    </div>
-                    <div>
-                        <%= form.label :phone_number %>
-                        <%= form.text_field :phone_number %>
-                    </div>
-                    <div>
-                        <%= form.label :company %>
-                        <%= form.text_field :company %>
-                    </div>
-                    <div>
-                        <%= form.label :industry %>
-                        <%= form.text_field :industry %>
-                    </div>
-                    <div>
-                        <%= form.label :website %>
-                        <%= form.text_field :website %>
-                    </div>
-                    <div>
-                        <% form.fields_for(:profile) do |builder| %>
-                            <%= builder.label :body %>
-                            <%= builder.text_area :body %>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
+    <main>
+      <section id="about">
+        <figure class="about-fig">
+          <%= image_tag 'http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg', class: 'profile-pic' %>
+            <h4 class="wordmark"><%= current_user.role %> (Group Name)</h4>
+            <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
+          <h5 class="info"><%= number_to_phone( @mentor.phone_number, area_code: true ) %> </h5>
+        </figure>
+      </section>
+
+      <h1 id="name" class="head"><%= @mentor.name %></h1>
+      <br/>
+      <h4 class="title">About me:</h4>
+      <figcaption class="about-caption">
+          <%= @mentor.profile.body %>
+      </figcaption>
+    </main>
   </div>
-        <!-- copy the forms I have in my blog -->
-  <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <%= submit_tag "Add Mentor", class: "btn btn-primary" %>
-        <!-- copy the forms I have in my blog -->
-      <% end %>
-  </div>
+  <br />
+    <div class="col-md-12">
+       <%= link_to 'Edit Profile', edit_mentor_path, class: 'btn btn-primary pull-right' %> 
+    </div>
+    <br/>
+    <br/>
 </div>

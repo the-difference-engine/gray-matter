@@ -29,21 +29,22 @@ class User < ActiveRecord::Base
   has_many :admins
 
   USER_ROLES = {
-    admin: 'Administration',
-    mentor: 'Mentor',
-    student: 'Student'
-  }
+                admin: 'Administration',
+                mentor: 'Mentor',
+                student: 'Student'
+                }
 
+  # TODO do this do anyrthing?
   def admin?
-    self.role == 'admin'
+    self.role == 'admins'
   end
 
   def mentor?
-    self.role == 'mentor'
+    self.role == 'mentors'
   end
 
   def student?
-    self.role == 'student'
+    self.role == 'students'
   end
 
   def page_title

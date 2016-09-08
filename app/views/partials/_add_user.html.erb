@@ -6,14 +6,17 @@
     </div>
     <div class="modal-body">
       <%= form_tag add_a_member_path, method: :post do %>
-    <div>
-      <%= label_tag :email %> 
-      <%= text_field_tag :email %>
-    </div>
-    <div>
-      <%= label_tag :role %> 
-      <%= text_field_tag :role %>
-    </div>
+        <div>
+        <%= label_tag :email %> 
+        <%= text_field_tag :email %>
+        </div>
+        <div>
+        <%= label_tag :role %> 
+        <%= text_field_tag :role %>
+        </div>
+        <div>
+            <!-- TODO add group in here once I figure out how too -->
+        </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

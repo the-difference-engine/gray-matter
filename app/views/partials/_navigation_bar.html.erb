@@ -12,14 +12,16 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="<%= @profile_url %>">
-                            My Profile
-                        </a>
-                    </li>
-                    <% unless current_page? action: 'new' %>
-                      <li><%= link_to 'Students', student_path %></li>
-                      <li><%= link_to 'Mentors', mentor_path %></li>
+                    <% if !current_page?(action: 'new') %>
+                        <% if !current_user.admin? %>
+                            <li>
+                                <a href="<%= @profile_url %>">
+                                    My Profile
+                                </a>
+                            </li>
+                        <% end %>
+                      <li><%= link_to 'Students', students_path %></li>
+                      <li><%= link_to 'Mentors', mentors_path %></li>
                     <% end %>
                     <% if current_user && current_user.admin? %>
                         <li><a data-toggle="modal" href="#addUser" class="">Add a User</a></li>
@@ -32,7 +34,6 @@
         </div><!--/.container-fluid -->
     </nav>
     <div class="col-md-12">
-      <% unless current_page?("/groups/:name") %> 
         <% if @groups.present? %>
             <% @groups.each do |group| %>
                 <span class="label label-primary"><%= link_to group.name, "/groups/#{group.name.downcase}" %></span> 
@@ -40,8 +41,8 @@
         <% else %>
             No groups have been created
         <% end %>
-      <% end %>
     </div>
+    <br />
 <% end %>
 <!-- Student Modal -->
 <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

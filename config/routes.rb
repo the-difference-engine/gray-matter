@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   post '/profiles' => 'profiels#create'
   get '/groups/:name' => 'groups#show', as: 'group'
 
-  get '/admin' => 'admins#index'
+#   get '/admin' => 'admins#index'
 #   post '/admins' => 'admins#create'
-  get '/admins/:id' => 'admins#show'
-  delete '/admins/:id' => 'admins#destroy'
+#   get '/admins/:id' => 'admins#show'
+#   delete '/admins/:id' => 'admins#destroy'
 
   # get '/mentor' => 'mentors#index'
   # post '/mentors' => 'mentors#create', as: 'add_mentor'
@@ -28,12 +28,14 @@ Rails.application.routes.draw do
   # delete '/mentors/:id' => 'mentors#destroy'
   # get 'mentors' => 'mentors#new', as: 'mentors'
 
+  resources :admins
   resources :mentors
+  resources :students
 
-  get '/student' => 'students#index'
-  post '/students' => 'students#create'
-  get '/students/:id' => 'students#show'
-  delete '/students/:id' => 'students#destroy'
+  # get '/students' => 'students#index'
+  # post '/students' => 'students#create'
+  # get '/students/:id' => 'students#show'
+  # delete '/students/:id' => 'students#destroy'
 end
 
 

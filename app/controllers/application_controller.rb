@@ -12,12 +12,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.role.present?
-      if current_user.role == 'student'
-        student_path
-      elsif current_user.role == 'mentor'
-        mentor_path
-      elsif current_user.role == 'admin'
-        admin_path
+      if current_user.role == 'students'
+        students_path
+      elsif current_user.role == 'mentors'
+        mentors_path
+      elsif current_user.role == 'admins'
+        admins_path
       end
     else
       # route back to sign up with an flash alert
