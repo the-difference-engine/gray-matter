@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!([
+  {email: "admin@email.com", encrypted_password: "$2a$11$nhaIdARUTslZamvAF9HdYOMrpMrhDoz70eMJfdJyiz0d13MgUU6PK", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 38, current_sign_in_at: "2016-09-08 02:03:59", last_sign_in_at: "2016-09-08 02:02:47", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role: "admins"},
+  {email: "mentor@email.com", encrypted_password: "$2a$11$3HxZ99bCZPE1VvtyTzGaXuX1/mS0Tw2J0CPykT9MeY57A1ichE0JC", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 26, current_sign_in_at: "2016-09-07 22:54:00", last_sign_in_at: "2016-09-07 03:25:41", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role: "mentors"},
+  {email: "student@email.com", encrypted_password: "$2a$11$dhFOojl/kfxKBI3r4IPjRu3MUoY5XUXhSFung9Za85MhXAPgFB6qO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 16, current_sign_in_at: "2016-09-08 00:35:24", last_sign_in_at: "2016-09-07 03:30:46", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role: "students"}
+])
