@@ -1,27 +1,26 @@
 <div class="wordmark">Administration page</div>
     <h2>Students</h2>
 <% @students.each do |student| %>
-    <div>
-      <%= student.id %> => <%= student.email %>
-    </div>
+    <ul>
+        <li>Email => <%= student.email %></li>
+      
+    </ul>
 <% end %>
 <!-- <div class="container"> -->
     <h2>Mentors</h2>
 <% @mentors.each do |mentor| %>
-    <div>
-      <%= mentor.id %> => <%= mentor.email %>
-    </div>
+    <ul>
+        <li>Email => <%= mentor.email %></li>
+    </ul>
 <% end %>
 
 
 <h2>Admins:</h2>
 <% if @admins %>
  <% @admins.each do |admin| %>
-   <ol>
-       email: <i><%= admin.id %> => <%= admin.email %></i> |
-       <%= link_to "Remove this admin", "/admins/#{admin.id}", method: :delete %>
-     </h4>
-   </ol>
+   <ul>
+        <li>Email => <%= admin.email %></li>
+   </ul>
  <% end %>
 <% else %>
  <h3>There are no current admins</h3>
