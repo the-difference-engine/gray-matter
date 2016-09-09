@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 # added cancan for access control
 gem 'cancan'
+gem 'figaro'
+gem 'annotate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -29,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 
 gem 'pry'
-
+gem 'seed_dump'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
