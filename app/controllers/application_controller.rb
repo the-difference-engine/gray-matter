@@ -12,11 +12,11 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.role.present?
-      if current_user.role == 'student'
+      if current_user.role == 'students'
         students_path
       elsif current_user.role == 'mentors'
         mentors_path
-      else
+      elsif current_user.role == 'admins'
         admins_path
       end
     else

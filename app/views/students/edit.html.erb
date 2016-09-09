@@ -1,0 +1,45 @@
+<div class="container">
+    <%= form_for @student do |form| %>
+        <% if @student.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@student.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <ul>
+                    <% @student.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div>
+            <%= form.label :first_name %>
+            <%= form.text_field :first_name %>
+        </div>
+        <div>
+            <%= form.label :last_name %>
+            <%= form.text_field :last_name %>
+        </div>
+        <div>
+            <%= form.label :phone_number %>
+            <%= form.text_field :phone_number %>
+        </div>
+        <div>
+            <%= form.label :gender %>
+            <%= form.text_field :gender %>
+        </div>
+        <div>
+            <%= form.label :school %>
+            <%= form.text_field :school %>
+        </div>
+        <div>
+            <%= form.label :grade %>
+            <%= form.text_field :grade %>
+        </div>
+        <%= form.fields_for :profile do |builder| %>
+            <%= builder.label :body, 'About Me' %>
+            <%= builder.text_area :body, rows: "6", cols: "75" %>
+        <% end %>
+        <div class="actions">
+            <%= form.submit 'Save Profile', class: 'btn btn-primary pull-right' %>
+        </div>
+    <% end %>  
+</div>

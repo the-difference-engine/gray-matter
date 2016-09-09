@@ -1,330 +1,51 @@
-<div>
-<div class="container">
-<!-- <nav class="nav">
-  <ul class="nav-list">
-    <li class="nav-item"><a href="#about">About</a></li>
-    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
-    <li class="nav-item"><a href="#links">Links</a></li>
-  </ul>
-</nav>
- -->
-<main>
-  <section id="about">
-    <figure class="about-fig">
-        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
-        <h4 class="wordmark">student (<a href="#">Cohort #1</a>)</h4>
-        <h5 class="info" >Team <a href="#">Name</a>
-        <h5 class="info" ><a href="mailto:janedoe@gmail.com" target="_top">janedoe@gmail.com</a></h5>
-        <h5 class="info" >(123) 456-7890 </h5>
-    </figure>
-  </section>
+<div class="wordmark">Student page</div>
+    <% @students.each do |student| %>
+  <div class="container" style="margin-bottom: 20px">
+    <main>
+      <section id="about">
+        <figure class="about-fig">
+          <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
+          <h4 class="wordmark">STUDENT (Group Name)</h4>
+            <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
+          <h5 class="info"><%= number_to_phone( student.phone_number, area_code: true ) %> </h5>
+        </figure>
+      </section>
 
-  <h1 class="head"><a id="name" href="/students/1">Jane Doe</a></h1>
+      <h1 id="name" class="head"><%= student.name %></h1>
 
-  <figcaption class="about-caption">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
-        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
-        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
-        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
-        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
-        Proin eget lobortis libero, sed finibus mauris. 
-        Etiam a felis elementum nunc lobortis volutpat at a ex. 
-        Sed et dictum tellus.
+      <figcaption class="about-caption">
+          <%= student.profile.body %>
       </figcaption>
 
-<!--   <section id="links">
-    <h3>Resources</h3>
-    <ul>
-      <li><a href="#">Resource 1</a></li>
-      <li><a href="#">Resource 2</a></li>
-      <li><a href="#">Resource 3</a></li>
-    </ul>
-  </section>
-  <section id="links">
-    <h3>Workshops</h3>
-    <ul>
-      <li><a href="#">Workshop 1</a></li>
-      <li><a href="#">Workshop 2</a></li>
-      <li><a href="#">Workshop 3</a></li>
-    </ul>
-  </section>
-    <section id="links">
-    <h3>Availability</h3>
-    <ul>
-      <li><a href="#">Monday 5pm–7pm</a></li>
-      <li><a href="#">Wednesday 3pm–5pm</a></li>
-      <li><a href="#">Saturday 12pm–4pm</a></li>
-    </ul>
-  </section>
- -->
+      <!-- <section id="links"> -->
+      <!-- <h3>Resources</h3> -->
+      <!-- <ul> -->
+      <!-- <li><a href="#">Resource 1</a></li> -->
+      <!-- <li><a href="#">Resource 2</a></li> -->
+      <!-- <li><a href="#">Resource 3</a></li> -->
+      <!-- </ul> -->
+      <!-- </section> -->
+      <!-- <section id="links"> -->
+      <!-- <h3>Workshops</h3> -->
+      <!-- <ul> -->
+      <!-- <li><a href="#">Workshop 1</a></li> -->
+      <!-- <li><a href="#">Workshop 2</a></li> -->
+      <!-- <li><a href="#">Workshop 3</a></li> -->
+      <!-- </ul> -->
+      <!-- </section> -->
+      <!-- <section id="links"> -->
+      <!-- <h3>Availability</h3> -->
+      <!-- <ul> -->
+      <!-- <li><a href="#">Monday 5pm–7pm</a></li> -->
+      <!-- <li><a href="#">Wednesday 3pm–5pm</a></li> -->
+      <!-- <li><a href="#">Saturday 12pm–4pm</a></li> -->
+      <!-- </ul> -->
+      <!-- </section> -->
 
-  <!-- <footer class="footer">
+
+      <!-- <footer class="footer">
     <p>&copy; 2016 Gray Matter</p>
   </footer>*/ -->
-</main>
-<br/>
-<br/>
+  </main>
 </div>
-</div>
-<br/>
-<br/>
-<div>
-<div class="container">
-<!-- <nav class="nav">
-  <ul class="nav-list">
-    <li class="nav-item"><a href="#about">About</a></li>
-    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
-    <li class="nav-item"><a href="#links">Links</a></li>
-  </ul>
-</nav>
- -->
-<main>
-  <section id="about">
-    <figure class="about-fig">
-        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
-        <h4 class="wordmark">student (<a href="#">Cohort #1</a>)</h4>
-        <h5 class="info" >Team <a href="#">Name</a>
-        <h5 class="info" ><a href="mailto:janedoe@gmail.com" target="_top">janedoe@gmail.com</a></h5>
-        <h5 class="info" >(123) 456-7890 </h5>
-    </figure>
-  </section>
-
-  <h1 class="head"><a id="name" href="/students/1">Jane Doe</a></h1>
-
-  <figcaption class="about-caption">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
-        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
-        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
-        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
-        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
-        Proin eget lobortis libero, sed finibus mauris. 
-        Etiam a felis elementum nunc lobortis volutpat at a ex. 
-        Sed et dictum tellus.
-      </figcaption>
-
-<!--   <section id="links">
-    <h3>Resources</h3>
-    <ul>
-      <li><a href="#">Resource 1</a></li>
-      <li><a href="#">Resource 2</a></li>
-      <li><a href="#">Resource 3</a></li>
-    </ul>
-  </section>
-  <section id="links">
-    <h3>Workshops</h3>
-    <ul>
-      <li><a href="#">Workshop 1</a></li>
-      <li><a href="#">Workshop 2</a></li>
-      <li><a href="#">Workshop 3</a></li>
-    </ul>
-  </section>
-    <section id="links">
-    <h3>Availability</h3>
-    <ul>
-      <li><a href="#">Monday 5pm–7pm</a></li>
-      <li><a href="#">Wednesday 3pm–5pm</a></li>
-      <li><a href="#">Saturday 12pm–4pm</a></li>
-    </ul>
-  </section>
- -->
-
-  <!-- <footer class="footer">
-    <p>&copy; 2016 Gray Matter</p>
-  </footer>*/ -->
-</main>
-<br/>
-<br/>
-</div>
-</div>
-<br/>
-<br/>
-<div>
-<div class="container">
-<!-- <nav class="nav">
-  <ul class="nav-list">
-    <li class="nav-item"><a href="#about">About</a></li>
-    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
-    <li class="nav-item"><a href="#links">Links</a></li>
-  </ul>
-</nav>
- -->
-<main>
-  <section id="about">
-    <figure class="about-fig">
-        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
-        <h4 class="wordmark">student (<a href="#">Cohort #1</a>)</h4>
-        <h5 class="info" >Team <a href="#">Name</a>
-        <h5 class="info" ><a href="mailto:janedoe@gmail.com" target="_top">janedoe@gmail.com</a></h5>
-        <h5 class="info" >(123) 456-7890 </h5>
-    </figure>
-  </section>
-
-  <h1 class="head"><a id="name" href="/students/1">Jane Doe</a></h1>
-
-  <figcaption class="about-caption">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
-        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
-        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
-        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
-        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
-        Proin eget lobortis libero, sed finibus mauris. 
-        Etiam a felis elementum nunc lobortis volutpat at a ex. 
-        Sed et dictum tellus.
-      </figcaption>
-
-<!--   <section id="links">
-    <h3>Resources</h3>
-    <ul>
-      <li><a href="#">Resource 1</a></li>
-      <li><a href="#">Resource 2</a></li>
-      <li><a href="#">Resource 3</a></li>
-    </ul>
-  </section>
-  <section id="links">
-    <h3>Workshops</h3>
-    <ul>
-      <li><a href="#">Workshop 1</a></li>
-      <li><a href="#">Workshop 2</a></li>
-      <li><a href="#">Workshop 3</a></li>
-    </ul>
-  </section>
-    <section id="links">
-    <h3>Availability</h3>
-    <ul>
-      <li><a href="#">Monday 5pm–7pm</a></li>
-      <li><a href="#">Wednesday 3pm–5pm</a></li>
-      <li><a href="#">Saturday 12pm–4pm</a></li>
-    </ul>
-  </section>
- -->
-
-  <!-- <footer class="footer">
-    <p>&copy; 2016 Gray Matter</p>
-  </footer>*/ -->
-</main>
-<br/>
-<br/>
-</div>
-</div>
-<br/>
-<br/>
-<div>
-<div class="container">
-<!-- <nav class="nav">
-  <ul class="nav-list">
-    <li class="nav-item"><a href="#about">About</a></li>
-    <li class="nav-item"><a href="#portfolio">Portfolio</a></li class="nav-item">
-    <li class="nav-item"><a href="#links">Links</a></li>
-  </ul>
-</nav>
- -->
-<main>
-  <section id="about">
-    <figure class="about-fig">
-        <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
-        <h4 class="wordmark">student (<a href="#">Cohort #1</a>)</h4>
-        <h5 class="info" >Team <a href="#">Name</a>
-        <h5 class="info" ><a href="mailto:janedoe@gmail.com" target="_top">janedoe@gmail.com</a></h5>
-        <h5 class="info" >(123) 456-7890 </h5>
-    </figure>
-  </section>
-
-  <h1 class="head"><a id="name" href="/students/1">Jane Doe</a></h1>
-
-  <figcaption class="about-caption">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Nam venenatis lacus sed dignissim efficitur. Cras tristique tempor tempus. 
-        Sed bibendum neque id sagittis convallis. Sed fermentum tincidunt ante sit amet pulvinar. 
-        Aenean elementum porttitor erat eget sagittis. Integer auctor semper enim ac finibus. 
-        Phasellus lobortis vitae massa eu pretium. Quisque ac congue ligula, laoreet aliquet mi. 
-        Morbi et commodo ipsum. Sed non dui orci. Integer in dui eu velit pulvinar aliquam. 
-        Proin eget lobortis libero, sed finibus mauris. 
-        Etiam a felis elementum nunc lobortis volutpat at a ex. 
-        Sed et dictum tellus.
-      </figcaption>
-
-<!--   <section id="links">
-    <h3>Resources</h3>
-    <ul>
-      <li><a href="#">Resource 1</a></li>
-      <li><a href="#">Resource 2</a></li>
-      <li><a href="#">Resource 3</a></li>
-    </ul>
-  </section>
-  <section id="links">
-    <h3>Workshops</h3>
-    <ul>
-      <li><a href="#">Workshop 1</a></li>
-      <li><a href="#">Workshop 2</a></li>
-      <li><a href="#">Workshop 3</a></li>
-    </ul>
-  </section>
-    <section id="links">
-    <h3>Availability</h3>
-    <ul>
-      <li><a href="#">Monday 5pm–7pm</a></li>
-      <li><a href="#">Wednesday 3pm–5pm</a></li>
-      <li><a href="#">Saturday 12pm–4pm</a></li>
-    </ul>
-  </section>
- -->
-
-  <!-- <footer class="footer">
-    <p>&copy; 2016 Gray Matter</p>
-  </footer>*/ -->
-</main>
-<br/>
-<br/>
-</div>
-</div>
-<br/>
-<br/>
-
-
-<div class="container">
-<h2>Admins:</h2>
-<% if @astudents %>
- <% @studnts.each do |student| %>
-   <ol>
-      first_name: <i><%= student.first_name %></i> | 
-       last_name: <i><%= student.last_name %></i> | 
-       phone number: <i><%= student.phone_number %></i>
-       <%= link_to "Remove this student", "/students/#{student.id}", method: :delete %>
-     </h4>
-   </ol>
- <% end %>
-<% else %>
- <h3>There are no current students</h3>
-<% end %>
-
-<h4>Add Student:</h4>
-
-<%= form_tag "/students", method: :post do %>
- <div>
-   <%= label_tag :first_name %> 
-   <%= text_field_tag :first_name %>
- </div>
- 
- <div>
-   <%= label_tag :last_name %> 
-   <%= text_field_tag :last_name %>
- </div>
-
- <div>
-   <%= label_tag :phone_number %> 
-   <%= text_field_tag :phone_number %>
- </div>
-
-<div>
-   <%= label_tag :contact_email %> 
-   <%= text_field_tag :contact_email %>
- </div>
- <div>
-   <%= submit_tag "Add Student" %>
- </div>
-<% end %>
-</div>
-
+  <% end %>
