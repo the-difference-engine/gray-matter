@@ -4,7 +4,7 @@ class MentorsController < ApplicationController
  def index
    @groups = Group.all
    @mentors = Mentor.all
-   @home_url = "#{current_user.role}"
+   @home_url = authenticated_root_path
    @profile_url = "#{current_user.role}/#{current_user.id}" 
    @group_url = "/groups/#{@groups.name}"
    @page_title = current_user.role.capitalize

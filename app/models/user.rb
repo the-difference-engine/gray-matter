@@ -29,9 +29,9 @@ class User < ActiveRecord::Base
   has_many :admins
 
   USER_ROLES = {
-                admin: 'Administration',
-                mentor: 'Mentor',
-                student: 'Student'
+                admins: 'Administration',
+                mentors: 'Mentor',
+                students: 'Student'
                 }
 
   # TODO do this do anyrthing?

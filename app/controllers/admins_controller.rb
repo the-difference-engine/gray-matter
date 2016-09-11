@@ -12,6 +12,7 @@ class AdminsController < ApplicationController
     @students = User.where("role": 'students')
     @mentors = User.where("role": 'mentors')
     @groups = Group.all
+    @home_url = authenticated_root_path
     @group_url = "/groups/#{@groups.name}"
     @profile_url = "/profiles/#{current_user.id}"
     @page_title = current_user.role.capitalize

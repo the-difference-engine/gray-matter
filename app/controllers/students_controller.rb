@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   def index
     @groups = Group.all
     @students = Student.all
-    @home_url = "#{current_user.role}"
+    @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @group_url = "/groups/#{@groups.name}"
     @page_title = current_user.role.capitalize
@@ -72,9 +72,20 @@ class StudentsController < ApplicationController
  end
 
  def destroy
-   @student = Student.find_by(id: params[:id])
-   @admin.destroy
-   redirect_to "/students"
+   user = User.find_by_id(params[:id])
+   student = Student.find_by_user_id(params[:id])
+
+   if student.present?
+     student.destroy
+   end
+   
+   if user.destroy
+     flash[:success] = 'Student Removed'
+     redirect_to admins_path
+   else
+     flash[:error] = 'Student was NOT Removed'
+     redirect_to admins_path
+   end
  end
  
  private
