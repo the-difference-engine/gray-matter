@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.student-table {
-    margin-top: 15px;
+.student-table, .mentor-table, .admin-table {
+  margin-top: 15px;
+  background-color: #fff;
+  padding: 2px 10px 2px 10px;
+}
+
+
+.add-user {
+  margin-top: 15px;
+
+}
+
+.admin-form {
+  margin-top: 30px;
+}
+
+.admin-show {
+  margin-top: 30px;
 }

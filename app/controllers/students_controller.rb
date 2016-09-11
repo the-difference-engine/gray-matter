@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
    else
      @profile_url = "#{current_user.id}"
    end
-   @home_url = students_path 
+   @home_url = authenticated_root_path
    @page_url = student_path
    @page_title = current_user.role.capitalize
  end
