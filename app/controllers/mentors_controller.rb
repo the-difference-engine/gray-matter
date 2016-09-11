@@ -21,7 +21,7 @@ class MentorsController < ApplicationController
    else
      @profile_url = "#{current_user.id}"
    end
-   @home_url = mentors_path 
+   @home_url = authenticated_root_path
    @page_url = mentor_path
    @page_title = current_user.role.capitalize
  end
@@ -72,9 +72,20 @@ class MentorsController < ApplicationController
  end
 
  def destroy
-   # @mentor = Mentor.find_by(id: params[:id])
-   @admin.destroy
-   redirect_to "/mentors"
+   user = User.find_by_id(params[:id])
+   mentor = Mentor.find_by_user_id(params[:id])
+
+   if mentor.present?
+     mentor.destroy
+   end
+   
+   if user.destroy
+     flash[:success] = 'Mentor Removed'
+     redirect_to admins_path
+   else
+     flash[:error] = 'Mentor was NOT Removed'
+     redirect_to admins_path
+   end
  end
 
  private

@@ -13,13 +13,11 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <% if !current_page?(url_for(:controller => 'admins', :action => 'new')) %>
-                        <% if !current_user.admin? %>
-                            <li>
-                                <a href="<%= @profile_url %>">
-                                    My Profile
-                                </a>
-                            </li>
-                        <% end %>
+                        <li>
+                            <a href="<%= @profile_url %>">
+                                My Profile
+                            </a>
+                        </li>
                       <li><%= link_to 'Students', students_path %></li>
                       <li><%= link_to 'Mentors', mentors_path %></li>
                     <% end %>

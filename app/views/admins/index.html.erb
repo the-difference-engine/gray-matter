@@ -1,3 +1,8 @@
+<div class="row">
+    <div class="col-md-12 add-user pull-right">
+        <span><a data-toggle="modal" href="#addUser" class="btn btn-primary">Add a User</a></span>
+    </div>
+</div>
 <section class="student-table">
     <h3>Students</h3>
   <div class="content row">
@@ -7,12 +12,14 @@
             <tr>
             <th>Student Email</th>
             <th>Date Created</th>
+            <th>Student Name</th>
             <th>Actions</th>
             </tr>
             <% @students.each do |student|  %>
             <tr>
             <td><%= student.email %></td>
             <td><%= student.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+            <td><%= student.students.empty? ? "N/A" : student.students[0].name %></td>
             <td><%= link_to "Delete", "/students/#{student.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this student' } %></td>
             </tr>
             <% end %>
@@ -22,8 +29,41 @@
             There are no students
         </p>
       <% end %>
-        <div class="add-user">
-          <a data-toggle="modal" href="#addUser" class="btn btn-primary pull-right">Add a User</a></div>
+    </div>
+    <!-- End of col-md-12 below section -->
+  </div>
+  <!-- End of row below section -->
+</section>
+<!-- <div class="container"> -->
+
+<hr/>
+
+<section class="mentor-table">
+    <h3>Mentors</h3>
+  <div class="content row">
+    <div class="col-md-12">
+      <% if @mentors.exists? %>
+        <table class="table table-striped">
+            <tr>
+            <th>Mentor Email</th>
+            <th>Date Created</th>
+            <th>Mentor Name</th>
+            <th>Actions</th>
+            </tr>
+            <% @mentors.each do |mentor|  %>
+            <tr>
+            <td><%= mentor.email %></td>
+            <td><%= mentor.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+            <td><%= mentor.mentors.empty? ? "N/A" : mentor.mentors[0].name %></td>
+            <td><%= link_to "Delete", "/mentors/#{mentor.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this mentor' } %></td>
+            </tr>
+            <% end %>
+        </table>
+      <% else %>
+        <p>
+            There are no mentors
+        </p>
+      <% end %>
     </div>
     <!-- End of col-md-12 below section -->
   </div>
@@ -31,25 +71,39 @@
 </section>
 <!-- <div class="container"> -->
 <hr/>
-    <h2>Mentors</h2>
-<% @mentors.each do |mentor| %>
-    <ul>
-        <li>Email => <%= mentor.email %></li>
-    </ul>
-<% end %>
 
-
-<h2>Admins:</h2>
-<% if @admins %>
- <% @admins.each do |admin| %>
-   <ul>
-        <li>Email => <%= admin.email %></li>
-   </ul>
- <% end %>
-<% else %>
- <h3>There are no current admins</h3>
-<% end %>
-
+<section class="admin-table">
+    <h3>Administrators</h3>
+  <div class="content row">
+    <div class="col-md-12">
+      <% if @admins.exists? %>
+        <table class="table table-striped">
+            <tr>
+            <th>Admins Email</th>
+            <th>Date Created</th>
+            <th>Admin Name</th>
+            <th>Actions</th>
+            </tr>
+            <% @admins.each do |admin|  %>
+            <tr>
+            <td><%= admin.email %></td>
+            <td><%= admin.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+            <td><%= admin.admins.empty? ? "N/A" : admin.admins[0].name %></td>
+            <td><%= link_to "Delete", "/admins/#{admin.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this mentor' } %></td>
+            </tr>
+            <% end %>
+        </table>
+      <% else %>
+        <p>
+            There are no Administors
+        </p>
+      <% end %>
+    </div>
+    <!-- End of col-md-12 below section -->
+  </div>
+  <!-- End of row below section -->
+</section>
+<!-- <div class="container"> -->
 
 <!-- Student Modal -->
 <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
