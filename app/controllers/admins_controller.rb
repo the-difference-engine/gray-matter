@@ -14,7 +14,7 @@ class AdminsController < ApplicationController
     @groups = Group.all
     @home_url = authenticated_root_path
     @group_url = "/groups/#{@groups.name}"
-    @profile_url = "/profiles/#{current_user.id}"
+    @profile_url = "/admins/#{current_user.id}"
     @page_title = current_user.role.capitalize
  end
 
