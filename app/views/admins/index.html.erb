@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-md-12 add-user pull-right">
         <span><a data-toggle="modal" href="#addUser" class="btn btn-primary">Add a User</a></span>
+        <span><a data-toggle="modal" href="#addAnnouncement" class="btn btn-primary">Add a Announcement</a></span>
+        <span><a data-toggle="modal" href="#addResource" class="btn btn-primary">Add a Resource</a></span>
     </div>
 </div>
 <section class="student-table">
@@ -105,7 +107,17 @@
 </section>
 <!-- <div class="container"> -->
 
-<!-- Student Modal -->
+<!-- Add a User Modal -->
 <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render 'partials/add_user' %>
+</div><!-- /.modal -->
+
+<!-- Add Announcement Modal -->
+<div class="modal fade" id="addAnnouncement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_announcement' %>
+</div><!-- /.modal -->
+
+<!-- Add Resource Modal -->
+<div class="modal fade" id="addResource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_announcement' %>
 </div><!-- /.modal -->
