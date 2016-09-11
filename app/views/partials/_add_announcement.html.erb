@@ -2,23 +2,38 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h4 class="modal-title">Add a Announcement</h4>
+      <h4 class="modal-title">Add Announcement</h4>
     </div>
     <div class="modal-body">
-        <%= form_tag announcements_new_path, method: :post do %>
-        <div>
-            <%= label_tag :email %> 
-            <%= text_field_tag :email %>
-        </div>
-        <div>
-            <!-- TODO add groups -->
-        </div>
+            <%= form_for @announcement do |form| %>
+                <% if @announcement.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this user from being saved:</h2>
+                        <ul>
+                            <% @announcement.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+                <div>
+                    <%= form.label :title %>
+                    <%= form.text_field :title %>
+                </div>
+                <div>
+                    <%= form.label :body, 'Announcement' %>
+                    <%= form.text_area :body, rows: "6", cols: "75" %>
+                </div>
+                <div class="actions">
+                </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <%= submit_tag "Add Announcement", class: "btn btn-primary" %>
-        <% end %>
+
+                    <%= form.submit 'Add Announcement', class: 'btn btn-primary pull-right' %>
     </div>
+    
+            <% end %>  
   </div>
   <!-- /.modal-content -->
 </div>

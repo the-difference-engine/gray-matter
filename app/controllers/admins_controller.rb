@@ -16,6 +16,7 @@ class AdminsController < ApplicationController
     @group_url = "/groups/#{@groups.name}"
     @profile_url = "/admins/#{current_user.id}"
     @page_title = current_user.role.capitalize
+    @announcement = Announcement.new #do I really need this?
  end
 
   def show
