@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :mentors
   has_many :students
   has_many :admins
+  has_many :announcements
 
   USER_ROLES = {
                 admins: 'Administration',
