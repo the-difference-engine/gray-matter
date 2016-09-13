@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  # get 'announcements/new'
+
+  # get 'announcements/create'
+
+  # get 'announcements/edit'
+
+  # get 'announcements/update'
+
+  # get 'announcements/destroy'
+
+  # get 'announcements/index'
+
+  # get 'announcements/show'
+
   devise_for :users
 
   devise_scope :user do
@@ -32,6 +46,7 @@ Rails.application.routes.draw do
   resources :mentors
   resources :students
 
+  resources :announcements
   # get '/students' => 'students#index'
   # post '/students' => 'students#create'
   # get '/students/:id' => 'students#show'
