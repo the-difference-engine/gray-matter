@@ -1,11 +1,12 @@
-<div class="container announcements-container">
+<div class="container content-container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 announcements-container">
+            <h1 class="announcements-title">Announcements</h1>
             <div class="row">
                     <% @announcements.each do |announcement| %>
                     <div class="col-md-6">
                         <div class="panel panel-default">
-                            <div class="panel-heading announcements-head <%= @header_styles.sample %>"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;<%= announcement.title %></div>
+                            <div class="panel-heading announcements-head <%= @header_styles.sample %>"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<span class="announcements-head-title"><%= announcement.title %></span></div>
                             <div class="panel-body">
                                 <%= announcement.body %>
                             </div>
@@ -26,7 +27,17 @@
             </div>
         </div>
         <div class="col-md-4">
-           second column
+            <h1 class="announcements-title">Resources</h1>
+            <% @resources.each do |resource| %>
+            <a href="<%= resource.link %>" target="_blank">
+            <div class="panel panel-default">
+                <div class="panel-heading resource-head-title"><%= image_tag 'resource_icon.jpeg', class: 'resource-image' %> <%= resource.title %></div>
+                <div class="panel-body">
+                    <%= resource.description %>
+                </div>
+            </div>
+            </a>
+            <% end %>
         </div>
     </div>
 </div>
