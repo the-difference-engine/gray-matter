@@ -13,10 +13,8 @@ class StudentsController < ApplicationController
  def show
    @student = Student.find_by_user_id(params[:id])
    # @groups = [current_user.group]
-   if @student.nil?
+   if @student.profile.nil?
      redirect_to new_student_path
-   end
-   if @student.nil?
      @profile_url = new_student_path
    else
      @profile_url = "#{current_user.id}"

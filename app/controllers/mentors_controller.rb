@@ -13,10 +13,8 @@ class MentorsController < ApplicationController
  def show
    @mentor = Mentor.find_by_user_id(params[:id])
    # @groups = [current_user.group]
-   if @mentor.nil?
+   if @mentor.profile.nil?
      redirect_to new_mentor_path
-   end
-   if @mentor.nil?
      @profile_url = new_mentor_path
    else
      @profile_url = "#{current_user.id}"
