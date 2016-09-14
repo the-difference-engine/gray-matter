@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  # get 'resources/new'
+
+  # get 'resources/create'
+
+  # get 'resources/edit'
+
+  # get 'resources/update'
+
+  # get 'resources/destroy'
+
+  # get 'resources/index'
+
+  # get 'resources/show'
+
   # get 'announcements/new'
 
   # get 'announcements/create'
@@ -47,6 +61,7 @@ Rails.application.routes.draw do
   resources :students
 
   resources :announcements
+  resources :resources
   # get '/students' => 'students#index'
   # post '/students' => 'students#create'
   # get '/students/:id' => 'students#show'

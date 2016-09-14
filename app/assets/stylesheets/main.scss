@@ -1,7 +1,11 @@
-* { box-sizing: border-box; }
+$font-family-amatic: 'Amatic SC', cursive;
+$font-family-amatica: 'Amatica SC', cursive;
+$font-family-cabin-sketch: 'Cabin Sketch', cursive;
+$font-family-fredericka: 'Fredericka the Great', cursive;* { box-sizing: border-box; }
+$color-cyan: #14BCC9;
 
 .navbar-inverse .navbar-brand {
-  color: #14BCC9;
+  color: $color-cyan;
 }
 
 .navbar {

@@ -17,6 +17,7 @@ class AdminsController < ApplicationController
     @profile_url = "/admins/#{current_user.id}"
     @page_title = current_user.role.capitalize
     @announcement = Announcement.new #do I really need this?
+    @resource = Resource.new
  end
 
   def show

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = current_user.role.capitalize
     @announcements = Announcement.all
+    @resources = Resource.all
      
   end
 
