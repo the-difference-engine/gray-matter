@@ -14,7 +14,7 @@
       <h1 id="name" class="head"><%= mentor.name %></h1>
 
       <figcaption class="about-caption">
-          <%= mentor.profile.body %>
+          <%= mentor.profile.nil? ? "No Profile was found." : mentor.profile.body %>
       </figcaption>
 
       <!-- <section id="links"> -->

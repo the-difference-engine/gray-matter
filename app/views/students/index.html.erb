@@ -14,7 +14,7 @@
       <h1 id="name" class="head"><%= student.name %></h1>
 
       <figcaption class="about-caption">
-          <%= student.profile.body %>
+          <%= student.profile.nil? ? "No Profile was found." : student.profile.body %>
       </figcaption>
 
       <!-- <section id="links"> -->
