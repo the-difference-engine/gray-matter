@@ -12,9 +12,11 @@ class MembersController < ApplicationController
     # TODO add the sending of the email
     @user = User.new(member_params)
     if @user.save
+      UserNotifier.send_signup_email(@user, password).deliver_now
       redirect_to admins_path
       flash[:success] = "A New #{@user.role} has been added"
     else
+      redirect_to admins_path
       flash[:error] = "Something went wrong"
     end
     # if @user.mentor?
