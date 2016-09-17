@@ -2,6 +2,11 @@
 <html>
     <head>
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+        <style media="screen" type="text/css">
+         .logo-image {
+           width: 150px;
+           }
+        </style>
     </head>
     <body style="text-align: center;
                  margin-top: 25px;
@@ -14,7 +19,7 @@
                                         background-color: #fff">
                 <div class="logo" style="margin-top: 15px;
                                          margin-bottom: 15px">
-                  <img alt="Logo" src="../images/gray_brain.png"/>
+                  <%= image_tag("gray_brain.png", class: 'logo-image', :alt => "Gray Matter Logo") %>
                 </div>
                 <div class="title" style="border: 1px solid #ccc;
                                           width: 100%;
