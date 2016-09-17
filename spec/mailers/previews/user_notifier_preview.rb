@@ -2,6 +2,7 @@
 class UserNotifierPreview < ActionMailer::Preview
 
   def send_signup_email
-    UserNotifier.send_signup_email(User.last)
+    password = '23453a3d3'
+    UserNotifier.send_signup_email(User.last, password)
   end
 end
