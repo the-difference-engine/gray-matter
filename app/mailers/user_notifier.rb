@@ -5,6 +5,7 @@ class UserNotifier < ApplicationMailer
   def send_signup_email(user, password)
     attachments.inline['gray_brain.png'] = File.read('app/assets/images/gray_brain.png')
     @host_url = ENV['HOST_URL']
+    @logo = 'gray_brain.png'
     @user = user
     @password = password
     mail( :to => @user.email,
