@@ -19,7 +19,6 @@
                                         background-color: #fff">
                 <div class="logo" style="margin-top: 15px;
                                          margin-bottom: 15px">
-                    <img alt="" src="<%= @logo %>"/>
                     <%= image_tag("gray_brain.png", class: 'logo-image') %>
                     <%#= image_tag attachments['gray_brain.png'].url, alt: 'Our Photo', class: 'logo-image' %><br/>
                     
@@ -37,6 +36,7 @@
                     Congradulations, you have been invited to Gray Matter. Please use the information below to log in and create a profile and begin colaborating.
                 </p>
                 <p>
+                    <%= link_to 'Sign In', @host_url %><br/>
                     <a href="<%= @host_url %>">Sign In</a>
                 </p>
                 <p>
