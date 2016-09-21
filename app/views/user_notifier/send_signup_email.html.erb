@@ -2,11 +2,6 @@
 <html>
     <head>
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-        <style media="screen" type="text/css">
-         .logo-image {
-           width: 150px;
-           }
-        </style>
     </head>
     <body style="text-align: center;
                  margin-top: 25px;
@@ -20,7 +15,7 @@
                 <div class="logo" style="margin-top: 15px;
                                          margin-bottom: 15px">
                     <%#= image_tag("gray_brain.png", class: 'logo-image') %>
-                    <%= image_tag attachments['gray_brain.png'].url, alt: 'logo', class: 'logo-image' %>
+                    <%= image_tag attachments['gray_brain.png'].url, alt: 'logo', style: "width: 150px" %>
                     <%#= image_tag attachments['gray_brain.png'].url, alt: 'Our Photo', class: 'logo-image' %><br/>
                     
                     <%#= image_tag attachments.inline["gray_brain.png"].url %>
