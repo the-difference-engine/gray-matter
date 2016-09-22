@@ -13,14 +13,13 @@
                                         padding: 15px;
                                         background-color: #fff">
                 <div class="logo" style="margin-top: 15px;
+                                         border: 1px solid red;
                                          margin-bottom: 15px">
-                    <%#= image_tag("gray_brain.png", class: 'logo-image') %>
-                    <%= image_tag attachments['gray_brain.png'].url, alt: 'logo', style: "width: 150px" %>
-                    <%#= image_tag attachments['gray_brain.png'].url, alt: 'Our Photo', class: 'logo-image' %><br/>
-                    
-                    <%#= image_tag attachments.inline["gray_brain.png"].url %>
-                    <%#= email_image_tag("gray_brain.png") %><br/>
-                  <%#= email_image_tag("gray_brain.png", class: 'logo-image', :alt => "Gray Matter Logo") %>
+                    <table border="1">
+                        <tr>
+                            <td style="width: 150px; text-align: center"><%= image_tag attachments['gray_brain.png'].url, alt: 'logo' %></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="title" style="border: 1px solid #ccc;
                                           width: 100%;
