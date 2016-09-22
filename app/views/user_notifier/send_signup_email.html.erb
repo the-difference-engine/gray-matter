@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body style="text-align: center;
+                 margin-top: 25px;
+                 background-color: #ccc">
+        <div class="container" style="width: 100%;">
+            <div class="content" style="margin: 0 auto;
+                                        border: 1px solid #ccc;
+                                        width: 75%;
+                                        padding: 15px;
+                                        background-color: #fff">
+                <div class="logo" style="margin-top: 15px;
+                                         margin-bottom: 15px">
+                    <table border="0" style="margin: 0 auto">
+                        <tr>
+                            <td style="width: 150px"><%= image_tag attachments['gray_brain.png'].url, alt: 'logo', style: 'width: 100%' %></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="title" style="border: 1px solid #ccc;
+                                          width: 100%;
+                                          background-color: #000;
+                                          color: #14BCC9">
+                  <h1>Welcome to Gray Matter</h1>
+                </div>
+                <p>
+                    Congratulations, you have been invited to Gray Matter. Please use the information below to log in and create a profile and begin collaborating.
+                </p>
+                <p>
+                    <%= link_to 'Sign In By Clicking Here', authenticated_root_url %><br/>
+                    <!-- <a href="<%#= @host_url %>">Sign In</a> -->
+                </p>
+                <p>
+                    username: <%= @user.email %><br/>
+                    password: <%= @password %>
+                </p>
+                <div class="footer" style="border-top: 1px solid #ccc;
+                                           padding-top: 10px">
+                    <small>Copyright &#169; <%= @year %> Gray Matter</small>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
