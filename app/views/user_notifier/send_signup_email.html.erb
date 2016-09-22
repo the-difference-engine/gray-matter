@@ -13,9 +13,8 @@
                                         padding: 15px;
                                         background-color: #fff">
                 <div class="logo" style="margin-top: 15px;
-                                         border: 1px solid red;
                                          margin-bottom: 15px">
-                    <table border="1" style="margin: 0 auto">
+                    <table border="0" style="margin: 0 auto">
                         <tr>
                             <td style="width: 150px"><%= image_tag attachments['gray_brain.png'].url, alt: 'logo', style: 'width: 100%' %></td>
                         </tr>
@@ -28,18 +27,19 @@
                   <h1>Welcome to Gray Matter</h1>
                 </div>
                 <p>
-                    Congradulations, you have been invited to Gray Matter. Please use the information below to log in and create a profile and begin colaborating.
+                    Congratulations, you have been invited to Gray Matter. Please use the information below to log in and create a profile and begin collaborating.
                 </p>
                 <p>
-                    <%= link_to 'Sign In', authenticated_root_url %><br/>
+                    <%= link_to 'Sign In By Clicking Here', authenticated_root_url %><br/>
                     <!-- <a href="<%#= @host_url %>">Sign In</a> -->
                 </p>
                 <p>
                     username: <%= @user.email %><br/>
                     password: <%= @password %>
                 </p>
-                <div class="footer" style="border-top: 1px solid #ccc">
-                    date goes here
+                <div class="footer" style="border-top: 1px solid #ccc;
+                                           padding-top: 10px">
+                    <small>Copyright &#169; <%= @year %> Gray Matter</small>
                 </div>
             </div>
         </div>

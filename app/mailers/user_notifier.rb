@@ -8,6 +8,7 @@ class UserNotifier < ApplicationMailer
     @logo = 'gray_brain.png'
     @user = user
     @password = password
+    @year = Time.now.year
     mail( :to => @user.email,
           :subject => 'Welcome to Gray Matter' )
   end
