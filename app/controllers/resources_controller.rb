@@ -1,4 +1,6 @@
 class ResourcesController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     # @resource = Resource.new
   end

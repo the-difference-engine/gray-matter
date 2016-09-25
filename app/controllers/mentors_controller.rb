@@ -1,4 +1,5 @@
 class MentorsController < ApplicationController
+  before_filter :authenticate_user!
   # before_action :restrict_access - everyone has access to this controller
 
  def index
