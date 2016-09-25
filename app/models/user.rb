@@ -24,9 +24,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :mentors
-  has_many :students
-  has_many :admins
+  has_many :mentors, :dependent => :destroy 
+  has_many :students, :dependent => :destroy
+  has_many :admins, :dependent => :destroy
   has_many :announcements
   has_many :resources
 

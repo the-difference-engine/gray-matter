@@ -8,7 +8,7 @@ class MembersController < ApplicationController
     @user = User.new(member_params)
     if !email_exists?(params[:email])
       if @user.save
-        create_role(@user)
+        create_profile(@user)
         UserNotifier.send_signup_email(@user, password).deliver_now
         redirect_to admins_path
         flash[:success] = "A New #{@user.role} has been added"
@@ -24,7 +24,7 @@ class MembersController < ApplicationController
 
   private
 # TODO change page_title to display_role or something
-  def create_role(user)
+  def create_profile(user)
     user.page_title.constantize.create(user_id: user.id)
   end
 
