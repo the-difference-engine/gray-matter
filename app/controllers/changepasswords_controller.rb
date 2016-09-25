@@ -11,7 +11,9 @@ class ChangepasswordsController < ApplicationController
   def update_password
     @page_title = 'Error'
     @user = User.find(current_user.id)
+    @user.has_logged_in = true
     if @user.update(user_params)
+
       sign_in @user, :bypass => true
       redirect_to authenticated_root_path
     else

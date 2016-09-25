@@ -54,4 +54,8 @@ class User < ActiveRecord::Base
     return USER_ROLES[self.role.to_sym]
   end
 
+  def logged_in_count
+    self.has_logged_in == false
+  end
+
 end
