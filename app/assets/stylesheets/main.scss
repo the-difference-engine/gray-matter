@@ -1,8 +1,17 @@
-$font-family-amatic: 'Amatic SC', cursive;
-$font-family-amatica: 'Amatica SC', cursive;
-$font-family-cabin-sketch: 'Cabin Sketch', cursive;
-$font-family-fredericka: 'Fredericka the Great', cursive;* { box-sizing: border-box; }
-$color-cyan: #14BCC9;
+@import "partials/globals";
+
+body {
+  background: url(asset-path( 'strange_bullseyes.png' ));
+  font-family: Avenir, 'Helvetica Neue', Arial, sans-serif;
+  margin: 2rem auto;
+  /*max-width: 40rem;*/
+  color: #333;
+  padding: 0 1rem;
+}
+
+.margin-top {
+    margin-top: 25px;
+}
 
 .navbar-inverse .navbar-brand {
   color: $color-cyan;
@@ -29,14 +38,6 @@ img {
   padding: .99rem;
 }
 
-body {
-  background: url(asset-path( 'strange_bullseyes.png' ));
-  font-family: Avenir, 'Helvetica Neue', Arial, sans-serif;
-  margin: 2rem auto;
-  /*max-width: 40rem;*/
-  color: #333;
-  padding: 0 1rem;
-}
 
 label {
     width: 100px;

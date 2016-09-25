@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  before_filter :authenticate_user!
   include UsersHelper
 
   def add_member

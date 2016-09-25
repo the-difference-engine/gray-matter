@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :first_logged_in?
 
   def index
     @header_styles = ["heading-color-one",

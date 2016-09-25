@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # get 'changepasswords/edit'
+
+  # get 'changepasswords/udpate_password'
+
   # get 'resources/new'
 
   # get 'resources/create'
@@ -38,6 +42,11 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
+# route for changing passwords
+  resources :users, only: [:edit]
+  get 'changepasswords/edit' => 'changepasswords#edit', as: 'change_password'
+  patch 'changepasswords/update_password' => 'changepasswords#update_password', as: 'update_password'
 
   post '/members' => 'members#add_member', as: 'add_a_member'
 

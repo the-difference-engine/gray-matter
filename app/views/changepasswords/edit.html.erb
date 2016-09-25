@@ -1,0 +1,33 @@
+<div class="margin-top">
+    <div class="panel panel-default" style="width: 30%; text-align: center; margin: 0 auto">
+        <div class="panel-heading"><h3>Change your password</h3></div>
+        <div class="panel-body">
+            <%= form_for(@user, :url => { action: "update_password" } ) do |f| %>
+                <% if @user.errors.any? %>
+                    <div id="error_explanation">
+                        <h3>Something went wrong</h3>
+                        <ul>
+                            <% @user.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+                <div class="field">
+                    <%= f.label :password, "Password" %><br/>
+                    <%= f.password_field :password, :autocomplete => "off"  %>
+                </div>
+                <br/>
+                <div class="field">
+                    <%= f.label :password_confirmation %><br/>
+                    <%= f.password_field :password_confirmation %>
+                </div>
+                <br/>
+                <div class="action_container">
+                    <%= f.submit "Change Password", class: 'btn btn-primary' %>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+</div>
