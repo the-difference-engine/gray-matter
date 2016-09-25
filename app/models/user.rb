@@ -24,14 +24,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :mentors
-  has_many :students
-  has_many :admins
+  has_many :mentors, :dependent => :destroy 
+  has_many :students, :dependent => :destroy
+  has_many :admins, :dependent => :destroy
   has_many :announcements
   has_many :resources
 
   USER_ROLES = {
-                admins: 'Administration',
+                admins: 'Admin',
                 mentors: 'Mentor',
                 students: 'Student'
                 }
@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
     self.role == 'students'
   end
 
+# TODO this should be named something diff bc it has two diff roles (display_role)
   def page_title
     return USER_ROLES[self.role.to_sym]
   end
