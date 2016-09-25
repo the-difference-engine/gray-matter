@@ -1,51 +1,27 @@
 <div class="wordmark"><h4>Student Profiles</h4></div>
+  <%= if !@students.empty? %>
     <% @students.each do |student| %>
-  <div class="container" style="margin-bottom: 20px">
-    <main>
-      <section id="about">
-        <figure class="about-fig">
-          <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
-          <h4 class="wordmark">STUDENT (Group Name)</h4>
-            <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
-          <h5 class="info"><%= number_to_phone( student.phone_number, area_code: true ) %> </h5>
-        </figure>
-      </section>
+        <div class="container" style="margin-bottom: 20px">
+            <main>
+            <section id="about">
+                <figure class="about-fig">
+                <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
+                <h4 class="wordmark">STUDENT (Group Name)</h4>
+                    <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
+                <h5 class="info"><%= number_to_phone( student.phone_number, area_code: true ) %> </h5>
+                </figure>
+            </section>
 
-      <h1 id="name" class="head"><%= student.name %></h1>
+            <h1 id="name" class="head"><%= student.name %></h1>
 
-      <figcaption class="about-caption">
-          <%= student.profile.nil? ? "No Profile was found." : student.profile.body %>
-      </figcaption>
-
-      <!-- <section id="links"> -->
-      <!-- <h3>Resources</h3> -->
-      <!-- <ul> -->
-      <!-- <li><a href="#">Resource 1</a></li> -->
-      <!-- <li><a href="#">Resource 2</a></li> -->
-      <!-- <li><a href="#">Resource 3</a></li> -->
-      <!-- </ul> -->
-      <!-- </section> -->
-      <!-- <section id="links"> -->
-      <!-- <h3>Workshops</h3> -->
-      <!-- <ul> -->
-      <!-- <li><a href="#">Workshop 1</a></li> -->
-      <!-- <li><a href="#">Workshop 2</a></li> -->
-      <!-- <li><a href="#">Workshop 3</a></li> -->
-      <!-- </ul> -->
-      <!-- </section> -->
-      <!-- <section id="links"> -->
-      <!-- <h3>Availability</h3> -->
-      <!-- <ul> -->
-      <!-- <li><a href="#">Monday 5pm–7pm</a></li> -->
-      <!-- <li><a href="#">Wednesday 3pm–5pm</a></li> -->
-      <!-- <li><a href="#">Saturday 12pm–4pm</a></li> -->
-      <!-- </ul> -->
-      <!-- </section> -->
-
-
-      <!-- <footer class="footer">
-    <p>&copy; 2016 Gray Matter</p>
-  </footer>*/ -->
-  </main>
-</div>
+            <figcaption class="about-caption">
+                <%= student.profile.nil? ? "No Profile was found." : student.profile.body %>
+            </figcaption>
+        </main>
+        </div>
+    <% end %>
+  <% else %>
+  <p>
+      No Students
+  </p>
   <% end %>
