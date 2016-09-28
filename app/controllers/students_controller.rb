@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
   def index
     @groups = Group.all
     @students = Student.all
+    @profiles = Profile.all
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @group_url = "/groups/#{@groups.name}"
@@ -14,9 +15,8 @@ class StudentsController < ApplicationController
  def show
    @student = Student.find_by_user_id(params[:id])
    # @groups = [current_user.group]
-   if @student.profile.nil?
+   if @student.nil?
      redirect_to new_student_path
-     @profile_url = new_student_path
    else
      @profile_url = "#{current_user.id}"
    end
@@ -29,12 +29,13 @@ class StudentsController < ApplicationController
    @student = Student.new
    @student.build_profile
    @page_title = 'Create My Profile'
-   # @page_url = '/'
-   # @profile_url = '/'
+   @home_url = authenticated_root_path
+   @profile_url = "#{current_user.id}"
  end
 
  def create
    params[:student][:user_id] = current_user.id
+   params[:student][:contact_email] = current_user.email
    @student = Student.new(student_params)
    if @student.save
      redirect_to "/students/#{current_user.id}"
@@ -90,7 +91,7 @@ class StudentsController < ApplicationController
  private
 
  def student_params
-   params.require(:student).permit(:gender, :school, :grade, :first_name, :last_name, :phone_number, :user_id, profile_attributes: [:body])
+   params.require(:student).permit(:gender, :school, :grade, :first_name, :last_name, :phone_number, :contact_email, :user_id, profile_attributes: [:body])
  end
  # Everyone can have access to student
  # def restrict_access

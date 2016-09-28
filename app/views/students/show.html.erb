@@ -4,8 +4,8 @@
       <section id="about">
         <figure class="about-fig">
           <%= image_tag 'http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg', class: 'profile-pic' %>
-            <h4 class="wordmark"><%= current_user.role %> (Group Name)</h4>
-            <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
+            <h4 class="wordmark"><%= current_user.role %></h4>
+            <h5 class="info"><a href="mailto:<%= @student.contact_email %>" target="_top"><%= @student.contact_email %></a></h5>
           <h5 class="info"><%= number_to_phone( @student.phone_number, area_code: true ) %> </h5>
         </figure>
       </section>

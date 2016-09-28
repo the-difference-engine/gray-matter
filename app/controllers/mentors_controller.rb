@@ -5,6 +5,7 @@ class MentorsController < ApplicationController
  def index
    @groups = Group.all
    @mentors = Mentor.all
+   @profiles = Profile.all
    @home_url = authenticated_root_path
    @profile_url = "#{current_user.role}/#{current_user.id}" 
    @group_url = "/groups/#{@groups.name}"
@@ -14,9 +15,8 @@ class MentorsController < ApplicationController
  def show
    @mentor = Mentor.find_by_user_id(params[:id])
    # @groups = [current_user.group]
-   if @mentor.profile.nil?
+   if @mentor.nil?
      redirect_to new_mentor_path
-     @profile_url = new_mentor_path
    else
      @profile_url = "#{current_user.id}"
    end
@@ -29,13 +29,15 @@ class MentorsController < ApplicationController
    @mentor = Mentor.new
    @mentor.build_profile
    @page_title = 'Create My Profile'
-   @page_url = '/'
-   @profile_url = '/'
+   @home_url = authenticated_root_path
+   @profile_url = "#{current_user.id}"
  end
 
  def create
    params[:mentor][:user_id] = current_user.id
+   params[:mentor][:contact_email] = current_user.email
    @mentor = Mentor.new(mentor_params)
+   
    if @mentor.save
      redirect_to "/mentors/#{current_user.id}"
      flash[:success] = "Your profile has been created"
@@ -54,6 +56,7 @@ class MentorsController < ApplicationController
  end
 
  def update
+   
    params[:mentor][:user_id] = current_user.id
    @mentor = Mentor.find_by_user_id(params[:mentor][:user_id])
 
@@ -90,7 +93,7 @@ class MentorsController < ApplicationController
  private
 
  def mentor_params
-   params.require(:mentor).permit(:company, :industry, :website, :first_name, :last_name, :phone_number, :user_id, profile_attributes: [:body])
+   params.require(:mentor).permit(:company, :industry, :website, :first_name, :last_name, :phone_number, :contact_email, :user_id, profile_attributes: [:id, :body, :avatar_file_name, :avatar_content_type, :mentor_id, :_destroy])
  end
 
  # def restrict_access

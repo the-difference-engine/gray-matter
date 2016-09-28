@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926222346) do
+ActiveRecord::Schema.define(version: 20160928014052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,13 +57,17 @@ ActiveRecord::Schema.define(version: 20160926222346) do
 
   create_table "profiles", force: :cascade do |t|
     t.text     "body"
-    t.text     "availability_array", default: [],              array: true
+    t.text     "availability_array",  default: [],              array: true
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "admin_id"
     t.integer  "student_id"
     t.integer  "mentor_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "resources", force: :cascade do |t|

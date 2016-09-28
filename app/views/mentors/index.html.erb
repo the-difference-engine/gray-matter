@@ -1,13 +1,13 @@
 <div class="wordmark"><h4>Mentor Profiles</h4></div>
-  <% if !@mentors.empty? %>
+  <% if !@mentors.empty? && !@profiles.empty?%>
     <% @mentors.each do |mentor| %>
         <div class="container" style="margin-bottom: 20px">
             <main>
             <section id="about">
                 <figure class="about-fig">
                 <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
-                <h4 class="wordmark">MENTOR (Group Name)</h4>
-                    <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
+                <h4 class="wordmark">MENTOR</h4>
+                    <h5 class="info"><a href="mailto:<%= mentor.contact_email %>" target="_top"><%= mentor.contact_email %></a></h5>
                 <h5 class="info"><%= number_to_phone( mentor.phone_number, area_code: true ) %> </h5>
                 </figure>
             </section>

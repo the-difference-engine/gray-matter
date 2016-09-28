@@ -9,7 +9,8 @@ class MembersController < ApplicationController
     @user = User.new(member_params)
     if !email_exists?(params[:email])
       if @user.save
-        create_profile(@user)
+# TODO I do not remember why i did this but it messes things up also, it creates a student/mentor NOT profile as the method would indecate
+        # create_profile(@user)
         UserNotifier.send_signup_email(@user, password).deliver_now
         redirect_to admins_path
         flash[:success] = "A New #{@user.role} has been added"
