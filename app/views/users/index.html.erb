@@ -13,10 +13,10 @@
                             <div class="panel-footer announcements-footer">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        by: First Last
+                                        by: <%= announcement.user.admins[0].name %>
                                     </div>
                                     <div class="col-sm-6 pull-right">
-                                      <%= announcement.created_at.to_time.strftime('%d/%m/%Y at %l:%M %p') %>
+                                      <%= announcement.created_at.to_time.strftime('%m/%d/%Y at %l:%M %p') %>
                                     </div>
                                 </div>
 
