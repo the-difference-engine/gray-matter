@@ -1,9 +1,11 @@
-<div>
+<div class="margin-top">
   <div class="container">
     <main>
       <section id="about">
         <figure class="about-fig">
-            <%= image_tag 'http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg', class: 'profile-pic' %>
+           <%= image_tag @mentor.profile.avatar.url(:medium), class: 'profile-pic' %> 
+            <%#= image_tag 'http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg', class: 'profile-pic' %>
+            <%#= image_tag @mentor.profile.avatar.url(:medium), class: 'profile-pic' %>
             <div class="profile-pic">
                 <%#= image_tag @mentor.profile.avatar.url(:medium) %>
             </div>

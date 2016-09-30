@@ -36,6 +36,7 @@ class MentorsController < ApplicationController
  def create
    params[:mentor][:user_id] = current_user.id
    params[:mentor][:contact_email] = current_user.email
+   binding.pry
    @mentor = Mentor.new(mentor_params)
    
    if @mentor.save
@@ -93,7 +94,7 @@ class MentorsController < ApplicationController
  private
 
  def mentor_params
-   params.require(:mentor).permit(:company, :industry, :website, :first_name, :last_name, :phone_number, :contact_email, :user_id, profile_attributes: [:id, :body, :avatar_file_name, :avatar_content_type, :mentor_id, :_destroy])
+   params.require(:mentor).permit(:company, :industry, :website, :first_name, :last_name, :phone_number, :contact_email, :user_id, profile_attributes: [:id, :body, :avatar, :mentor_id])
  end
 
  # def restrict_access

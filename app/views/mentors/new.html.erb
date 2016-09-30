@@ -1,6 +1,6 @@
 <div class="container">
+    <%= form_for @mentor, html: { multipart: true } do |form| %>
     <div class="row">
-        <%= form_for @mentor, html: { multipart: true } do |form| %>
         <div class="col-md-8" style="border-right: 1px solid #ccc">
                 <% if @mentor.errors.any? %>
                     <div id="error_explanation">
@@ -36,21 +36,20 @@
                     <%= form.label :website %>
                     <%= form.text_field :website %>
                 </div>
-                <%= form.fields_for :profile, html: { multipart: true } do |builder| %>
+                <%= form.fields_for :profile do |builder| %>
                     <%= builder.label :body, 'About Me' %>
                     <%= builder.text_area :body, rows: "6", cols: "75" %>
         </div>
         <div class="col-md-4">
                 <div>
-                    <h2>Coming Soon</h2>
-                    <%#= builder.label :avatar %>
-                    <%#= builder.file_field :avatar %>
+                    <h2>Upload a Avatar</h2>
+                    <%= builder.file_field :avatar %>
                 </div>
                 <% end %>
         </div>
         <div class="actions col-md-12">
             <%= form.submit 'Add Profile', class: 'btn btn-primary pull-right' %>
         </div>
-        <% end %>  
     </div>
+    <% end %>  
 </div>
