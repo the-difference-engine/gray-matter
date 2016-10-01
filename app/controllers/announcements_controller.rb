@@ -18,12 +18,33 @@ class AnnouncementsController < ApplicationController
   end
 
   def edit
+    @announcement = Announcement.find_by_id(params[:id])
+    @home_url = admins_path
+    @profile_url = "/#{current_user.role}/#{current_user.id}" 
+    @page_title = 'Edit Announcement'
   end
 
   def update
+    announcement = Announcement.find_by_id(params[:id])
+
+    if announcement.update(announcement_params)
+      flash[:success] = 'Announcement Updated'
+      redirect_to admins_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    announcement = Announcement.find_by_id(params[:id])
+
+    if announcement.destroy
+      flash[:success] = 'Announcement Removed'
+      redirect_to admins_path
+    else
+      flash[:error] = 'Announcement was NOT Removed'
+      redirect_to admins_path
+    end
   end
 
   def index
