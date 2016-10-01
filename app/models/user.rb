@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string
+#  has_logged_in          :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
