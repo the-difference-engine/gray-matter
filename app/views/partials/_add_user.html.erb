@@ -1,29 +1,27 @@
 <div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h4 class="modal-title">Add a Mentor or Stud</h4>
-    </div>
-    <div class="modal-body">
-      <%= form_tag add_a_member_path, method: :post do %>
+  <%= form_tag add_a_member_path, method: :post do %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add a Mentor or Stud</h4>
+      </div>
+      <div class="modal-body">
         <div>
-        <%= label_tag :email %> 
-        <%= text_field_tag :email %>
+          <%= label_tag :email %>
+          <%= text_field_tag :email %>
         </div>
         <div>
-        <%= label_tag :role %> 
-        <%= select_tag(:role, options_for_select([['Student', 'students'], ['Mentor', 'mentors'], ['Administration', 'admins'] ]), { :style => 'font-size: 20px; height: 40px;' }) %>
+          <%= label_tag :role %>
+          <%= select_tag(:role, options_for_select([['Student', 'students'], ['Mentor', 'mentors'], ['Administration', 'admins'] ]), { :style => 'font-size: 20px; height: 40px;' }) %>
         </div>
         <div>
-            <!-- TODO add group in here once I figure out how too -->
+          <!-- TODO add groups -->
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= submit_tag "Add User", class: "btn btn-primary" %>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <%= submit_tag "Add User", class: "btn btn-primary" %>
-  <% end %>
-    </div>
-  </div>
-  <!-- /.modal-content -->
+    <% end %>
 </div>
-<!-- /.modal-dialog -->

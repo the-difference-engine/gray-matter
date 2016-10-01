@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'cancan'
 gem 'figaro'
 gem 'annotate'
+gem "paperclip", "~> 5.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -32,6 +33,9 @@ gem 'rails_12factor', group: :production
 
 gem 'pry'
 gem 'seed_dump'
+gem 'will_paginate', '~> 3.1.0'
+gem "font-awesome-rails"
+gem 'sendgrid'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

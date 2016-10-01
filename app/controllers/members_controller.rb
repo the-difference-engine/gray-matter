@@ -1,28 +1,34 @@
 class MembersController < ApplicationController
+  before_filter :authenticate_user!
   include UsersHelper
 
   def add_member
-    # TODO I do not like this logic here the generate password
     password = generate_password
-    puts "* " * 50
-    puts password
-    puts "* " * 50
     params[:password] = password
     params[:password_confirmation] = password
-    # TODO add the sending of the email
     @user = User.new(member_params)
-    if @user.save
-      redirect_to admins_path
-      flash[:success] = "A New #{@user.role} has been added"
+    if !email_exists?(params[:email])
+      if @user.save
+# TODO I do not remember why i did this but it messes things up also, it creates a student/mentor NOT profile as the method would indecate
+        # create_profile(@user)
+        UserNotifier.send_signup_email(@user, password).deliver_now
+        redirect_to admins_path
+        flash[:success] = "A New #{@user.role} has been added"
+      else
+        redirect_to admins_path
+        flash[:danger] = "Something went wrong"
+      end
     else
-      flash[:error] = "Something went wrong"
+      redirect_to admins_path
+      flash[:danger] = "#{params[:email]} already exists"
     end
-    # if @user.mentor?
-# TODO need to set this up so the admin can create the group
-    # end
   end
 
   private
+# TODO change page_title to display_role or something
+  def create_profile(user)
+    user.page_title.constantize.create(user_id: user.id)
+  end
 
   def member_params
     params.permit(:email, :role, :password, :password_confirmation)

@@ -14,5 +14,10 @@
 
 class Admin < ActiveRecord::Base
   belongs_to :user
+  has_one :profile
+  accepts_nested_attributes_for :profile, allow_destroy: true
 
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 end
