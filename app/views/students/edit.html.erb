@@ -1,15 +1,17 @@
 <div class="container">
     <%= form_for @student do |form| %>
-        <% if @student.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(@student.errors.count, "error") %> prohibited this user from being saved:</h2>
-                <ul>
-                    <% @student.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
+        <div class="row">
+            <div class="col-md-8" style="border-right: 1px solid #ccc">
+                <% if @student.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@student.errors.count, "error") %> prohibited this user from being saved:</h2>
+                        <ul>
+                            <% @student.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
         <div>
             <%= form.label :first_name %>
             <%= form.text_field :first_name %>
@@ -37,9 +39,25 @@
         <%= form.fields_for :profile do |builder| %>
             <%= builder.label :body, 'About Me' %>
             <%= builder.text_area :body, rows: "6", cols: "75" %>
-        <% end %>
-        <div class="actions">
-            <%= form.submit 'Save Profile', class: 'btn btn-primary pull-right' %>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <h2>Upload a Avatar</h2>
+                <%= builder.file_field :avatar, as: :file %>
+            </div>
+            <div>
+                <%= image_tag @student.profile.avatar.url %>
+            </div>
+            <% end %>
+        </div>
+        </div>
+        <div class="actions col-md-12 margin-top">
+            <span style="margin-right: 10px;">
+              <%= form.submit 'Save', class: 'btn btn-primary pull-right' %>
+            </span>
+            <span>
+              <%= link_to "Cancel", student_path, class: 'btn btn-default', style: 'margin-left: 85%' %>
+            </span>
         </div>
     <% end %>  
 </div>

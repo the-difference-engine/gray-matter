@@ -1,8 +1,24 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Admin Profile</h3>
+<div class="admin-show">
+  <div class="container">
+    <main>
+      <section id="about">
+        <figure class="about-fig">
+          <%= image_tag 'http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg', class: 'profile-pic' %>
+            <h4 class="wordmark"><%= current_user.role %> (Group Name)</h4>
+            <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
+          <h5 class="info"><%= number_to_phone( @admin.phone_number, area_code: true ) %> </h5>
+        </figure>
+      </section>
+
+      <h1 id="name" class="head"><%= @admin.name %></h1>
+      <br/>
+<!-- about me has been removed from admins if needed copy from either mentor or student -->
+    </main>
+  </div>
+  <br />
+    <div class="col-md-12">
+       <%= link_to 'Edit Profile', edit_admin_path, class: 'btn btn-primary pull-right' %> 
     </div>
-    <div class="panel-body">
-        DEPRECATED FILE delete this file
-    </div>
+    <br/>
+    <br/>
 </div>

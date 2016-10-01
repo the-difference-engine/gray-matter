@@ -1,4 +1,36 @@
 Rails.application.routes.draw do
+  # get 'changepasswords/edit'
+
+  # get 'changepasswords/udpate_password'
+
+  # get 'resources/new'
+
+  # get 'resources/create'
+
+  # get 'resources/edit'
+
+  # get 'resources/update'
+
+  # get 'resources/destroy'
+
+  # get 'resources/index'
+
+  # get 'resources/show'
+
+  # get 'announcements/new'
+
+  # get 'announcements/create'
+
+  # get 'announcements/edit'
+
+  # get 'announcements/update'
+
+  # get 'announcements/destroy'
+
+  # get 'announcements/index'
+
+  # get 'announcements/show'
+
   devise_for :users
 
   devise_scope :user do
@@ -10,6 +42,11 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
+# route for changing passwords
+  resources :users, only: [:edit]
+  get 'changepasswords/edit' => 'changepasswords#edit', as: 'change_password'
+  patch 'changepasswords/update_password' => 'changepasswords#update_password', as: 'update_password'
 
   post '/members' => 'members#add_member', as: 'add_a_member'
 
@@ -32,6 +69,8 @@ Rails.application.routes.draw do
   resources :mentors
   resources :students
 
+  resources :announcements
+  resources :resources
   # get '/students' => 'students#index'
   # post '/students' => 'students#create'
   # get '/students/:id' => 'students#show'

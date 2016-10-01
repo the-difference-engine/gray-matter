@@ -12,35 +12,47 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <% if !current_page?(action: 'new') %>
-                        <% if !current_user.admin? %>
-                            <li>
-                                <a href="<%= @profile_url %>">
-                                    My Profile
-                                </a>
-                            </li>
-                        <% end %>
+                    <% if !current_page?(url_for(:controller => 'admins', :action => 'new')) %>
+                        <li>
+                            <a href="<%= @profile_url %>">
+                                My Profile
+                            </a>
+                        </li>
                       <li><%= link_to 'Students', students_path %></li>
                       <li><%= link_to 'Mentors', mentors_path %></li>
                     <% end %>
                     <% if current_user && current_user.admin? %>
-                        <li><a data-toggle="modal" href="#addUser" class="">Add a User</a></li>
+                        <li><%= link_to 'Administration Dashboard', admins_path %></li>
                     <% end %>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="/users/sign_out">Log Out</a></li>
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cogs settings_icon" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu">
+                  <li>
+                      <a href="/users/sign_out"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Log Out</a></li>
+                  <li><a href="<%= change_password_path %>"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;Change Password</a></li>
+                </ul>
+              </li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
-<!-- TODO need to work on the groups see trello -->
-    <br />
+    <div style="border-bottom: 1px solid #c92114">
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="nav-date"><%= Time.now.strftime("%A, %B %C, %G") %></span>
+        </div>
+        <div class="col-sm-4 nav-title">
+            <span class="wordmark"><%= current_user.page_title %></span>
+        </div>
+        <div class="col-sm-4">
+            <span class="nav-name pull-right">Welcome <%=  current_user.email %></span>
+        </div>
+    </div>
+</div>
+    <!-- TODO need to work on the groups see trello -->
 <% end %>
-<!-- Student Modal -->
-<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= render 'partials/add_user' %>
-</div><!-- /.modal -->
-
 <!-- Mentor Modal -->
 <div class="modal fade" id="addMentor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render 'partials/create_mentor' %>
