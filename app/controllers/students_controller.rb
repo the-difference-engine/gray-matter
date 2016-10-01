@@ -91,7 +91,7 @@ class StudentsController < ApplicationController
  private
 
  def student_params
-   params.require(:student).permit(:gender, :school, :grade, :first_name, :last_name, :phone_number, :contact_email, :user_id, profile_attributes: [:body])
+   params.require(:student).permit(:gender, :school, :grade, :first_name, :last_name, :phone_number, :contact_email, :user_id, profile_attributes: [:id, :body, :avatar, :student_id])
  end
  # Everyone can have access to student
  # def restrict_access

@@ -36,7 +36,6 @@ class MentorsController < ApplicationController
  def create
    params[:mentor][:user_id] = current_user.id
    params[:mentor][:contact_email] = current_user.email
-   binding.pry
    @mentor = Mentor.new(mentor_params)
    
    if @mentor.save

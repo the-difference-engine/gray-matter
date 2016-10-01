@@ -1,15 +1,17 @@
 <div class="container">
-    <%= form_for @student do |form| %>
-        <% if @student.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(@student.errors.count, "error") %> prohibited this user from being saved:</h2>
-                <ul>
-                    <% @student.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
+    <%= form_for @student, html: { multipart: true } do |form| %>
+    <div class="row">
+        <div class="col-md-8" style="border-right: 1px solid #ccc">
+                <% if @student.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@student.errors.count, "error") %> prohibited this user from being saved:</h2>
+                        <ul>
+                            <% @student.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
         <div>
             <%= form.label :first_name %>
             <%= form.text_field :first_name %>
@@ -37,9 +39,17 @@
         <%= form.fields_for :profile do |builder| %>
             <%= builder.label :body, 'About Me' %>
             <%= builder.text_area :body, rows: "6", cols: "75" %>
-        <% end %>
-        <div class="actions">
+        </div>
+        <div class="col-md-4">
+                <div>
+                    <h2>Upload a Avatar</h2>
+                    <%= builder.file_field :avatar %>
+                </div>
+                <% end %>
+        </div>
+        <div class="actions col-md-12">
             <%= form.submit 'Add Profile', class: 'btn btn-primary pull-right' %>
         </div>
+    </div>
     <% end %>  
 </div>

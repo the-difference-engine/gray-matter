@@ -5,7 +5,7 @@
             <main>
             <section id="about">
                 <figure class="about-fig">
-                <img src="http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg" width="200" alt="Picture of Student" class="profile-pic">
+                 <%= image_tag student.profile.avatar.url(:medium), class: 'profile-pic' %> 
                 <h4 class="wordmark">STUDENT</h4>
                     <h5 class="info"><a href="mailto:<%= student.contact_email %>" target="_top"><%= student.contact_email %></a></h5>
                 <h5 class="info"><%= number_to_phone( student.phone_number, area_code: true ) %> </h5>
