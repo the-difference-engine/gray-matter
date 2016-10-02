@@ -13,7 +13,7 @@
                             <div class="panel-footer announcements-footer">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        by: <%= announcement.user.admins[0].name %>
+                                        by: <%= announcement.user.admins[0].nil? ? "N/A" : announcement.user.admins[0].name %>
                                     </div>
                                     <div class="col-sm-6 pull-right">
                                       <%= announcement.created_at.to_time.strftime('%m/%d/%Y at %l:%M %p') %>
