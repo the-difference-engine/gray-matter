@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = current_user.role.capitalize
-    @announcements = Announcement.all
+    @announcements = Announcement.all.order('created_at DESC')
     @resources = Resource.all
      
   end
