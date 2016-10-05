@@ -20,11 +20,15 @@
                         </li>
                       <li><%= link_to 'Students', students_path %></li>
                       <li><%= link_to 'Mentors', mentors_path %></li>
-                      <li><%= link_to 'Trello', "https://www.trello.com", target: '_blank' %></li>
-                      <li><%= link_to 'Slcak', "https://www.slack.com", target: '_blank'  %></li>
-                    <% end %>
-                    <% if current_user && current_user.admin? %>
+                      <% if current_user && current_user.student? %>
+                        <li><%= link_to 'Trello', "https://www.trello.com", target: '_blank' %></li>
+                      <% end %>
+                      <% if current_user && current_user.student? || current_user.mentor? %>
+                        <li><%= link_to 'Slcak', "https://www.slack.com", target: '_blank'  %></li>
+                      <% end %>
+                      <% if current_user && current_user.admin? %>
                         <li><%= link_to 'Administration Dashboard', admins_path %></li>
+                      <% end %>
                     <% end %>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
