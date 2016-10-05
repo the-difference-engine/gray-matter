@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
   before_filter :authenticate_user!
 
   def new
-    @announcement = Announcement.new
+    # @announcement = Announcement.new
   end
 
   def create

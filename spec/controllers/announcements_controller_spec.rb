@@ -2,8 +2,14 @@ require 'rails_helper'
 
 RSpec.describe AnnouncementsController, type: :controller do
 
+  before(:each) do
+    request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create(:user)
+  end
+
   describe "GET #new" do
     it "returns http success" do
+      sign_in
       get :new
       expect(response).to have_http_status(:success)
     end

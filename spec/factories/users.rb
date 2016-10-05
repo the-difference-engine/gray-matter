@@ -19,12 +19,11 @@
 #  has_logged_in          :boolean          default(FALSE)
 #
 
-require 'rails_helper'
-
-RSpec.describe User, type: :model do
-  
-  describe 'testing assocciations' do 
-    it { should have_one(:profile) }
-    it { should have_db_column(:role).of_type(:string) }
+FactoryGirl.define do
+  factory :user do
+    email "fake@email.com"
+    password "password"
+    password_confirmation "password"
+    # confirmed_at Date.today
   end
 end
