@@ -24,6 +24,6 @@ FactoryGirl.define do
     email "fake@email.com"
     password "password"
     password_confirmation "password"
-    # confirmed_at Date.today
+    role "students"
   end
 end

@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
   before_filter :authenticate_user!
 
   def new
-    # @announcement = Announcement.new
+    @announcement = Announcement.new
   end
 
   def create
@@ -45,12 +45,6 @@ class AnnouncementsController < ApplicationController
       flash[:error] = 'Announcement was NOT Removed'
       redirect_to admins_path
     end
-  end
-
-  def index
-  end
-
-  def show
   end
 
   private
