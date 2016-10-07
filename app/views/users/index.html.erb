@@ -31,7 +31,8 @@
             <% @resources.each do |resource| %>
             <a href="<%= resource.link %>" target="_blank">
             <div class="panel panel-default">
-                <div class="panel-heading resource-head-title"><%= image_tag("resource_icon.jpg", :alt => "Resource Icon", :class => "resource-image") %><%= resource.title %></div>
+                <div class="panel-heading resource-head-title"><%= image_tag("download.png", :alt => "Resource Icon", :class => "resource-image") %><%= resource.title %></div>
+
                 <div class="panel-body">
                     <%= resource.description %>
                 </div>
