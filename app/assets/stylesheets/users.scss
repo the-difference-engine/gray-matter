@@ -2,11 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $header-colors: #fd5f5e, #fd5f5e, #64b3de, #e3c7fe;
-$colorOne: #64b3de;
-$colorTwo: #fd5f5e;
-$colorThree: #ffe160;
-$colorFour: #e3c7fe;
-$colorFive: #9ce159;
+$colorOne: #ffba02; //yellow
+$colorTwo: #01b7c5; //cyan
+$colorThree: #a7b8c2; //gray
+$colorFour: #25252f; //black
+$colorFive: #cbcbce; //shade of white
 $colorRed: #c92114;
 
 $font-family-amatic: 'Amatic SC', cursive;
@@ -36,7 +36,6 @@ $font-family-fredericka: 'Fredericka the Great', cursive;
 
 .announcements-head-title {
     font-family: $font-family-amatica;
-    color: #000;
     font-weight: 900;
     font-size: 1em;
 }
@@ -68,6 +67,7 @@ $font-family-fredericka: 'Fredericka the Great', cursive;
 }
 
 .heading-color-four {
+    color: #fff !important;
     background-color: $colorFour !important;
 }
 
