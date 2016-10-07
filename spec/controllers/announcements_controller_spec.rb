@@ -1,10 +1,13 @@
 require 'rails_helper'
+include SignIn
 
 RSpec.describe AnnouncementsController, type: :controller do
 
   before(:each) do
-    request.env["devise.mapping"] = Devise.mappings[:user]
-    sign_in FactoryGirl.create(:user)
+    sign_in_user
+    #below got put into a support file
+    # request.env["devise.mapping"] = Devise.mappings[:user]
+    # sign_in FactoryGirl.create(:user)
     @announcement = create(:announcement)
   end
 
