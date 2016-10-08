@@ -1,18 +1,4 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-$header-colors: #fd5f5e, #fd5f5e, #64b3de, #e3c7fe;
-$colorOne: #ffba02; //yellow
-$colorTwo: #01b7c5; //cyan
-$colorThree: #a7b8c2; //gray
-$colorFour: #25252f; //black
-$colorFive: #cbcbce; //shade of white
-$colorRed: #c92114;
-
-$font-family-amatic: 'Amatic SC', cursive;
-$font-family-amatica: 'Amatica SC', cursive;
-$font-family-cabin-sketch: 'Cabin Sketch', cursive;
-$font-family-fredericka: 'Fredericka the Great', cursive;
+@import "partials/globals";
 
 * { box-sizing: border-box; }
 
@@ -21,12 +7,12 @@ $font-family-fredericka: 'Fredericka the Great', cursive;
 }
 
 .announcements-container {
-    border-right: 1px solid #ccc;
+    border-right: 1px solid $colorThree;
     
 }
 
 .announcements-panel {
-    border: 1px solid red;
+    border: 1px solid $colorOne;
 
 }
 
@@ -42,7 +28,7 @@ $font-family-fredericka: 'Fredericka the Great', cursive;
 
 .resource-head-title {
     font-family: $font-family-amatica;
-    color: $colorRed !important;
+    color: $colorFour !important;
     font-weight: 900;
     font-size: 2em;
 }
@@ -67,12 +53,12 @@ $font-family-fredericka: 'Fredericka the Great', cursive;
 }
 
 .heading-color-four {
-    color: #fff !important;
+    color: $colorFive !important;
     background-color: $colorFour !important;
 }
 
 .heading-color-five {
-    background-color: $colorFive !important;
+    background-color: $colorSix !important;
 }
 
 .resource-image {

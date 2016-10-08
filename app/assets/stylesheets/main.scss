@@ -14,7 +14,7 @@ body {
 }
 
 .navbar-inverse .navbar-brand {
-  color: $color-cyan;
+  color: $colorTwo;
 }
 
 .navbar {
@@ -34,8 +34,9 @@ img {
 }
 
 .container {
-  background-color: #fafafa;
-  padding: .99rem;
+  background-color: $colorFive;
+  Padding: .99rem;
+  width: 95%;
 }
 
 
