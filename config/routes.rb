@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'calendar/show'
+
   # get 'changepasswords/edit'
 
   # get 'changepasswords/udpate_password'
@@ -71,6 +73,9 @@ Rails.application.routes.draw do
 
   resources :announcements
   resources :resources
+
+  resource :calendar, only: [:show], controller: :calendar
+
   # get '/students' => 'students#index'
   # post '/students' => 'students#create'
   # get '/students/:id' => 'students#show'
