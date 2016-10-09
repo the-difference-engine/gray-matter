@@ -2,7 +2,7 @@ class ResourcesController < ApplicationController
   before_filter :authenticate_user!
 
   def new
-    # @resource = Resource.new
+    @resource = Resource.new
   end
 
   def create
@@ -45,12 +45,6 @@ class ResourcesController < ApplicationController
       flash[:error] = 'Resource was NOT Removed'
       redirect_to admins_path
     end
-  end
-
-  def index
-  end
-
-  def show
   end
 
   private

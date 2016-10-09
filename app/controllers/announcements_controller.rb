@@ -47,12 +47,6 @@ class AnnouncementsController < ApplicationController
     end
   end
 
-  def index
-  end
-
-  def show
-  end
-
   private
 
   def announcement_params
