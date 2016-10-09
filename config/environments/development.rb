@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.paperclip_defaults = {
     :storage => :s3,
-    :path => ":id/avatar/:style.:extension",
+    :path => "graymatter/:id/avatar/:style.:extension",
     :bucket => "yourresumephoto",
     :default_url => "http://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg",
     :s3_region => ENV["AWS_REGION"],
