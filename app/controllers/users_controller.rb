@@ -8,6 +8,7 @@ class UsersController < ApplicationController
                      "heading-color-three",
                      "heading-color-four",
                      "heading-color-five"]
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = current_user.role.capitalize
