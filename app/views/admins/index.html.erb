@@ -12,6 +12,7 @@
         <li role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Administrators</a></li>
         <li role="presentation"><a href="#announcements" aria-controls="announcements" role="tab" data-toggle="tab">Announcements</a></li>
         <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
+        <li role="presentation"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Add Events</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -185,6 +186,9 @@
             </div>
             </section>
         </div>
+        <div role="tabpanel" class="tab-pane" id="events">
+            <%= render 'partials/events' %>
+        </div>
     </div>
 </div>
 
@@ -202,4 +206,9 @@
 <!-- Add Resource Modal -->
 <div class="modal fade" id="addResource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render 'partials/add_resource' %>
+</div>
+
+<!-- Add Event Modal -->
+<div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_event' %>
 </div>

@@ -1,0 +1,63 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+  <%= form_for @event do |form| %>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 class="modal-title">Add a Event</h4>
+    </div>
+    <div class="modal-body">
+        <% if @event.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+                <ul>
+                    <% @event.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div>
+            <%= form.label :title %>
+            <%= form.text_field :title %>
+        </div>
+        <div>
+            <%= form.label :description, 'Description' %>
+            <%= form.text_field :description %>
+        </div>
+        <div>
+            <!-- TODO this doesn't work below, I think I am missing the gem -->
+            <%#= input :date, as: :string, :the_date => { :id => "datepicker" } %>
+            <%#= input :datetime, as: :string, :the_date => { :id => "datetimepicker" } %>
+        </div>
+        <div>
+            <%#= form.label :the_date, 'Date' %>
+            <%#= form.date_select :the_date %>
+        </div>
+        <div>
+            <%= date_field(:event, :the_date) %>
+        </div>
+        <div>
+            <%= time_field(:event, :start_time) %>
+        </div>
+        <div>
+            <%= time_field(:event, :end_time) %>
+        </div>
+        <div>
+            <%#= form.label :start_time, 'start time' %>
+            <%#= form.time_select :start_time %>
+        </div>
+        <div>
+            <%#= form.label :end_time, 'end time' %>
+            <%#= form.time_select :end_time %>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <%= form.submit 'Add Event', class: 'btn btn-primary pull-right' %>
+    </div>
+  <% end %>
+  </div>
+</div>
+<!-- <script type="text/javascript"> -->
+<!-- $('.datetimepicker').datetimepicker({}); -->
+<!-- </script> -->

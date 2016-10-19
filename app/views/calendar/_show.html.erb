@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12 text-center">
-        <div class="well controls">
+        <div class="month-arrow controls">
             <%= link_to authenticated_root_path(date: @date - 1.month), class: "btn btn-default" do %>
                 <i class="glyphicon glyphicon-backward"></i>
             <% end %>
@@ -13,8 +13,18 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <%= calendar @date do |date| %>
-            <%= date.day %>  
+        <%= calendar( @date ) do |date| %>
+            <%= date.day %>
+            <% if @events_by_date[date.in_time_zone] %>
+                <%#= binding.pry %>
+                <%= link_to 'Events', events_path(the_date: date, events:  @events_by_date[date.in_time_zone]) %>
+                <!-- <div><a data-toggle="modal" href="#showEvents">Events</a></div> -->
+            <% end %>
         <% end %>
     </div>
+</div>
+
+<!-- Show Events Modal -->
+<div class="modal fade" id="showEvents" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/show_events' %>
 </div>

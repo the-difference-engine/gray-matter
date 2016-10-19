@@ -30,8 +30,15 @@ class Calendar < Struct.new(:view, :date, :callback)
  
     def day_classes(day)
       classes = []
+      events = Event.all
+      events_by_date = events.group_by(&:the_date)
+      events.each do |date|
+        date.the_date = date.the_date.to_date
+      end
       classes << "today" if day == Date.today
       classes << "not-month" if day.month != date.month
+      classes << 'day-of-month'
+      classes << "event" if events_by_date[day.in_time_zone]
       classes.empty? ? nil : classes.join(" ")
     end
  

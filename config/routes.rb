@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :events
   get 'calendar/show'
 
   # get 'changepasswords/edit'
@@ -74,6 +73,7 @@ Rails.application.routes.draw do
 
   resources :announcements
   resources :resources
+  resources :events
 
   resource :calendar, only: [:show], controller: :calendar
 

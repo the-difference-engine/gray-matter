@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :get_events, only: [:index]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @home_url = authenticated_root_path
+    @profile_url = "#{current_user.role}/#{current_user.id}" 
+    @page_title = current_user.role.capitalize
+    @the_date = params["the_date"].to_date
   end
 
   # GET /events/1
@@ -24,11 +28,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    # date = Date.new event["the_date(1i)"].to_i, event["the_date(2i)"].to_i, event["the_date(3i)"].to_i
     @event = Event.new(event_params)
-
+    binding.pry
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to admins_path, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to admins_path, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -56,7 +61,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to admins_path, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +72,16 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
+    def get_events
+      ids = params["events"].map { |string_id| string_id.to_i }
+      @events = Event.where(id: ids)
+    end
+
+    def set_params(params)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :start_time, :end_time, :all_day)
+      params.require(:event).permit(:title, :description, :start_time, :end_time, :the_date, :all_day, :event_date)
     end
 end

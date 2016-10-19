@@ -1,6 +1,30 @@
-.p, ol, ul, td{
-    
-    height: 50px;
-    width: auto;
+@import "partials/globals";
+
+
+
+.calendar td {
+    /* height: 50px; */
+    /* width: auto; */
 }
 /* p, ol, ul, td */
+.month-arrow {
+    margin-bottom: 10px;
+}
+
+.today {
+    background-color: $colorOne;
+}
+
+.day-of-month {
+    padding: 3px !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.not-month {
+    background-color: $colorThree;
+}
+
+.event {
+    background-color: $colorTwo;
+}

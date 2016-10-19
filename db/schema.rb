@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009134721) do
+ActiveRecord::Schema.define(version: 20161013024335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20161009134721) do
     t.boolean  "all_day",     default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.datetime "the_date"
+    t.datetime "event_date"
   end
 
   create_table "groups", force: :cascade do |t|
