@@ -16,15 +16,8 @@
         <%= calendar( @date ) do |date| %>
             <%= date.day %>
             <% if @events_by_date[date.in_time_zone] %>
-                <%#= binding.pry %>
-                <%= link_to 'Events', events_path(the_date: date, events:  @events_by_date[date.in_time_zone]) %>
-                <!-- <div><a data-toggle="modal" href="#showEvents">Events</a></div> -->
+                <%= link_to 'Event', events_path(the_date: date, events:  @events_by_date[date.in_time_zone]) %>
             <% end %>
         <% end %>
     </div>
-</div>
-
-<!-- Show Events Modal -->
-<div class="modal fade" id="showEvents" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= render 'partials/show_events' %>
 </div>
