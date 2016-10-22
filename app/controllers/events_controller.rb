@@ -33,7 +33,6 @@ class EventsController < ApplicationController
   def create
     # date = Date.new event["the_date(1i)"].to_i, event["the_date(2i)"].to_i, event["the_date(3i)"].to_i
     @event = Event.new(event_params)
-    binding.pry
     respond_to do |format|
       if @event.save
         format.html { redirect_to admins_path, notice: 'Event was successfully created.' }

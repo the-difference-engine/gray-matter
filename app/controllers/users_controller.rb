@@ -19,9 +19,4 @@ class UsersController < ApplicationController
     @events_by_date = events.group_by(&:the_date)
   end
 
-  def fix_date(date)
-
-
-  end
-
 end

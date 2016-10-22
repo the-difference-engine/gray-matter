@@ -15,8 +15,10 @@
             <th>Event Title</th>
             <th>Event Description</th>
             <th>Event Day</th>
+            <th>All Day</th>
             <th>Start Time</th>
             <th>End Time</th>
+            <th>Actions</th>
           </tr>
           <% @events.each do |event|  %>
             <tr>
@@ -27,13 +29,18 @@
                 <%= event.description %>
               </td>
               <td>
-                <%= event.the_date %>
+                <%= event.start_time.strftime('%A, %B %d, %Y') %>
               </td>
               <td>
-                <%= event.start_time %>
+                <% if event.all_day %>
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                <% end %>
               </td>
               <td>
-                <%= event.end_time %>
+                <%= event.start_time.strftime('%I:%M %p') %>
+              </td>
+              <td>
+                <%= event.end_time.strftime('%I:%M %p') %>
               </td>
               <td>
                 <%= link_to "Edit", edit_event_path(event), class: 'btn btn-sm btn-primary' %>

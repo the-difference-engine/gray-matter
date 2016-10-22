@@ -15,7 +15,7 @@ class AdminsController < ApplicationController
     @mentors = User.where("role": 'mentors').order('created_at DESC')
     @announcements = Announcement.where(user_id: current_user.id).order('created_at DESC')
     @resources = Resource.where(user_id: current_user.id).order('created_at DESC')
-    @events = Event.all
+    @events = Event.all.order('start_time ASC')
     @groups = Group.all
     @home_url = authenticated_root_path
     @group_url = "/groups/#{@groups.name}"
