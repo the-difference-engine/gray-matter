@@ -1,6 +1,8 @@
 class AdminsController < ApplicationController
   before_filter :authenticate_user!
   before_action :restrict_access
+  # before_action :set_event, only: [:show, :edit, :update, :destroy]
+
 # TODO what happens if the user is NOT authenticated? ** this is good just change the flash message no sign up - and also make it fancey
 
 # TODO only admins can create anyone!
@@ -13,6 +15,7 @@ class AdminsController < ApplicationController
     @mentors = User.where("role": 'mentors').order('created_at DESC')
     @announcements = Announcement.where(user_id: current_user.id).order('created_at DESC')
     @resources = Resource.where(user_id: current_user.id).order('created_at DESC')
+    @events = Event.all.order('start_time ASC')
     @groups = Group.all
     @home_url = authenticated_root_path
     @group_url = "/groups/#{@groups.name}"
@@ -20,6 +23,7 @@ class AdminsController < ApplicationController
     @page_title = current_user.role.capitalize
     @announcement = Announcement.new #do I really need this?
     @resource = Resource.new
+    @event = Event.new
  end
 
   def show
@@ -114,6 +118,10 @@ class AdminsController < ApplicationController
   end
 
  private
+
+ def set_event
+   @event = Event.find(params[:id])
+ end
 
  def admin_params
    params.require(:admin).permit(:first_name, :last_name, :phone_number, :user_id, profile_attributes: [:body])

@@ -8,12 +8,15 @@ class UsersController < ApplicationController
                      "heading-color-three",
                      "heading-color-four",
                      "heading-color-five"]
+    @event_date = []
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = current_user.role.capitalize
     @announcements = Announcement.all.order('created_at DESC')
     @resources = Resource.all
-     
+    events = Event.all
+    @events_by_date = events.group_by(&:the_date)
   end
 
 end

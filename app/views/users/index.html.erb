@@ -27,11 +27,13 @@
             </div>
         </div>
         <div class="col-md-4">
+            <h1 class="calendar-title">Calendar</h1>
+            <%= render calendar_show_path %>
             <h1 class="announcements-title">Resources</h1>
             <% @resources.each do |resource| %>
-            <a href="<%= resource.link %>" target="_blank">
-            <div class="panel panel-default">
-                <div class="panel-heading resource-head-title"><%= image_tag("download.png", :alt => "Resource Icon", :class => "resource-image") %><%= resource.title %></div>
+                <a href="<%= resource.link %>" target="_blank">
+                    <div class="panel panel-default">
+                        <div class="panel-heading resource-head-title"><%= image_tag("download.png", :alt => "Resource Icon", :class => "resource-image") %><%= resource.title %></div>
 
                 <div class="panel-body">
                     <%= resource.description %>
