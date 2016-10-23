@@ -14,9 +14,11 @@
 <div class="row">
     <div class="col-md-12">
         <%= calendar( @date ) do |date| %>
-            <%= date.day %>
+            <%= date.day %><br />
             <% if @events_by_date[date.in_time_zone] %>
-                <%= link_to 'Event', events_path(the_date: date, events:  @events_by_date[date.in_time_zone]) %>
+                <div style="width: 100%; text-align: center; font-size: 25px">
+                  <%= link_to ("<i class='fa fa-star'></i>").html_safe, events_path(the_date: date, events:  @events_by_date[date.in_time_zone]) %>
+                </div>
             <% end %>
         <% end %>
     </div>
