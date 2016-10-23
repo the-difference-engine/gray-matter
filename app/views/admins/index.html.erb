@@ -1,28 +1,220 @@
-<div class="wordmark">Administration page</div>
-    <h2>Students</h2>
-<% @students.each do |student| %>
-    <ul>
-        <li>Email => <%= student.email %></li>
-      
+<div class="row">
+    <div class="col-md-12 add-user">
+        <span><a data-toggle="modal" href="#addUser" class="btn btn-primary pull-right">Add a User</a></span>
+    </div>
+</div>
+
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#student" aria-controls="home" role="tab" data-toggle="tab">Students</a></li>
+        <li role="presentation"><a href="#mentor" aria-controls="mentor" role="tab" data-toggle="tab">Mentors</a></li>
+        <li role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Administrators</a></li>
+        <li role="presentation"><a href="#announcements" aria-controls="announcements" role="tab" data-toggle="tab">Announcements</a></li>
+        <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
+        <li role="presentation"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Add Events</a></li>
     </ul>
-<% end %>
-<!-- <div class="container"> -->
-    <h2>Mentors</h2>
-<% @mentors.each do |mentor| %>
-    <ul>
-        <li>Email => <%= mentor.email %></li>
-    </ul>
-<% end %>
 
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="student">
+            <section class="student-table">
+                <h3>Students</h3>
+            <div class="content row">
+                <div class="col-md-12">
+                <% if @students.exists? %>
+                    <table class="table table-striped">
+                        <tr>
+                        <th>Student Email</th>
+                        <th>Date Created</th>
+                        <th>Student Name</th>
+                        <th>Actions</th>
+                        </tr>
+                        <% @students.each do |student|  %>
+                        <tr>
+                        <td><%= student.email %></td>
+                        <td><%= student.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+                        <td><%= student.students.empty? ? "N/A" : student.students[0].name %></td>
+                        <td><%= link_to "Delete", "/students/#{student.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this student' } %></td>
+                        </tr>
+                        <% end %>
+                    </table>
+                <% else %>
+                    <p>
+                        There are no students
+                    </p>
+                <% end %>
+                </div>
+            </div>
+            </section>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="mentor">
+            <section class="mentor-table">
+                <h3>Mentors</h3>
+            <div class="content row">
+                <div class="col-md-12">
+                <% if @mentors.exists? %>
+                    <table class="table table-striped">
+                        <tr>
+                        <th>Mentor Email</th>
+                        <th>Date Created</th>
+                        <th>Mentor Name</th>
+                        <th>Actions</th>
+                        </tr>
+                        <% @mentors.each do |mentor|  %>
+                        <tr>
+                        <td><%= mentor.email %></td>
+                        <td><%= mentor.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+                        <td><%= mentor.mentors.empty? ? "N/A" : mentor.mentors[0].name %></td>
+                        <td><%= link_to "Delete", "/mentors/#{mentor.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this mentor' } %></td>
+                        </tr>
+                        <% end %>
+                    </table>
+                <% else %>
+                    <p>
+                        There are no mentors
+                    </p>
+                <% end %>
+                </div>
+            </div>
+            </section>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="admin">
+            <section class="admin-table">
+                <h3>Administrators</h3>
+            <div class="content row">
+                <div class="col-md-12">
+                <% if @admins.exists? %>
+                    <table class="table table-striped">
+                        <tr>
+                        <th>Admins Email</th>
+                        <th>Date Created</th>
+                        <th>Admin Name</th>
+                        <th>Actions</th>
+                        </tr>
+                        <% @admins.each do |admin|  %>
+                        <tr>
+                        <td><%= admin.email %></td>
+                        <td><%= admin.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+                        <td><%= admin.admins.empty? ? "N/A" : admin.admins[0].name %></td>
+                        <td><%= link_to "Delete", "/admins/#{admin.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this mentor' } %></td>
+                        </tr>
+                        <% end %>
+                    </table>
+                <% else %>
+                    <p>
+                        There are no Administors
+                    </p>
+                <% end %>
+                </div>
+            </div>
+            </section>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="announcements">
+            <section class="announcements-table">
+                <div class="row">
+                    <div class="col-md-6">
+                      <h3>Announcements</h3>
+                    </div>
+                    <div class="col-md-6 add-announcement-button">
+                        <span class=""><a data-toggle="modal" href="#addAnnouncement" class="btn btn-primary pull-right">Add a Announcement</a></span>
+                    </div>
+                </div>
+            <div class="content row">
+                <div class="col-md-12">
+                <% if @announcements.exists? %>
+                    <table class="table table-striped">
+                        <tr>
+                        <th>Announcement Title</th>
+                        <th>Date Created</th>
+                        <th>Actions</th>
+                        </tr>
+                        <% @announcements.each do |announcement|  %>
+                        <tr>
+                        <td><%= announcement.title %></td>
+                        <td><%= announcement.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+                        <td><%= link_to "Edit", edit_announcement_path(announcement), class: 'btn btn-sm btn-primary' %> 
+<%= link_to "Delete", "/announcements/#{announcement.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this announcement?' } %></td>
+                        </tr>
+                        <% end %>
+                    </table>
+                <% else %>
+                    <p>
+                        There are no Announcements
+                    </p>
+                <% end %>
+                </div>
+            </div>
+            </section>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="resources">
+            <section class="resources-table">
+                <div class="row">
+                    <div class="col-md-6">
+                      <h3>Resources</h3>
+                    </div>
+                    <div class="col-md-6 add-resource-button">
+                        <span class=""><a data-toggle="modal" href="#addResource" class="btn btn-primary pull-right">Add a Resource</a></span>
+                    </div>
+                </div>
+            <div class="content row">
+                <div class="col-md-12">
+                <% if @resources.exists? %>
+                    <table class="table table-striped">
+                        <tr>
+                        <th>Resource Title</th>
+                        <th>Date Created</th>
+                        <th>Documents</th>
+                        <th>Actions</th>
+                        </tr>
+                        <% @resources.each do |resource|  %>
+                        <tr>
+                        <td><%= resource.title %></td>
+                        <td><%= resource.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+                        <td>
+                            <% if resource.document.url != 'http://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg' %>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= link_to "Edit", edit_resource_path(resource), class: 'btn btn-sm btn-primary' %> 
+                            <%= link_to "Delete", "/resources/#{resource.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this resource?' } %>
+                        </td>
+                        </tr>
+                        <% end %>
+                    </table>
+                <% else %>
+                    <p>
+                        There are no Resources
+                    </p>
+                <% end %>
+                </div>
+            </div>
+            </section>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="events">
+            <%= render 'partials/events' %>
+        </div>
+    </div>
+</div>
 
-<h2>Admins:</h2>
-<% if @admins %>
- <% @admins.each do |admin| %>
-   <ul>
-        <li>Email => <%= admin.email %></li>
-   </ul>
- <% end %>
-<% else %>
- <h3>There are no current admins</h3>
-<% end %>
+<!-- Modal logic below -->
+<!-- Add a User Modal -->
+<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_user' %>
+</div>
 
+<!-- Add Announcement Modal -->
+<div class="modal fade" id="addAnnouncement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_announcement' %>
+</div>
+
+<!-- Add Resource Modal -->
+<div class="modal fade" id="addResource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_resource' %>
+</div>
+
+<!-- Add Event Modal -->
+<div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render 'partials/add_event' %>
+</div>

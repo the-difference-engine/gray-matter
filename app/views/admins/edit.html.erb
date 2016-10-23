@@ -1,0 +1,31 @@
+<div class="container admin-form">
+    <%= form_for @admin do |form| %>
+        <% if @admin.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <ul>
+                    <% @admin.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div>
+            <%= form.label :first_name %>
+            <%= form.text_field :first_name %>
+        </div>
+        <div>
+            <%= form.label :last_name %>
+            <%= form.text_field :last_name %>
+        </div>
+        <div>
+            <%= form.label :phone_number %>
+            <%= form.text_field :phone_number %>
+        </div>
+<!-- The profile has been removed from admins, if needed copy from either mentor or student -->
+        <div class="actions">
+            <%= form.submit 'Save', class: 'btn btn-primary pull-right' %>
+            <%= link_to "Cancel", admin_path, class: 'btn btn-default pull-right' %>
+        </div>
+    <% end %>  
+</div>

@@ -1,7 +1,24 @@
-* { box-sizing: border-box; }
+@import "partials/globals";
+
+body {
+  background: url(asset-path( 'strange_bullseyes.png' ));
+  font-family: Avenir, 'Helvetica Neue', Arial, sans-serif;
+  margin: 2rem auto;
+  /*max-width: 40rem;*/
+  color: #333;
+  padding: 0 1rem;
+}
+
+.margin-top {
+    margin-top: 25px;
+}
 
 .navbar-inverse .navbar-brand {
-  color: #14BCC9;
+  color: $colorTwo;
+}
+
+.navbar {
+    margin-bottom: 0;
 }
 
 img { 
@@ -17,21 +34,14 @@ img {
 }
 
 .container {
-  background-color: #fafafa;
-  padding: .99rem;
+  background-color: $colorFive;
+  Padding: .99rem;
+  width: 95%;
 }
 
-body {
-  background: url(asset-path( 'strange_bullseyes.png' ));
-  font-family: Avenir, 'Helvetica Neue', Arial, sans-serif;
-  margin: 2rem auto;
-  /*max-width: 40rem;*/
-  color: #333;
-  padding: 0 1rem;
-}
 
 label {
-    width: 100px;
+    width: 175px;
 }
 
 #name {

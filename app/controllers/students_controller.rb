@@ -1,10 +1,12 @@
 class StudentsController < ApplicationController
+  before_filter :authenticate_user!
   # before_action :restrict_access
 
   def index
     @groups = Group.all
     @students = Student.all
-    @home_url = "#{current_user.role}"
+    @profiles = Profile.all
+    @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @group_url = "/groups/#{@groups.name}"
     @page_title = current_user.role.capitalize
@@ -15,13 +17,10 @@ class StudentsController < ApplicationController
    # @groups = [current_user.group]
    if @student.nil?
      redirect_to new_student_path
-   end
-   if @student.nil?
-     @profile_url = new_student_path
    else
      @profile_url = "#{current_user.id}"
    end
-   @home_url = students_path 
+   @home_url = authenticated_root_path
    @page_url = student_path
    @page_title = current_user.role.capitalize
  end
@@ -30,12 +29,13 @@ class StudentsController < ApplicationController
    @student = Student.new
    @student.build_profile
    @page_title = 'Create My Profile'
-   # @page_url = '/'
-   # @profile_url = '/'
+   @home_url = authenticated_root_path
+   @profile_url = "#{current_user.id}"
  end
 
  def create
    params[:student][:user_id] = current_user.id
+   params[:student][:contact_email] = current_user.email
    @student = Student.new(student_params)
    if @student.save
      redirect_to "/students/#{current_user.id}"
@@ -72,15 +72,26 @@ class StudentsController < ApplicationController
  end
 
  def destroy
-   @student = Student.find_by(id: params[:id])
-   @admin.destroy
-   redirect_to "/students"
+   user = User.find_by_id(params[:id])
+   student = Student.find_by_user_id(params[:id])
+
+   if student.present?
+     student.destroy
+   end
+   
+   if user.destroy
+     flash[:success] = 'Student Removed'
+     redirect_to admins_path
+   else
+     flash[:error] = 'Student was NOT Removed'
+     redirect_to admins_path
+   end
  end
  
  private
 
  def student_params
-   params.require(:student).permit(:gender, :school, :grade, :first_name, :last_name, :phone_number, :user_id, profile_attributes: [:body])
+   params.require(:student).permit(:gender, :school, :grade, :first_name, :last_name, :phone_number, :contact_email, :user_id, profile_attributes: [:id, :body, :avatar, :student_id])
  end
  # Everyone can have access to student
  # def restrict_access

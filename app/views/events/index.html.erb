@@ -1,0 +1,41 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Events for <%= @the_date.strftime('%A, %B %d, %Y') %></h4>
+    </div>
+    <div class="modal-body">
+        <table style="width: 100%">
+        <thead>
+            <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>All day</th>
+            <th>Attachments</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @events.each do |event| %>
+            <tr>
+                <td><%= event.title %></td>
+                <td><%= event.description %></td>
+                <td><%= event.start_time.strftime('%I:%M %p') %></td>
+                <td><%= event.end_time.strftime('%I:%M %p') %></td>
+                <td><%= event.all_day ? "Yes" : "No" %></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="<%= event.document.url %>" target="_blank">Document</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+

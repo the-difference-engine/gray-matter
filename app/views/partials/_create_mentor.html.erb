@@ -4,42 +4,44 @@
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h4 class="modal-title">Add a Mentor</h4>
     </div>
+    <div class="row">
+        
+    </div>
     <div class="modal-body">
-
-  <%= form_tag '/mentors', method: :post do %>
-    <div>
-      <%= label_tag :first_name %> 
-      <%= text_field_tag :first_name %>
-    </div>
-    <div>
-      <%= label_tag :last_name %> 
-      <%= text_field_tag :last_name %>
-    </div>
-    <div>
-      <%= label_tag :phone_number %> 
-      <%= text_field_tag :phone_number %>
-    </div>
-    <div>
-      <%= label_tag :contact_email %> 
-      <%= text_field_tag :contact_email %>
-    </div>
-    <div>
-      <%= label_tag :company %> 
-      <%= text_field_tag :company %>
-    </div>
-    <div>
-      <%= label_tag :industry %> 
-      <%= text_field_tag :industry %>
-    </div>
-    <div>
-      <%= label_tag :website %> 
-      <%= text_field_tag :website %>
-    </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <%= submit_tag "Add Mentor", class: "btn btn-primary" %>
-  <% end %>
+        <%= form_tag '/mentors', method: :post do %>
+            <div>
+            <%= label_tag :first_name %> 
+            <%= text_field_tag :first_name %>
+            </div>
+            <div>
+            <%= label_tag :last_name %> 
+            <%= text_field_tag :last_name %>
+            </div>
+            <div>
+            <%= label_tag :phone_number %> 
+            <%= text_field_tag :phone_number %>
+            </div>
+            <div>
+            <%= label_tag :contact_email %> 
+            <%= text_field_tag :contact_email %>
+            </div>
+            <div>
+            <%= label_tag :company %> 
+            <%= text_field_tag :company %>
+            </div>
+            <div>
+            <%= label_tag :industry %> 
+            <%= text_field_tag :industry %>
+            </div>
+            <div>
+            <%= label_tag :website %> 
+            <%= text_field_tag :website %>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= submit_tag "Add Mentor", class: "btn btn-primary" %>
+        <% end %>
     </div>
   </div>
   <!-- /.modal-content -->
