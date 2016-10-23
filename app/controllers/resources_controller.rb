@@ -50,7 +50,7 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:title, :link, :description, :user_id)
+    params.require(:resource).permit(:document, :title, :link, :description, :user_id)
   end
 
 end

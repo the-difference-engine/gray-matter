@@ -164,12 +164,18 @@
                         <tr>
                         <th>Resource Title</th>
                         <th>Date Created</th>
+                        <th>Documents</th>
                         <th>Actions</th>
                         </tr>
                         <% @resources.each do |resource|  %>
                         <tr>
                         <td><%= resource.title %></td>
                         <td><%= resource.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+                        <td>
+                            <% if resource.document.url != 'http://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg' %>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <% end %>
+                        </td>
                         <td>
                             <%= link_to "Edit", edit_resource_path(resource), class: 'btn btn-sm btn-primary' %> 
                             <%= link_to "Delete", "/resources/#{resource.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this resource?' } %>
