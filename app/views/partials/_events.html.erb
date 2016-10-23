@@ -16,6 +16,7 @@
             <th>Event Description</th>
             <th>Event Day</th>
             <th>All Day</th>
+            <th>Document</th>
             <th>Start Time</th>
             <th>End Time</th>
             <th>Actions</th>
@@ -31,8 +32,13 @@
               <td>
                 <%= event.the_date.strftime('%A, %B %d, %Y') %>
               </td>
-              <td>
+              <td style="text-align: center">
                 <% if event.all_day %>
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                <% end %>
+              </td>
+              <td style="text-align: center">
+                <% if event.document.url != 'http://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg' %>
                   <i class="fa fa-check" aria-hidden="true"></i>
                 <% end %>
               </td>

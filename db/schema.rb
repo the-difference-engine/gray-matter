@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013024335) do
+ActiveRecord::Schema.define(version: 20161023224952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,11 +39,15 @@ ActiveRecord::Schema.define(version: 20161013024335) do
     t.text     "description"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.boolean  "all_day",     default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "all_day",               default: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.datetime "the_date"
     t.datetime "event_date"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -87,8 +91,12 @@ ActiveRecord::Schema.define(version: 20161013024335) do
     t.string   "link"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "students", force: :cascade do |t|

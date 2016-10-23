@@ -41,10 +41,14 @@
                     <%= form.label 'Select a ending time' %>
                     <%= time_field(:event, :end_time) %>
                 </div>
+                <div>
+                    <%= form.label 'Upload a document' %>
+                    <%= form.file_field :document %>
+                </div>
             </Div>
             <div class="modal-footer">
                 <%= link_to 'Back', admins_path, class: 'btn btn-default' %>
-                <%= form.submit 'Add Event', class: 'btn btn-primary pull-right' %>
+                <%= form.submit 'Edit Event', class: 'btn btn-primary pull-right' %>
             </div>
         <% end %>
     </div>

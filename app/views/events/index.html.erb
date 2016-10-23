@@ -1,4 +1,4 @@
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg">
   <div class="modal-content">
     <div class="modal-header">
       <h4 class="modal-title">Events for <%= @the_date.strftime('%A, %B %d, %Y') %></h4>
@@ -12,6 +12,7 @@
             <th>Start time</th>
             <th>End time</th>
             <th>All day</th>
+            <th>Attachments</th>
             </tr>
         </thead>
 
@@ -23,6 +24,13 @@
                 <td><%= event.start_time.strftime('%I:%M %p') %></td>
                 <td><%= event.end_time.strftime('%I:%M %p') %></td>
                 <td><%= event.all_day ? "Yes" : "No" %></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="<%= event.document.url %>" target="_blank">Document</a>
+                        </li>
+                    </ul>
+                </td>
             </tr>
             <% end %>
         </tbody>
