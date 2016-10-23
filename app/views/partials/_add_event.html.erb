@@ -42,6 +42,10 @@
                     <%= form.label 'Select a ending time' %>
                     <%= time_field(:event, :end_time) %>
                 </div>
+                <div>
+                    <%= form.label 'Upload a document' %>
+                    <%= form.file_field :document %>
+                </div>
             </Div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
