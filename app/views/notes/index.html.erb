@@ -4,6 +4,7 @@
             <hr/>
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
+                <% if @notes.present? %>
                 <% @notes.each do |note| %>
                 <div class="panel panel-default panel-size">
                     <div class="panel-heading message-head-title">
@@ -38,6 +39,9 @@
                 <% end %>
               </div>
             </div>
+            <% else %>
+            No messages yet
+            <% end %>
 
 <%= render 'new' %>
 
