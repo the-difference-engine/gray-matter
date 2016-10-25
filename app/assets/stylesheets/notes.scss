@@ -1,0 +1,17 @@
+@import "partials/globals";
+
+.notes-box {
+    width: 100%;
+    border-color: $colorTwo;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+
+.message-head-title {
+    font-family: $font-family-amatica;
+    color: $colorFour !important;
+    font-weight: 900;
+    font-size: 1.4em;
+    border-bottom: 1px solid $colorTwo;
+}
