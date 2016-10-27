@@ -83,7 +83,7 @@ Rails.application.configure do
     :storage => :s3,
     :path => "graymatter/:id/avatar/:style.:extension",
     :bucket => "yourresumephoto",
-    :default_url => "http://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg",
+    :default_url => "https://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg",
     :s3_region => ENV["AWS_REGION"],
     :s3_credentials => {
       :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
