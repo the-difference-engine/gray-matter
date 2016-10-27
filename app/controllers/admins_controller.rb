@@ -130,7 +130,7 @@ class AdminsController < ApplicationController
  # TODO need to un-comment this above at the head this throws an error
  def restrict_access
    if !current_user.admin?
-     flash[:success] = "You do not have access to this page"
+     flash[:success] = "you do not have access to this page"
      redirect_to '/'
    end
  end

@@ -74,6 +74,7 @@ Rails.application.routes.draw do
   resources :announcements
   resources :resources
   resources :events
+  resources :notes
 
   resource :calendar, only: [:show], controller: :calendar
 

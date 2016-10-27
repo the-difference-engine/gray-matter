@@ -19,6 +19,7 @@ class Student < ActiveRecord::Base
   belongs_to :user
   has_one :profile
   has_one :group
+  has_many :notes
   accepts_nested_attributes_for :profile, allow_destroy: true
 
   def name
