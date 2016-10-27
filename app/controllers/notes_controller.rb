@@ -42,7 +42,6 @@ class NotesController < ApplicationController
   def create
     params[:note][:student_id] = @current_student.id
     @note = Note.new(note_params)
-    @note.studentname = @current_student
 
     respond_to do |format|
       if @note.save
