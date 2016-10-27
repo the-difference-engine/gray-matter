@@ -24,11 +24,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
-  has_many :mentors, :dependent => :destroy 
+  has_many :mentors, :dependent => :destroy
   has_many :students, :dependent => :destroy
   has_many :admins, :dependent => :destroy
   has_many :announcements
   has_many :resources
+
+  EMAIL_REXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates :email, presence: true, format: { with: EMAIL_REXP, message: "is not a valid email address" }
 
   USER_ROLES = {
                 admins: 'Admin',

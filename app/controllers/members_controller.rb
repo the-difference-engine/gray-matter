@@ -16,7 +16,7 @@ class MembersController < ApplicationController
         flash[:success] = "A New #{@user.role} has been added"
       else
         redirect_to admins_path
-        flash[:danger] = "Something went wrong"
+        flash[:danger] = "#{@user.email}, #{@user.errors.messages[:email][1]}"
       end
     else
       redirect_to admins_path

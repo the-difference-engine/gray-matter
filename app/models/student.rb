@@ -21,6 +21,9 @@ class Student < ActiveRecord::Base
   has_one :group
   has_many :notes
   accepts_nested_attributes_for :profile, allow_destroy: true
+  validates_presence_of :school, :grade, :gender, :first_name, :last_name
+
+  validates :phone_number, presence: true, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format" }
 
   def name
     "#{self.first_name} #{self.last_name}"

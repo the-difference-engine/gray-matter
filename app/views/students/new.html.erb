@@ -14,31 +14,31 @@
                 <% end %>
         <div>
             <%= form.label :first_name %>
-            <%= form.text_field :first_name %>
+            <%= form.text_field :first_name, placeholder: "Name" %>
         </div>
         <div>
             <%= form.label :last_name %>
-            <%= form.text_field :last_name %>
+            <%= form.text_field :last_name, placeholder: "Name" %>
         </div>
         <div>
             <%= form.label :phone_number %>
-            <%= form.text_field :phone_number %>
+            <%= form.text_field :phone_number, placeholder: "123-123-1234" %>
         </div>
         <div>
             <%= form.label :gender %>
-            <%= form.text_field :gender %>
+            <%= form.text_field :gender, placeholder: "Female / Male" %>
         </div>
         <div>
             <%= form.label :school %>
-            <%= form.text_field :school %>
+            <%= form.text_field :school, placeholder: "Name of your School" %>
         </div>
         <div>
             <%= form.label :grade %>
-            <%= form.text_field :grade %>
+            <%= form.text_field :grade, placeholder: "What grade" %>
         </div>
         <%= form.fields_for :profile do |builder| %>
             <%= builder.label :body, 'About Me' %>
-            <%= builder.text_area :body, rows: "6", cols: "75" %>
+            <%= builder.text_area :body, rows: "6", cols: "75", placeholder: "Tells us something about yourself." %>
         </div>
         <div class="col-md-4">
                 <div>
