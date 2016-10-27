@@ -26,9 +26,7 @@
                       <% if current_user && current_user.student? || current_user.mentor? || current_user.admin? %>
                         <li><%= link_to 'Slack', "https://www.slack.com", target: '_blank'  %></li>
                       <% end %>
-                      <% if current_user && current_user.student? || current_user.admin? %>
                         <li><%= link_to 'Student Notes', notes_path %></li>
-                      <% end %>
                       <% if current_user && current_user.admin? %>
                         <li><%= link_to 'Administration Dashboard', admins_path %></li>
                       <% end %>

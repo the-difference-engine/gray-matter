@@ -1,3 +1,3 @@
 class Note < ActiveRecord::Base
-  has_one :student
+  belongs_to :student
 end
