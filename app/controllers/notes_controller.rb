@@ -18,11 +18,6 @@ class NotesController < ApplicationController
   end
 
 
-  def get_student_name(note)
-    binding.pry
-
-  end
-
   # GET /notes/1
   # GET /notes/1.json
   def show
@@ -85,7 +80,12 @@ class NotesController < ApplicationController
     end
 
     def set_current_student
-      @current_student = Student.find_by_user_id(current_user.id)
+      if Student.find_by_user_id(current_user.id).nil?
+        redirect_to new_student_path
+        flash[:success] = "Please crete your profile"
+      else
+        @current_student = Student.find_by_user_id(current_user.id)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
