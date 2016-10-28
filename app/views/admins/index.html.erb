@@ -172,7 +172,7 @@
                         <td><%= resource.title %></td>
                         <td><%= resource.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
                         <td>
-                            <% if resource.document.url != 'https://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg' %>
+                            <% if resource.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
                             <i class="fa fa-check" aria-hidden="true"></i>
                             <% end %>
                         </td>
