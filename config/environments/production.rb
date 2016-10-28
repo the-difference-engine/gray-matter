@@ -64,9 +64,9 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { host: 'https://qa-gray-matter.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'https://production-gray-matter.herokuapp.com/' }
 
-  config.action_mailer.asset_host = 'https://qa-gray-matter.herokuapp.com/'
+  config.action_mailer.asset_host = 'https://production-gray-matter.herokuapp.com/'
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -82,9 +82,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :path => "graymatter/:id/avatar/:style.:extension",
-    :bucket => "yourresumephoto",
-    :default_url => "https://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg",
-    :s3_region => ENV["AWS_REGION"],
+    :bucket => "graymatterapplication",
+    :s3_host_name => "s3-us-west-2.amazonaws.com",
+    :default_url => "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg",
+    :s3_region => "us-west-2",
     :s3_credentials => {
       :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
