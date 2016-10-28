@@ -3,6 +3,7 @@
 
 <head>
   <title>GrayMatter</title>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Amatica+SC|Cabin+Sketch|Fredericka+the+Great" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -19,7 +20,9 @@
   <div id="flash">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>">
-        <%= value %>
+        <% if key != "timedout" %>
+            <%= value %>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -27,12 +30,12 @@
   <%= yield %>
 
     <script>
-      $(document).ready(function() {
-        setTimeout(function() {
-          $('#flash').remove();
-        }, 5000);
-      })
+     $(document).ready(function() {
+         setTimeout(function() {
+             $('#flash').remove();
+         }, 5000);
+     })
     </script>
-</body>
+</Body>
 
 </html>

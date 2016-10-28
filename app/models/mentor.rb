@@ -19,9 +19,13 @@ class Mentor < ActiveRecord::Base
   belongs_to :user
   has_one :profile
   has_one :group
-  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :profile, allow_destroy: true
+
+  validates_presence_of :company, :industry, :website, :first_name, :last_name 
+  validates :phone_number, presence: true, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format" }
 
   def name
     "#{self.first_name} #{self.last_name}"
   end
+
 end

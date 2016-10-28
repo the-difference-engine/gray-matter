@@ -1,3 +1,72 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "partials/globals";
+
+* { box-sizing: border-box; }
+
+.content-container {
+    margin-top: 25px;
+}
+
+.announcements-container {
+    border-right: 1px solid $colorThree;
+    
+}
+
+.announcements-panel {
+    border: 1px solid $colorOne;
+
+}
+
+.announcements-head {
+    font-size: 2em;
+}
+
+.announcements-head-title {
+    font-family: $font-family-amatica;
+    font-weight: 900;
+    font-size: 1em;
+}
+
+.resource-head-title {
+    font-family: $font-family-amatica;
+    color: $colorFour !important;
+    font-weight: 900;
+    font-size: 2em;
+    border-bottom: 1px solid $colorTwo;
+}
+
+.announcements-title {
+    font-family: $font-family-fredericka;
+}
+
+.calendar-title {
+    font-family: $font-family-fredericka;
+}
+
+.panel-default > .panel-heading {
+}
+
+.heading-color-one {
+    background-color: $colorOne !important;
+}
+
+.heading-color-two {
+    background-color: $colorTwo !important;
+}
+
+.heading-color-three {
+    background-color: $colorThree !important;
+}
+
+.heading-color-four {
+    color: $colorFive !important;
+    background-color: $colorFour !important;
+}
+
+.heading-color-five {
+    background-color: $colorSix !important;
+}
+
+.resource-image {
+    width: 50px;
+    padding-right: 10px;
+}

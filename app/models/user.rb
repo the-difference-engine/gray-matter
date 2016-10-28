@@ -16,22 +16,27 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string
+#  has_logged_in          :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
-  has_many :mentors
-  has_many :students
-  has_many :admins
+  has_many :mentors, :dependent => :destroy
+  has_many :students, :dependent => :destroy
+  has_many :admins, :dependent => :destroy
+  has_many :announcements
+  has_many :resources
+
+  EMAIL_REXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates :email, presence: true, format: { with: EMAIL_REXP, message: "is not a valid email address" }
 
   USER_ROLES = {
-                admin: 'Administration',
-                mentor: 'Mentor',
-                student: 'Student'
+                admins: 'Admin',
+                mentors: 'Mentor',
+                students: 'Student'
                 }
 
   # TODO do this do anyrthing?
@@ -47,8 +52,13 @@ class User < ActiveRecord::Base
     self.role == 'students'
   end
 
+# TODO this should be named something diff bc it has two diff roles (display_role)
   def page_title
     return USER_ROLES[self.role.to_sym]
+  end
+
+  def logged_in_count
+    self.has_logged_in == false
   end
 
 end

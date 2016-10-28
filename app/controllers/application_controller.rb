@@ -1,26 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  private
 
-  protected
-
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:role, :email, :password) }
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:role, :email, :password, :current_password) }
-    end
-
-  def after_sign_in_path_for(resource)
-    if current_user.role.present?
-      if current_user.role == 'students'
-        students_path
-      elsif current_user.role == 'mentors'
-        mentors_path
-      elsif current_user.role == 'admins'
-        admins_path
-      end
-    else
-      # route back to sign up with an flash alert
+  def first_logged_in?
+    if !current_user.has_logged_in
+      redirect_to change_password_path 
     end
   end
 end

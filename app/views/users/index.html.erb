@@ -1,1 +1,57 @@
-<h1>Landing page for ALL users</h1>
+<div class="container content-container">
+    <div class="row">
+        <div class="col-md-8 announcements-container">
+            <h1 class="announcements-title">Announcements</h1>
+            <div class="row">
+                    <% @announcements.each do |announcement| %>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading announcements-head <%= @header_styles.sample %>"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<span class="announcements-head-title"><%= announcement.title %></span></div>
+                            <div class="panel-body">
+                                <%= announcement.body %>
+                            </div>
+                            <div class="panel-footer announcements-footer">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        by: <%= announcement.user.admins[0].nil? ? "N/A" : announcement.user.admins[0].name %>
+                                    </div>
+                                    <div class="col-sm-6 pull-right">
+                                      <%= announcement.created_at.to_time.strftime('%m/%d/%Y at %l:%M %p') %>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h1 class="calendar-title">Calendar</h1>
+            <%= render calendar_show_path %>
+            <h1 class="announcements-title">Resources</h1>
+            <% @resources.each do |resource| %>
+              <div class="panel panel-default">
+                <a href="<%= resource.link %>" target="_blank">
+                  <div class="panel-heading resource-head-title">
+                    <%= image_tag("download.png", :alt => "Resource Icon", :class => "resource-image") %><%= resource.title %>
+                  </div>
+                </a>
+                <div class="panel-body">
+                    <%= resource.description %>
+                        <% if resource.document.url != 'https://s3.amazonaws.com/yourresumephoto/default/generic-avatar.jpg' %>
+                            <ul>
+                                <li>
+                                <a href="<%= resource.document.url %>" target="_blank">Document</a>
+                                </li>
+                            </ul>
+                        <% end %>
+                </div><!-- end of the panel body -->
+
+              </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+

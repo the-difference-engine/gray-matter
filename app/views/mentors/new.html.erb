@@ -1,45 +1,55 @@
 <div class="container">
-    <%= form_for @mentor do |form| %>
-        <% if @mentor.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(@mentor.errors.count, "error") %> prohibited this user from being saved:</h2>
-                <ul>
-                    <% @mentor.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-        <div>
-            <%= form.label :first_name %>
-            <%= form.text_field :first_name %>
+    <%= form_for @mentor, html: { multipart: true } do |form| %>
+    <div class="row">
+        <div class="col-md-8" style="border-right: 1px solid #ccc">
+                <% if @mentor.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@mentor.errors.count, "error") %> prohibited this user from being saved:</h2>
+                        <ul>
+                            <% @mentor.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+                <div>
+                    <%= form.label :first_name %>
+                    <%= form.text_field :first_name %>
+                </div>
+                <div>
+                    <%= form.label :last_name %>
+                    <%= form.text_field :last_name %>
+                </div>
+                <div>
+                    <%= form.label :phone_number %>
+                    <%= form.text_field :phone_number %>
+                </div>
+                <div>
+                    <%= form.label :company %>
+                    <%= form.text_field :company %>
+                </div>
+                <div>
+                    <%= form.label :industry %>
+                    <%= form.text_field :industry %>
+                </div>
+                <div>
+                    <%= form.label :website %>
+                    <%= form.text_field :website %>
+                </div>
+                <%= form.fields_for :profile do |builder| %>
+                    <%= builder.label :body, 'About Me' %>
+                    <%= builder.text_area :body, rows: "6", cols: "75" %>
         </div>
-        <div>
-            <%= form.label :last_name %>
-            <%= form.text_field :last_name %>
+        <div class="col-md-4">
+                <div>
+                    <h2>Upload a Avatar</h2>
+                    <%= builder.file_field :avatar %>
+                </div>
+                <% end %>
         </div>
-        <div>
-            <%= form.label :phone_number %>
-            <%= form.text_field :phone_number %>
-        </div>
-        <div>
-            <%= form.label :company %>
-            <%= form.text_field :company %>
-        </div>
-        <div>
-            <%= form.label :industry %>
-            <%= form.text_field :industry %>
-        </div>
-        <div>
-            <%= form.label :website %>
-            <%= form.text_field :website %>
-        </div>
-        <%= form.fields_for :profile do |builder| %>
-            <%= builder.label :body, 'About Me' %>
-            <%= builder.text_area :body, rows: "6", cols: "75" %>
-        <% end %>
-        <div class="actions">
+        <div class="actions col-md-12">
             <%= form.submit 'Add Profile', class: 'btn btn-primary pull-right' %>
         </div>
+    </div>
     <% end %>  
 </div>
