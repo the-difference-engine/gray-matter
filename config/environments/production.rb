@@ -84,7 +84,7 @@ Rails.application.configure do
     :path => "graymatter/:id/avatar/:style.:extension",
     :bucket => "graymatterapplication",
     :default_url => "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg",
-    :s3_region => ENV["AWS_REGION"],
+    :s3_region => "s3-us-west-2",
     :s3_credentials => {
       :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
