@@ -82,7 +82,7 @@ class NotesController < ApplicationController
     def set_current_student
       if Student.find_by_user_id(current_user.id).nil?
         redirect_to new_student_path
-        flash[:success] = "Please crete your profile"
+        flash[:success] = "Please create your profile"
       else
         @current_student = Student.find_by_user_id(current_user.id)
       end
