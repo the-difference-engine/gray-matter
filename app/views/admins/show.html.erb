@@ -3,7 +3,7 @@
     <main>
       <section id="about">
         <figure class="about-fig">
-          <%= image_tag 'http://simplerev.com/wp-content/uploads/Generic-Avatar.jpg', class: 'profile-pic' %>
+          <%= image_tag 'https://simplerev.com/wp-content/uploads/Generic-Avatar.jpg', class: 'profile-pic' %>
             <h4 class="wordmark"><%= current_user.role %> (Group Name)</h4>
             <h5 class="info"><a href="mailto:<%= current_user.email %>" target="_top"><%= current_user.email %></a></h5>
           <h5 class="info"><%= number_to_phone( @admin.phone_number, area_code: true ) %> </h5>

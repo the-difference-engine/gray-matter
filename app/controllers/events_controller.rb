@@ -31,8 +31,9 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    # date = Date.new event["the_date(1i)"].to_i, event["the_date(2i)"].to_i, event["the_date(3i)"].to_i
+    binding.pry
     @event = Event.new(event_params)
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to admins_path, notice: 'Event was successfully created.' }
