@@ -13,7 +13,7 @@ class NotesController < ApplicationController
     @notes = Note.all
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
-    @page_title = current_user.role.capitalize
+    @page_title = "Home"
     @note = Note.new
   end
 

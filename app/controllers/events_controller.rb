@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def index
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
-    @page_title = current_user.role.capitalize
+    @page_title = "Home"
     @the_date = params["the_date"].to_date
   end
 
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   def edit
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
-    @page_title = current_user.role.capitalize
+    @page_title = "Home"
   end
 
   # POST /events

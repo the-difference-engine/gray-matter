@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
-    @page_title = current_user.role.capitalize
+    @page_title = "Home"
     @announcements = Announcement.all.order('created_at DESC')
     @resources = Resource.all
     events = Event.all

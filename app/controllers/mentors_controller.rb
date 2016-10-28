@@ -9,7 +9,7 @@ class MentorsController < ApplicationController
    @home_url = authenticated_root_path
    @profile_url = "#{current_user.role}/#{current_user.id}" 
    @group_url = "/groups/#{@groups.name}"
-   @page_title = current_user.role.capitalize
+   @page_title = "Home"
  end
 
  def show
@@ -22,7 +22,7 @@ class MentorsController < ApplicationController
    end
    @home_url = authenticated_root_path
    @page_url = mentor_path
-   @page_title = current_user.role.capitalize
+   @page_title = "Home"
  end
 
  def new

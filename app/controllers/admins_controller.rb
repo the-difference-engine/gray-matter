@@ -20,7 +20,7 @@ class AdminsController < ApplicationController
     @home_url = authenticated_root_path
     @group_url = "/groups/#{@groups.name}"
     @profile_url = "/admins/#{current_user.id}"
-    @page_title = current_user.role.capitalize
+    @page_title = "Home"
     @announcement = Announcement.new #do I really need this?
     @resource = Resource.new
     @event = Event.new
@@ -39,7 +39,7 @@ class AdminsController < ApplicationController
     end
     @home_url = authenticated_root_path
     @page_url = admin_path
-    @page_title = current_user.role.capitalize
+    @page_title = "Home"
   end
 
  # def create
