@@ -38,7 +38,8 @@
             <% else %>
             No messages yet
             <% end %>
-
-<%= render 'new' %>
+    <% if current_user.student? %>
+      <%= render 'new' %>
+    <% end %>
 
 </div>

@@ -80,11 +80,14 @@ class NotesController < ApplicationController
     end
 
     def set_current_student
-      if Student.find_by_user_id(current_user.id).nil?
-        redirect_to new_student_path
-        flash[:success] = "Please create your profile"
-      else
-        @current_student = Student.find_by_user_id(current_user.id)
+ # TODO this needs to be able to allow for mentors and admin to post
+      if current_user.student?
+        if Student.find_by_user_id(current_user.id).nil?
+          redirect_to new_student_path
+          flash[:success] = "Please create your profile"
+        else
+          @current_student = Student.find_by_user_id(current_user.id)
+        end
       end
     end
 
