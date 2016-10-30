@@ -3,7 +3,7 @@ class ResourcesController < ApplicationController
 
   def index
     @resources = Resource.all
-    @home_url = admins_path
+    @home_url = authenticated_root_path
     @profile_url = "/#{current_user.role}/#{current_user.id}" 
     @page_title = 'Home'
   end
