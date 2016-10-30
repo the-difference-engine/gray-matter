@@ -1,6 +1,13 @@
 class ResourcesController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @resources = Resource.all
+    @home_url = admins_path
+    @profile_url = "/#{current_user.role}/#{current_user.id}" 
+    @page_title = 'Home'
+  end
+
   def new
     @resource = Resource.new
   end

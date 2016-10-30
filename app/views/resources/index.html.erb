@@ -1,2 +1,28 @@
-<h1>Resources#index</h1>
-<p>Find me in app/views/resources/index.html.erb</p>
+<div class="container content-container">
+  <h1 class="resources-title">Resources</h1>
+  <hr/>
+  <div class="row">
+    <% @resources.each do |resource| %>
+      <div class="col-md-4" style="height: 200px">
+        <div class="panel panel-default">
+          <a href="<%= resource.link %>" target="_blank">
+            <div class="panel-heading resource-head-title">
+              <%= image_tag("download.png", :alt => "Resource Icon", :class => "resource-image") %>
+                <%= resource.title %>
+            </div>
+          </a>
+          <div class="panel-body">
+            <%= resource.description %>
+              <% if resource.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
+                <ul>
+                  <li>
+                    <a href="<%= resource.document.url %>" target="_blank">Document</a>
+                  </li>
+                </ul>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>
