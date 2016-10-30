@@ -20,6 +20,7 @@
                         </li>
                       <li><%= link_to 'Students', students_path %></li>
                       <li><%= link_to 'Mentors', mentors_path %></li>
+                      <li><%= link_to 'Resources', resources_path %></li>
                       <% if current_user && current_user.student? || current_user.admin? %>
                         <li><%= link_to 'Trello', "https://www.trello.com", target: '_blank' %></li>
                       <% end %>

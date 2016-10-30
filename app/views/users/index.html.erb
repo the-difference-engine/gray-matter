@@ -4,7 +4,7 @@
             <h1 class="announcements-title">Announcements</h1>
             <div class="row">
                     <% @announcements.each do |announcement| %>
-                    <div class="col-md-6">
+                    <div class="col-md-6 announcement">
                         <div class="panel panel-default">
                             <div class="panel-heading announcements-head <%= @header_styles.sample %>"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<span class="announcements-head-title"><%= announcement.title %></span></div>
                             <div class="panel-body">
