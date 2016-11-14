@@ -14,9 +14,17 @@ class ResourcesController < ApplicationController
 
   def create
     params[:resource][:user_id] = current_user.id
+    document_params = params["resource"].delete("file_array")
     @resource = Resource.new(resource_params)
 
+    binding.pry
     if @resource.save
+      binding.pry
+      document_params.each do |file|
+        @document = Document.new(resource_id: @resource.id, :file_array => file)
+        @document.save!
+      end
+
       redirect_to admins_path
       flash[:success] = "A New resource has been added"
     else
@@ -57,7 +65,11 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:document, :title, :link, :description, :user_id)
+    params.require(:resource).permit(:title, :link, :description, :user_id)
+  end
+
+  def document_params
+
   end
 
 end
