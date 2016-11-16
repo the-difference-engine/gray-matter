@@ -39,13 +39,15 @@
                 </a>
                 <div class="panel-body">
                     <%= resource.description %>
-                        <%# if resource.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
+                    <% if resource.documents.present? %>
+                        <% resource.documents.each do |document| %>
                             <ul>
                                 <li>
-                                <a href="<%#= resource.document.url %>" target="_blank">Document</a>
+                                <a href="<%= document.file_array.url %>" target="_blank">Document</a>
                                 </li>
                             </ul>
-                        <%# end %>
+                        <% end %>
+                    <% end %>
                 </div><!-- end of the panel body -->
 
               </div>
