@@ -17,16 +17,18 @@
             </div>
         <% end %>
         <div>
-            <%= form.label :title %>
+            <%= form.label :title %><br/>
             <%= form.text_field :title %>
-        </div>
-        <div>
-            <%= form.label :link %>
-            <%= form.text_field :link %>
         </div>
         <div>
             <%= form.label :description, 'Short Description' %>
             <%= form.text_area :description, rows: "1", cols: "50" %>
+        </div>
+        <div>
+            <label style="width: 200px !important">Number of links: (max. 5)</label><br/>
+            <input type="text" id="member" name="member" value="">
+            <a href="#" id="filldetails" onclick="addFields()" class="label label-primary">Add Links</a>
+            <div id="container"></div>
         </div>
         <div>
             <%= form.label 'Upload a document' %>
@@ -40,3 +42,21 @@
   <% end %>
   </div>
 </div>
+
+<script>
+    function addFields() {
+        var number = document.getElementById("member").value;
+        var container = document.getElementById("container");
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        }
+        for(i=0; i < number; i++){
+            container.appendChild(document.createTextNode("link " + (i+1)));
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "links[]";
+            container.appendChild(input);
+            container.appendChild(document.createElement("br"));
+        }
+    }
+</script>

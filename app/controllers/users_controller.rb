@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = "Home"
     @announcements = Announcement.all.order('created_at DESC')
-    @resources = Resource.all
+    @resources = Resource.all.order('created_at DESC')
     events = Event.all
     @events_by_date = events.group_by(&:the_date)
   end

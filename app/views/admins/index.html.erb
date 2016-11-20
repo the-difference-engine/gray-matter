@@ -4,20 +4,21 @@
     </div>
 </div>
 
+
 <div>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#student" aria-controls="home" role="tab" data-toggle="tab">Students</a></li>
+        <li role="presentation" class="<%= 'active' if (params[:tab] == 'admin' || !params[:tab])%>"><a href="#student" aria-controls="home" role="tab" data-toggle="tab">Students</a></li>
         <li role="presentation"><a href="#mentor" aria-controls="mentor" role="tab" data-toggle="tab">Mentors</a></li>
         <li role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Administrators</a></li>
         <li role="presentation"><a href="#announcements" aria-controls="announcements" role="tab" data-toggle="tab">Announcements</a></li>
-        <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
+        <li role="presentation" class="<%= 'active' if params[:tab] == 'resources' %>"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
         <li role="presentation"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Add Events</a></li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="student">
+        <div role="tabpanel" class="<%= (params[:tab] == 'admin' || !params[:tab])? 'tab-pane active' : 'tab-pane' %>" id="student">
             <section class="student-table">
                 <h3>Students</h3>
             <div class="content row">
@@ -147,7 +148,7 @@
             </div>
             </section>
         </div>
-        <div role="tabpanel" class="tab-pane" id="resources">
+        <div role="tabpanel" class="<%= params[:tab] == 'resources'? 'tab-pane active' : 'tab-pane' %>" id="resources">
             <section class="resources-table">
                 <div class="row">
                     <div class="col-md-6">
@@ -165,6 +166,7 @@
                         <th>Resource Title</th>
                         <th>Date Created</th>
                         <th>Documents</th>
+                        <th>Links</th>
                         <th>Actions</th>
                         </tr>
                         <% @resources.each do |resource|  %>
@@ -174,6 +176,13 @@
                         <td>
                             <% if resource.documents.present? %>
                                 <%= resource.documents.length %> Documents
+                            <% else %>
+                                N/A
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if resource.links.present? %>
+                                <%= resource.links.length %> Links
                             <% else %>
                                 N/A
                             <% end %>

@@ -48,6 +48,16 @@
                             </ul>
                         <% end %>
                     <% end %>
+                    <hr/>
+                    <% if resource.links.present? %>
+                        <% resource.links.each do |link| %>
+                            <ul>
+                                <li>
+                                   <a href="<%= link %>" target="_blank">Link</a>
+                                </li>
+                            </ul>
+                        <% end %>
+                    <% end %>
                 </div><!-- end of the panel body -->
 
               </div>
