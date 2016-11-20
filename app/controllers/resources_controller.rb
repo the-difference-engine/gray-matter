@@ -71,6 +71,7 @@ class ResourcesController < ApplicationController
     end
   end
 
+  # TODO this should go into the doc controller or at least the model?
   def delete_document
     document = Document.find_by_id(params[:document_id])
     if document.destroy
