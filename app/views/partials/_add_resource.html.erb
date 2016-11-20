@@ -22,7 +22,7 @@
         </div>
         <div>
             <%= form.label :description, 'Short Description' %>
-            <%= form.text_area :description, rows: "1", cols: "50" %>
+            <%= form.text_area :description, rows: "2", cols: "50" %>
         </div>
         <div>
             <label style="width: 200px !important">Number of links: (max. 5)</label><br/>
@@ -42,21 +42,3 @@
   <% end %>
   </div>
 </div>
-
-<script>
-    function addFields() {
-        var number = document.getElementById("member").value;
-        var container = document.getElementById("container");
-        while (container.hasChildNodes()) {
-            container.removeChild(container.lastChild);
-        }
-        for(i=0; i < number; i++){
-            container.appendChild(document.createTextNode("link " + (i+1)));
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "links[]";
-            container.appendChild(input);
-            container.appendChild(document.createElement("br"));
-        }
-    }
-</script>
