@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
   before_filter :authenticate_user!
+  include DocumentHelper
 
   def index
     @resources = Resource.all.order('created_at DESC')
@@ -24,10 +25,11 @@ class ResourcesController < ApplicationController
           @document.save!
         end
       end
-      redirect_to admins_path
+      redirect_to admins_path(tab: :resources)
       flash[:success] = "A New resource has been added"
     else
       flash[:error] = "Something went wrong"
+      render 'new'
     end
   end
 
@@ -71,26 +73,10 @@ class ResourcesController < ApplicationController
     end
   end
 
-  # TODO this should go into the doc controller or at least the model?
-  def delete_document
-    document = Document.find_by_id(params[:document_id])
-    if document.destroy
-      flash[:success] = 'Document Removed'
-      redirect_to admins_path(tab: :resources)
-    else
-      flash[:error] = 'Document was NOT Removed'
-      render 'edit'
-    end
-  end
-
   private
 
   def resource_params
     params.require(:resource).permit(:title, :link, :description, :user_id, links: [])
-  end
-
-  def document_params
-
   end
 
 end

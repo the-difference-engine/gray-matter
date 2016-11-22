@@ -17,16 +17,41 @@
             </div>
         <% end %>
         <div>
-            <%= form.label :title %>
+            <%= form.label :title %><br/>
             <%= form.text_field :title %>
         </div>
+        <br/>
         <div>
             <%= form.label :body, 'Announcement' %>
-            <%= form.text_area :body, rows: "6", cols: "75" %>
+            <%= form.text_area :body, rows: "6", style: "width: 100%" %>
+        </div>
+        <br/>
+        <div id="link-container">
+            <label style="width: 250px !important">Number of links to add: (max. 5)</label><br/>
+            <input type="text" id="edit-announcement" name="edit-announcement" value="">
+            <a href="" id="filldetails" onclick="addFields('edit-announcement', 'edit-announcement-container');return false" class="label label-primary">Add Links</a><br/>
+            <% @links.each do |link| %>
+                <div id="link">
+                    <input name="links[]" type="text" value="<%= link %>" />
+                    <a href="" id="filldetails" onclick="removeFields('link');return false"><i class="fa fa-times-circle delete-link"></i></a><br/>
+                </div>
+            <% end %>
+            <div id="edit-announcement-container"></div>
+        </div>
+        <br/>
+        <div>
+            <%= form.label 'Upload a document' %>
+            <%= form.file_field :file_array, multiple: true %>
+            <br/>
+            <% @documents.each do |document| %>
+                <%= link_to delete_document_path({document_id: document.id, tab: :announcements}), data: {confirm: 'Are you sure?'} do %>
+                  <%= document.file_array_file_name %> <i class="fa fa-times-circle delete-link"></i><br/>
+                <% end %>
+            <% end %>
         </div>
     </div>
     <div class="modal-footer">
-      <%= link_to "Cancel", admins_path, class: "btn btn-default"  %>
+      <%= link_to "Cancel", admins_path(tab: :announcements), class: "btn btn-default"  %>
       <%= form.submit 'Save Announcement', class: 'btn btn-primary pull-right' %>
     </div>
   </div>

@@ -1,6 +1,6 @@
-function addFields() {
-    var number = document.getElementById("member").value;
-    var container = document.getElementById("container");
+function addFields(element, tabContainer) {
+    var number = document.getElementById(element).value;
+    var container = document.getElementById(tabContainer);
     while (container.hasChildNodes()) {
         container.removeChild(container.lastChild);
     }
