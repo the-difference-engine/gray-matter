@@ -17,6 +17,7 @@
             <th>Event Day</th>
             <th>All Day</th>
             <th>Document</th>
+            <th>Links</th>
             <th>Start Time</th>
             <th>End Time</th>
             <th>Actions</th>
@@ -37,11 +38,20 @@
                   <i class="fa fa-check" aria-hidden="true"></i>
                 <% end %>
               </td>
-              <td style="text-align: center">
-                <% if event.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                <% end %>
-              </td>
+                <td>
+                    <% if event.documents.present? %>
+                        <%= resource.documents.length %> Documents
+                    <% else %>
+                        N/A
+                    <% end %>
+                </td>
+                <td>
+                    <% if event.links.present? %>
+                        <%= resource.links.length %> Links
+                    <% else %>
+                        N/A
+                    <% end %>
+                </td>
               <td>
                 <%= event.start_time.strftime('%I:%M %p') %>
               </td>

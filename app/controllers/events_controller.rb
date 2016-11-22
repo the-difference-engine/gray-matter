@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :get_events, only: [:index]
+  include DocumentHelper
 
   # GET /events
   # GET /events.json
@@ -23,6 +24,8 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @links = @event.links
+    @documents = @event.documents
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = "Home"
@@ -31,7 +34,6 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    binding.pry
     @event = Event.new(event_params)
 
     respond_to do |format|
@@ -85,6 +87,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:document, :title, :description, :start_time, :end_time, :the_date, :all_day, :event_date)
+      params.require(:event).permit(:document, :title, :description, :start_time, :end_time, :the_date, :all_day, :event_date, links: [])
     end
 end
