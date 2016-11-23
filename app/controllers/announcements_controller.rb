@@ -1,5 +1,7 @@
 class AnnouncementsController < ApplicationController
   before_filter :authenticate_user!
+  before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  before_action :set_links_documents, only: [:index, :edit]
   include DocumentHelper
 
   def new
@@ -28,7 +30,6 @@ class AnnouncementsController < ApplicationController
   end
 
   def edit
-    @announcement = Announcement.find_by_id(params[:id])
     @links = @announcement.links
     @documents = @announcement.documents
     @home_url = admins_path
@@ -69,6 +70,18 @@ class AnnouncementsController < ApplicationController
   end
 
   private
+
+  def set_announcement
+    @announcement = Announcement.find_by_id(params[:id])
+  end
+
+  def set_links_documents
+    if @announcement.links.present?
+      return @links = @announcement.links
+    else
+      return @links = []
+    end
+  end
 
   def announcement_params
     params.require(:announcement).permit(:title, :body, :user_id, links: [])
