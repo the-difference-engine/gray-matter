@@ -9,6 +9,34 @@
                             <div class="panel-heading announcements-head <%= @header_styles.sample %>"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<span class="announcements-head-title"><%= announcement.title %></span></div>
                             <div class="panel-body">
                                 <%= announcement.body %>
+                                <hr/>
+                                <% if announcement.documents.present? %>
+                                <div class="row">
+                                   <ul>
+                                    <% announcement.documents.each do |document| %>
+                                        <div class="col-sm-6">
+                                            <li>
+                                                <a href="<%= document.file_array.url %>" target="_blank">Document</a>
+                                            </li>
+                                        </div>
+                                    <% end %>
+                                    </ul>
+                                </div>
+                                <% end %>
+                                <hr/>
+                                <% if announcement.links.present? %>
+                                <div class="row">
+                                    <ul>
+                                    <% announcement.links.each do |link| %>
+                                        <div class="col-sm-6">
+                                            <li>
+                                                <a href="<%= link %>" target="_blank">Link</a>
+                                            </li>
+                                        </div>
+                                    <% end %>
+                                    </ul>
+                                </div>
+                                <% end %>
                             </div>
                             <div class="panel-footer announcements-footer">
                                 <div class="row">
@@ -39,13 +67,33 @@
                 </a>
                 <div class="panel-body">
                     <%= resource.description %>
-                        <% if resource.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
-                            <ul>
+                    <% if resource.documents.present? %>
+                    <div class="row">
+                        <ul>
+                        <% resource.documents.each do |document| %>
+                            <div class="col-sm-6">
                                 <li>
-                                <a href="<%= resource.document.url %>" target="_blank">Document</a>
+                                    <a href="<%= document.file_array.url %>" target="_blank">Document</a>
                                 </li>
-                            </ul>
+                            </div>
                         <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
+                    <hr/>
+                    <% if resource.links.present? %>
+                    <div class="row">
+                        <ul>
+                        <% resource.links.each do |link| %>
+                            <div class="col-sm-6">
+                                <li>
+                                   <a href="<%= link %>" target="_blank">Link</a>
+                                </li>
+                            </div>
+                        <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
                 </div><!-- end of the panel body -->
 
               </div>

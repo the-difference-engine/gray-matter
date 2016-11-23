@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :get_events, only: [:index]
+  before_action :set_links_documents, only: [:index, :edit]
+  include DocumentHelper
 
   # GET /events
   # GET /events.json
@@ -23,6 +25,8 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    # @links = @event.links
+    @documents = @event.documents
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = "Home"
@@ -31,12 +35,19 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    binding.pry
-    @event = Event.new(event_params)
+    params[:event][:links] = params[:links]
+    document_params = params["event"].delete("file_array")
 
+    @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
-        format.html { redirect_to admins_path, notice: 'Event was successfully created.' }
+        if document_params.present?
+          document_params.each do |file|
+            @document = Document.new(event_id: @event.id, :file_array => file)
+            @document.save!
+          end
+        end
+        format.html { redirect_to admins_path(tab: :events), notice: "A New event has been added" }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -48,9 +59,19 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    @event.links = params[:links]
+    document_params = params["event"].delete("file_array")
+    if document_params.present?
+      document_params.each do |file|
+        @document = Document.new(event_id: @event.id, :file_array => file)
+        @document.save!
+      end
+    end
+
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to admins_path, notice: 'Event was successfully updated.' }
+        flash[:success] = 'Event was successfully updated.'
+        format.html { redirect_to admins_path(tab: :events) }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -64,7 +85,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to admins_path, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to admins_path(tab: :events), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,11 +101,16 @@ class EventsController < ApplicationController
       @events = Event.where(id: ids)
     end
 
-    def set_params(params)
+    def set_links_documents
+      if @event.links.present?
+        return @links = @event.links
+      else
+        return @links = []
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:document, :title, :description, :start_time, :end_time, :the_date, :all_day, :event_date)
+      params.require(:event).permit(:document, :title, :description, :start_time, :end_time, :the_date, :all_day, :event_date, links: [])
     end
 end

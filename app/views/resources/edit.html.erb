@@ -2,7 +2,6 @@
   <div class="modal-content">
   <%= form_for @resource do |form| %>
     <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h4 class="modal-title">Edit a Resource</h4>
     </div>
     <div class="modal-body">
@@ -17,24 +16,42 @@
             </div>
         <% end %>
         <div>
-            <%= form.label :title %>
-            <%= form.text_field :title %>
+            <%= form.label :title %><br/>
+            <%= form.text_field :title, style: 'width: 421px' %>
         </div>
-        <div>
-            <%= form.label :link %>
-            <%= form.text_field :link %>
-        </div>
+        <br/>
         <div>
             <%= form.label :description, 'Short Description' %>
-            <%= form.text_area :description, rows: "1", cols: "50" %>
+            <%= form.text_area :description, rows: "2", style: "width: 100%" %>
         </div>
+        <br/>
+        <div id="link-container">
+            <label style="width: 250px !important">Number of links to add: (max. 5)</label><br/>
+            <input type="text" id="edit-resource" name="member" value="">
+            <a href="" id="filldetails" onclick="addFields('edit-resource', 'edit-resource-container');return false" class="label label-primary">Add Links</a><br/>
+            <% @links.each do |link| %>
+                <div id="link">
+                    <input name="links[]" type="text" value="<%= link %>" />
+                    <a href="" id="filldetails" onclick="removeFields('link');return false"><i class="fa fa-times-circle delete-link"></i></a><br/>
+                </div>
+            <% end %>
+            <div id="edit-resource-container"></div>
+        </div>
+        <br/>
         <div>
             <%= form.label 'Upload a document' %>
-            <%= form.file_field :document %>
+            <%= form.file_field :file_array, multiple: true %>
+            <br/>
+
+            <% @documents.each do |document| %>
+                <%= link_to delete_document_path({document_id: document.id, tab: :resources}), data: {confirm: 'Are you sure?'} do %>
+                  <%= document.file_array_file_name %> <i class="fa fa-times-circle delete-link"></i><br/>
+                <% end %>
+            <% end %>
         </div>
     </div>
     <div class="modal-footer">
-      <%= link_to "Cancel", admins_path, class: "btn btn-default"  %>
+      <%= link_to "Cancel", admins_path(tab: :resources), class: "btn btn-default", style: 'color: #000 !important'  %>
       <%= form.submit 'Save Resource', class: 'btn btn-primary pull-right' %>
     </div>
   <% end %>

@@ -1,8 +1,9 @@
 class ResourcesController < ApplicationController
   before_filter :authenticate_user!
+  include DocumentHelper
 
   def index
-    @resources = Resource.all
+    @resources = Resource.all.order('created_at DESC')
     @home_url = authenticated_root_path
     @profile_url = "/#{current_user.role}/#{current_user.id}" 
     @page_title = 'Home'
@@ -14,18 +15,28 @@ class ResourcesController < ApplicationController
 
   def create
     params[:resource][:user_id] = current_user.id
+    params[:resource][:links] = params[:links]
+    document_params = params["resource"].delete("file_array")
     @resource = Resource.new(resource_params)
-
     if @resource.save
-      redirect_to admins_path
+      if document_params.present?
+        document_params.each do |file|
+          @document = Document.new(resource_id: @resource.id, :file_array => file)
+          @document.save!
+        end
+      end
+      redirect_to admins_path(tab: :resources)
       flash[:success] = "A New resource has been added"
     else
       flash[:error] = "Something went wrong"
+      render 'new'
     end
   end
 
   def edit
     @resource = Resource.find_by_id(params[:id])
+    @links = @resource.links
+    @documents = @resource.documents
     @home_url = admins_path
     @profile_url = "/#{current_user.role}/#{current_user.id}" 
     @page_title = 'Edit Resource'
@@ -33,10 +44,18 @@ class ResourcesController < ApplicationController
 
   def update
     resource = Resource.find_by_id(params[:id])
+    resource.links = params[:links]
+    document_params = params["resource"].delete("file_array")
+      if document_params.present?
+        document_params.each do |file|
+          @document = Document.new(resource_id: resource.id, :file_array => file)
+          @document.save!
+        end
+      end
 
     if resource.update(resource_params)
       flash[:success] = 'Resource Updated'
-      redirect_to admins_path
+      redirect_to admins_path(tab: :resources)
     else
       render 'edit'
     end
@@ -47,17 +66,17 @@ class ResourcesController < ApplicationController
 
     if resource.destroy
       flash[:success] = 'Resource Removed'
-      redirect_to admins_path
+      redirect_to admins_path(tab: :resources)
     else
       flash[:error] = 'Resource was NOT Removed'
-      redirect_to admins_path
+      render 'edit'
     end
   end
 
   private
 
   def resource_params
-    params.require(:resource).permit(:document, :title, :link, :description, :user_id)
+    params.require(:resource).permit(:title, :link, :description, :user_id, links: [])
   end
 
 end

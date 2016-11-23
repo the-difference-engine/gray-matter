@@ -78,6 +78,9 @@ Rails.application.routes.draw do
 
   resource :calendar, only: [:show], controller: :calendar
 
+  #TODO this really isn't right below. this works for resource announcements and events
+  get '/resource/:id' => 'resources#delete_document', as: 'delete_document'
+
   # get '/students' => 'students#index'
   # post '/students' => 'students#create'
   # get '/students/:id' => 'students#show'

@@ -3,7 +3,7 @@
   <hr/
   <div class="row">
     <% @resources.each do |resource| %>
-      <div class="col-md-4" style="height: 200px">
+      <div class="col-md-4" style="min-height: 300px">
         <div class="panel panel-default">
           <a href="<%= resource.link %>" target="_blank">
             <div class="panel-heading resource-head-title">
@@ -13,13 +13,25 @@
           </a>
           <div class="panel-body">
             <%= resource.description %>
-              <% if resource.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
-                <ul>
-                  <li>
-                    <a href="<%= resource.document.url %>" target="_blank">Document</a>
-                  </li>
-                </ul>
-              <% end %>
+                <% if resource.documents.present? %>
+                    <% resource.documents.each do |document| %>
+                        <ul>
+                            <li>
+                            <a href="<%= document.file_array.url %>" target="_blank">Resource Document</a>
+                            </li>
+                        </ul>
+                    <% end %>
+                <% end %>
+                <hr/>
+                <% if resource.links.present? %>
+                    <% resource.links.each do |link| %>
+                        <ul>
+                            <li>
+                                <a href="<%= link %>" target="_blank">Resource Link</a>
+                            </li>
+                        </ul>
+                    <% end %>
+                <% end %>
           </div>
         </div>
       </div>

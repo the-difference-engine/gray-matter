@@ -4,20 +4,21 @@
     </div>
 </div>
 
+
 <div>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#student" aria-controls="home" role="tab" data-toggle="tab">Students</a></li>
+        <li role="presentation" class="<%= 'active' if (params[:tab] == 'admin' || !params[:tab])%>"><a href="#student" aria-controls="home" role="tab" data-toggle="tab">Students</a></li>
         <li role="presentation"><a href="#mentor" aria-controls="mentor" role="tab" data-toggle="tab">Mentors</a></li>
         <li role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Administrators</a></li>
-        <li role="presentation"><a href="#announcements" aria-controls="announcements" role="tab" data-toggle="tab">Announcements</a></li>
-        <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
-        <li role="presentation"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Add Events</a></li>
+        <li role="presentation" class="<%= 'active' if params[:tab] == 'announcements' %>"><a href="#announcements" aria-controls="announcements" role="tab" data-toggle="tab">Announcements</a></li>
+        <li role="presentation" class="<%= 'active' if params[:tab] == 'resources' %>"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
+        <li role="presentation" class="<%= 'active' if (params[:tab] == 'events') %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Add Events</a></li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="student">
+        <div role="tabpanel" class="<%= (params[:tab] == 'admin' || !params[:tab])? 'tab-pane active' : 'tab-pane' %>" id="student">
             <section class="student-table">
                 <h3>Students</h3>
             <div class="content row">
@@ -110,7 +111,7 @@
             </div>
             </section>
         </div>
-        <div role="tabpanel" class="tab-pane" id="announcements">
+        <div role="tabpanel" class="<%= params[:tab] == 'announcements'? 'tab-pane active' : 'tab-pane' %>" id="announcements">
             <section class="announcements-table">
                 <div class="row">
                     <div class="col-md-6">
@@ -127,12 +128,28 @@
                         <tr>
                         <th>Announcement Title</th>
                         <th>Date Created</th>
+                        <th>Documents</th>
+                        <th>Links</th>
                         <th>Actions</th>
                         </tr>
                         <% @announcements.each do |announcement|  %>
                         <tr>
                         <td><%= announcement.title %></td>
                         <td><%= announcement.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+                        <td>
+                            <% if announcement.documents.present? %>
+                                <%= announcement.documents.length %> Documents
+                            <% else %>
+                                N/A
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if announcement.links.present? %>
+                                <%= announcement.links.length %> Links
+                            <% else %>
+                                N/A
+                            <% end %>
+                        </td>
                         <td><%= link_to "Edit", edit_announcement_path(announcement), class: 'btn btn-sm btn-primary' %> 
 <%= link_to "Delete", "/announcements/#{announcement.id}", class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete this announcement?' } %></td>
                         </tr>
@@ -147,7 +164,7 @@
             </div>
             </section>
         </div>
-        <div role="tabpanel" class="tab-pane" id="resources">
+        <div role="tabpanel" class="<%= params[:tab] == 'resources'? 'tab-pane active' : 'tab-pane' %>" id="resources">
             <section class="resources-table">
                 <div class="row">
                     <div class="col-md-6">
@@ -165,6 +182,7 @@
                         <th>Resource Title</th>
                         <th>Date Created</th>
                         <th>Documents</th>
+                        <th>Links</th>
                         <th>Actions</th>
                         </tr>
                         <% @resources.each do |resource|  %>
@@ -172,8 +190,17 @@
                         <td><%= resource.title %></td>
                         <td><%= resource.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
                         <td>
-                            <% if resource.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
-                              <i class="fa fa-check" aria-hidden="true"></i>
+                            <% if resource.documents.present? %>
+                                <%= resource.documents.length %> Documents
+                            <% else %>
+                                N/A
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if resource.links.present? %>
+                                <%= resource.links.length %> Links
+                            <% else %>
+                                N/A
                             <% end %>
                         </td>
                         <td>
@@ -192,7 +219,7 @@
             </div>
             </section>
         </div>
-        <div role="tabpanel" class="tab-pane" id="events">
+        <div role="tabpanel" class="<%= params[:tab] == 'events'? 'tab-pane active' : 'tab-pane' %>" id="events">
             <%= render 'partials/events' %>
         </div>
     </div>

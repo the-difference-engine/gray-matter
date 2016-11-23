@@ -13,7 +13,6 @@
 
 class Resource < ActiveRecord::Base
   belongs_to :user
-
-  has_attached_file :document
-  validates_attachment_content_type :document, :content_type => ['application/pdf']
+  has_many :documents
+  accepts_nested_attributes_for :documents
 end

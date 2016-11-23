@@ -17,20 +17,22 @@
             </div>
         <% end %>
         <div>
-            <%= form.label :title %>
+            <%= form.label :title %><br/>
             <%= form.text_field :title %>
         </div>
         <div>
-            <%= form.label :link %>
-            <%= form.text_field :link %>
+            <%= form.label :description, 'Short Description' %>
+            <%= form.text_area :description, rows: "2", cols: "50" %>
         </div>
         <div>
-            <%= form.label :description, 'Short Description' %>
-            <%= form.text_area :description, rows: "1", cols: "50" %>
+            <label style="width: 200px !important">Number of links: (max. 5)</label><br/>
+            <input type="text" id="resource" name="member" value="">
+            <a href="#" id="filldetails" onclick="addFields('resource', 'resource-container')" class="label label-primary">Add Links</a>
+            <div id="resource-container"></div>
         </div>
         <div>
             <%= form.label 'Upload a document' %>
-            <%= form.file_field :document %>
+            <%= form.file_field :file_array, multiple: true %>
         </div>
     </div>
     <div class="modal-footer">

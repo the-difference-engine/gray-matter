@@ -17,8 +17,9 @@
             <th>Event Day</th>
             <th>All Day</th>
             <th>Document</th>
-            <th>Start Time</th>
-            <th>End Time</th>
+            <th>Links</th>
+            <th>Start</th>
+            <th>End</th>
             <th>Actions</th>
           </tr>
           <% @events.each do |event|  %>
@@ -37,11 +38,20 @@
                   <i class="fa fa-check" aria-hidden="true"></i>
                 <% end %>
               </td>
-              <td style="text-align: center">
-                <% if event.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                <% end %>
-              </td>
+                <td>
+                    <% if event.documents.present? %>
+                        <%= event.documents.length %>
+                    <% else %>
+                        N/A
+                    <% end %>
+                </td>
+                <td>
+                    <% if event.links.present? %>
+                        <%= event.links.length %>
+                    <% else %>
+                        N/A
+                    <% end %>
+                </td>
               <td>
                 <%= event.start_time.strftime('%I:%M %p') %>
               </td>

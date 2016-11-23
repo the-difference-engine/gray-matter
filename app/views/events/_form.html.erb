@@ -43,11 +43,29 @@
                 </div>
                 <div>
                     <%= form.label 'Upload a document' %>
-                    <%= form.file_field :document %>
+                    <%= form.file_field :file_array, multiple: true %>
+                    <br/>
+                    <% @documents.each do |document| %>
+                        <%= link_to delete_document_path({document_id: document.id, tab: :announcements}), data: {confirm: 'Are you sure?'} do %>
+                        <%= document.file_array_file_name %> <i class="fa fa-times-circle delete-link"></i><br/>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div id="link-container">
+                    <label style="width: 250px !important">Number of links to add: (max. 5)</label><br/>
+                    <input type="text" id="edit-event" name="edit-announcement" value="">
+                    <a href="" id="filldetails" onclick="addFields('edit-event', 'edit-event-container');return false" class="label label-primary">Add Links</a><br/>
+                    <% @links.each do |link| %>
+                        <div id="link">
+                            <input name="links[]" type="text" value="<%= link %>" />
+                            <a href="" id="filldetails" onclick="removeFields('link');return false"><i class="fa fa-times-circle delete-link"></i></a><br/>
+                        </div>
+                    <% end %>
+                    <div id="edit-event-container"></div>
                 </div>
             </Div>
             <div class="modal-footer">
-                <%= link_to 'Back', admins_path, class: 'btn btn-default' %>
+                <%= link_to 'Back', admins_path(tab: :events), class: 'btn btn-default' %>
                 <%= form.submit 'Edit Event', class: 'btn btn-primary pull-right' %>
             </div>
         <% end %>

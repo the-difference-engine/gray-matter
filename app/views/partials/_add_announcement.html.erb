@@ -17,12 +17,25 @@
             </div>
         <% end %>
         <div>
-            <%= form.label :title %>
+            <%= form.label :title %><br/>
             <%= form.text_field :title %>
         </div>
+        <br/>
         <div>
             <%= form.label :body, 'Announcement' %>
-            <%= form.text_area :body, rows: "6", cols: "75" %>
+            <%= form.text_area :body, rows: "6", style: 'width: 100%' %>
+        </div>
+        <br/>
+        <div>
+            <label style="width: 200px !important">Number of links: (max. 5)</label><br/>
+            <input type="text" id="announcement" name="member" value="">
+            <a href="#" id="filldetails" onclick="addFields('announcement', 'announcement-container')" class="label label-primary">Add Links</a>
+            <div id="announcement-container"></div>
+        </div>
+        <br/>
+        <div>
+            <%= form.label 'Upload a document' %>
+            <%= form.file_field :file_array, multiple: true %>
         </div>
     </div>
     <div class="modal-footer">
