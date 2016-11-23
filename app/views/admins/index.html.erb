@@ -13,7 +13,7 @@
         <li role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Administrators</a></li>
         <li role="presentation" class="<%= 'active' if params[:tab] == 'announcements' %>"><a href="#announcements" aria-controls="announcements" role="tab" data-toggle="tab">Announcements</a></li>
         <li role="presentation" class="<%= 'active' if params[:tab] == 'resources' %>"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
-        <li role="presentation"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Add Events</a></li>
+        <li role="presentation" class="<%= 'active' if (params[:tab] == 'events') %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Add Events</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -219,7 +219,7 @@
             </div>
             </section>
         </div>
-        <div role="tabpanel" class="tab-pane" id="events">
+        <div role="tabpanel" class="<%= params[:tab] == 'events'? 'tab-pane active' : 'tab-pane' %>" id="events">
             <%= render 'partials/events' %>
         </div>
     </div>

@@ -4,7 +4,7 @@
       <h4 class="modal-title">Events for <%= @the_date.strftime('%A, %B %d, %Y') %></h4>
     </div>
     <div class="modal-body">
-        <table style="width: 100%">
+        <table class="table table-striped" style="width: 100%">
         <thead>
             <tr>
             <th>Title</th>
@@ -13,6 +13,7 @@
             <th>End time</th>
             <th>All day</th>
             <th>Attachments</th>
+            <th>Links</th>
             </tr>
         </thead>
 
@@ -25,13 +26,18 @@
                 <td><%= event.end_time.strftime('%I:%M %p') %></td>
                 <td><%= event.all_day ? "Yes" : "No" %></td>
                 <td>
-                   <% if event.document.url != "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg" %>
-                        <ul>
-                            <li>
-                                <a href="<%= event.document.url %>" target="_blank">Document</a>
-                            </li>
-                        </ul>
-                   <% end %>
+                <% if event.documents.present? %>
+                    <% event.documents.each do |document| %>
+                        <a href="<%= document.file_array.url %>" target="_blank">Document</a><br/>
+                    <% end %>
+                <% end %>
+                </td>
+                <td>
+                <% if event.links.present? %>
+                    <% event.links.each do |link| %>
+                        <a href="<%= link %>" target="_blank">Link</a><br />
+                    <% end %>
+                <% end %>
                 </td>
             </tr>
             <% end %>

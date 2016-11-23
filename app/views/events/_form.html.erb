@@ -65,7 +65,7 @@
                 </div>
             </Div>
             <div class="modal-footer">
-                <%= link_to 'Back', admins_path, class: 'btn btn-default' %>
+                <%= link_to 'Back', admins_path(tab: :events), class: 'btn btn-default' %>
                 <%= form.submit 'Edit Event', class: 'btn btn-primary pull-right' %>
             </div>
         <% end %>

@@ -18,8 +18,8 @@
             <th>All Day</th>
             <th>Document</th>
             <th>Links</th>
-            <th>Start Time</th>
-            <th>End Time</th>
+            <th>Start</th>
+            <th>End</th>
             <th>Actions</th>
           </tr>
           <% @events.each do |event|  %>
@@ -40,14 +40,14 @@
               </td>
                 <td>
                     <% if event.documents.present? %>
-                        <%= resource.documents.length %> Documents
+                        <%= event.documents.length %>
                     <% else %>
                         N/A
                     <% end %>
                 </td>
                 <td>
                     <% if event.links.present? %>
-                        <%= resource.links.length %> Links
+                        <%= event.links.length %>
                     <% else %>
                         N/A
                     <% end %>
