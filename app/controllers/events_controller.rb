@@ -23,7 +23,9 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event = Event.find_by_id(params[:id])
     @documents = @event.documents
+    @links = @event.links
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
     @page_title = "Home"
