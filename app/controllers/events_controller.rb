@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :get_events, only: [:index]
-  before_action :set_links_documents, only: [:index, :edit]
   include DocumentHelper
 
   # GET /events
@@ -25,7 +23,6 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    # @links = @event.links
     @documents = @event.documents
     @home_url = authenticated_root_path
     @profile_url = "#{current_user.role}/#{current_user.id}" 
@@ -91,22 +88,10 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
     def get_events
       ids = params["events"].map { |string_id| string_id.to_i }
       @events = Event.where(id: ids)
-    end
-
-    def set_links_documents
-      if @event.links.present?
-        return @links = @event.links
-      else
-        return @links = []
-      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
