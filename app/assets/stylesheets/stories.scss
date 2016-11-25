@@ -1,0 +1,37 @@
+@import "partials/globals";
+
+.story-title {
+    color: blue !important;
+    font-size: 2em;
+}
+
+.story-container {
+    font-size: 1.3em;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    background-color: #ccc;
+}
+
+.story-submitted {
+    margin-right: 10px;
+}
+
+.story-hr {
+   
+}
+
+.comments-container {
+    margin: 10px;
+}
+
+.new-story-btn {
+    width: 100%;
+    color: $colorOne !important;
+    background-color: $colorTwo;
+}
+
+.main-story-title {
+    margin: 10px 0 20px 0;
+}

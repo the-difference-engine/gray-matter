@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :admins, :dependent => :destroy
   has_many :announcements
   has_many :resources
+  has_many :stories
 
   EMAIL_REXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :email, presence: true, format: { with: EMAIL_REXP, message: "is not a valid email address" }

@@ -81,6 +81,13 @@ Rails.application.routes.draw do
   #TODO this really isn't right below. this works for resource announcements and events
   get '/resource/:id' => 'resources#delete_document', as: 'delete_document'
 
+  resources :stories do
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
+  end
   # get '/students' => 'students#index'
   # post '/students' => 'students#create'
   # get '/students/:id' => 'students#show'
