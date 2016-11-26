@@ -4,7 +4,7 @@
             <% @stories.each do |story| %>
                 <div class="main-story-title">
                     <%= link_to(story.title, story, class: 'story-title') %><br/>
-                    <small>
+                    <small class="story-small">
                         submitted <%= story.created_at.strftime("%A, %b %d, %Y") %> by: <%= story.user.email %>
                     </small>
                 </div>

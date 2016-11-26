@@ -17,7 +17,7 @@
                     <%= f.text_area :body, placeholder: "Comment text...", rows: "5", cols: "50" %><br/>
                     <%= f.submit "Post", class: 'btn btn-success' %>
                 <% end %>
-
+            <hr/>
                 <ul>
                     <%= render(partial: 'comments/comment', collection: @story.comments) %>
                 </ul>

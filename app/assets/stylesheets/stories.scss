@@ -1,7 +1,7 @@
 @import "partials/globals";
 
 .story-title {
-    color: blue !important;
+    color: $colorTwo !important;
     font-size: 2em;
 }
 
@@ -33,5 +33,30 @@
 }
 
 .main-story-title {
+    color: $colorTwo !important;
     margin: 10px 0 20px 0;
 }
+
+.story-small {
+    color: $colorThree;
+}
+
+
+/* comments */
+#comment_reply_box {
+    display: none;
+    /* visibility: hidden; */
+}
+
+#comment_reply {
+    cursor: pointer;
+}
+
+#comment_reply {
+    color: $colorSix;
+}
+
+/* I was looking to use something different than the bullet */
+/* ul { */
+/*     list-style-image: url('comments.png'); */
+/* } */

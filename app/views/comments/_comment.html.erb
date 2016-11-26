@@ -1,10 +1,15 @@
 <li>
-  <%= comment.body %> -
-  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+    <%= comment.body %><br/>
 
-  <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
+    <small class="story-small">Submitted <%= time_ago_in_words(comment.created_at) %> ago | <span onclick="commentReply('<%= comment.id %>')" id="comment_reply">reply</span></small>
+    <%= form_for [comment, Comment.new] do |f| %>
+      <div id="<%= comment.id %>" style="display: none">
+        <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+          <div class="comment-btns">
+            <span class="btn btn-sm btn-danger" onclick="commentCancel('<%= comment.id %>')">Cancel</span> <%= f.submit "Save", class: "btn btn-sm btn-sucess"  %>
+          </div>
+      </div>
+      <br/>
       <% end %>
 
   <ul>
@@ -12,3 +17,4 @@
   </ul>
 
 </li>
+
