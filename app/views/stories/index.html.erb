@@ -5,7 +5,7 @@
                 <div class="main-story-title">
                     <%= link_to(story.title, story, class: 'story-title') %><br/>
                     <small class="story-small">
-                        submitted <%= story.created_at.strftime("%A, %b %d, %Y") %> by: <%= story.user.email %>
+                        submitted <%= story.created_at.strftime("%A, %b %d, %Y") %> by: <a href="mailto:<%= story.user.email %>" target="_top"><%= story.user.email %></a>
                     </small>
                 </div>
             <% end %>

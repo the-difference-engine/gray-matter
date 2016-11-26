@@ -9,7 +9,7 @@
             <div class="story-container">
                 <%= @story.body %>
             </div>
-            <small class="story-submitted pull-right">Submitted <%= time_ago_in_words(@story.created_at) %> ago, by: <%= current_user.email %></small><br />
+            <small class="story-submitted pull-right">Submitted <%= time_ago_in_words(@story.created_at) %> ago, by: <a href="mailto:<%= @story.user.email %>" target="_top"><%= @story.user.email %></a></small><br />
             <hr class="story-hr"/>
             <h4>Comments</h4>
             <div class="comments-container">

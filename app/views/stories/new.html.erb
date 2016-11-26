@@ -1,4 +1,4 @@
-<div class="container margin-top">
+<div class="container margin-top new-story-container">
     <div class="row">
         <div class="col-md-9">
             <%= form_for @story do |form| %>
@@ -27,11 +27,10 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <%= form.submit 'Add Story', class: 'btn btn-success pull-right' %>
                 </div>
             </div>
-            <% end %>  
+            <% end %>
         </div>
         <div class="col-md-3">
             <div class="container">
