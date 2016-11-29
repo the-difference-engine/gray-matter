@@ -1,7 +1,6 @@
 class ResourcesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
-  before_action :set_links_documents, only: [:index, :edit]
   include DocumentHelper
 
   def index
@@ -36,6 +35,7 @@ class ResourcesController < ApplicationController
   end
 
   def edit
+    @resource = Resource.find(params[:id])
     @documents = @resource.documents
     @home_url = admins_path
     @profile_url = "/#{current_user.role}/#{current_user.id}" 
@@ -74,10 +74,6 @@ class ResourcesController < ApplicationController
   end
 
   private
-
-  def set_resource
-    @resource = Resource.find(params[:id])
-  end
 
   def set_links_documents
     if @resource.links.present?

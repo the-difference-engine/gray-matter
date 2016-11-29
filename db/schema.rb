@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120233032) do
+ActiveRecord::Schema.define(version: 20161126034103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20161120233032) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.text     "links",      default: [],              array: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -121,6 +130,15 @@ ActiveRecord::Schema.define(version: 20161120233032) do
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
     t.text     "links",                 default: [],              array: true
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.text     "title"
+    t.string   "url"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "students", force: :cascade do |t|

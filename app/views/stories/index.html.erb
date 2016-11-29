@@ -1,0 +1,21 @@
+<div class="container margin-top">
+    <div class="row">
+        <div class="col-md-9">
+            <% @stories.each do |story| %>
+                <div class="main-story-title">
+                    <%= link_to(story.title, story, class: 'story-title') %><br/>
+                    <small class="story-small">
+                        submitted <%= story.created_at.strftime("%A, %b %d, %Y") %> by: <a href="mailto:<%= story.user.email %>" target="_top"><%= story.user.email %></a>
+                    </small>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-md-3">
+            <div class="container">
+                <div class="new-link">
+                    <%= link_to "New post", new_story_path, class: 'btn btn-default new-story-btn' %>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

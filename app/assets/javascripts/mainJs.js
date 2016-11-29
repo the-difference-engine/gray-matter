@@ -21,3 +21,11 @@ function removeFields(e) {
     var link_input = document.getElementById(e);
     parent.removeChild(link_input);
 }
+
+function commentReply(element) {
+    document.getElementById(element).style.display = "initial";
+}
+
+function commentCancel(element) {
+    document.getElementById(element).style.display = "none";
+}
